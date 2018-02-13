@@ -2,6 +2,7 @@
 // Client Secret kyGL18H4d80Ag6CD
 
 //Google Maps
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 // AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM
       const APIkey = 'AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM';
 
@@ -11,45 +12,13 @@
 
       var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
-///////////////////////////////////////////////////////////////////////////////////////
-    // function getPlaceDetailsById (placeId) {
-    //    var params = {
-    //       tags: placeId,
-    //       tagmode: "any",
-    //       format: "json"
-    //         };
-    //         var result = $.ajax({
-    //             /* update API end point */
-
-    //             url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM",
-    //             data: params,
-    //             dataType: "json",
-    //             /*set the call type GET / POST*/
-    //             type: "GET",
-    //             headers: {
-    //                 'Access-Control-Allow-Origin': '*'
-    //             },
-    //             crossDomain: true
-    //         })
-    //         /* if the call is successful (status 200 OK) show results */
-    //         .done(function (result) {
-    //             /* if the results are meeningful, we can just console.log them */
-    //             // console.log(result);
-    //         })
-    //         /* if the call is NOT successful show errors */
-    //         .fail(function (jqXHR, error, errorThrown) {
-    //             console.log(jqXHR);
-    //             console.log(error);
-    //             console.log(errorThrown);
-    //         });
-    // }
-///////////////////////////////////////////////////////////////////////////////////////
 
   function initMap() {
     var NYC = {lat: 40.749460, lng: -73.988631};
+    var Wellington = {lat: -41.2865, lng: 174.7762};
 
     map = new google.maps.Map(document.getElementById('map'), {
-      center: NYC,
+      center: Wellington,
       zoom: 12
     });
 
@@ -58,7 +27,7 @@
 
     console.log(service);
     service.nearbySearch({
-      location: NYC,
+      location: Wellington,
       radius: 50000,
       type: ['museum']
     }, callback);
@@ -86,6 +55,7 @@
       // Opens new window when user clicks on marker
     google.maps.event.addListener(marker, 'click', function() {
       // window.open("https://www.w3schools.com");
+      getChannelFromYouTube(place.name);
       var request = {
         reference: place.reference
       };
@@ -108,6 +78,8 @@
   }
 
   // $(initMap());
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // service.getDetails({
   //   placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
@@ -144,5 +116,99 @@
 //     },
 //     callback);
 // }
+// function getDataFromApi(searchTerm, callback) {
+//   const settings = {
+//     url: GITHUB_SEARCH_URL,
+//     data: {
+//       q: `${searchTerm} in:name`,
+//       per_page: 5
+//     },
+//     dataType: 'json',
+//     type: 'GET',
+//     success: callback
+//   };
+
+//   $.ajax(settings);
+// }
 
 // getApiData ('The MET', (data) => console.log(data))
+
+// Function takes in Museum Name from Google as parameter
+// API call using YouTube search to identify if channel is present
+// If Channel is present,
+
+///////////////////////////////////////////////////////////////////////////////////////
+var YTchannelId;
+
+function getChannelFromYouTube (searchTerm, search) {
+  console.log(searchTerm + ' channel');
+  // if (search) {
+  //   endpoint = "https://www.googleapis.com/youtube/v3/search"
+  // }
+  var result = $.ajax({
+      /* update API end point */
+      url: "https://www.googleapis.com/youtube/v3/search",
+      data: {
+        q: searchTerm,
+        part: 'snippet',
+        maxResults: 1,
+        key: APIkey,
+        type: 'channel'
+      },
+      dataType: "jsonp",
+      /*set the call type GET / POST*/
+      type: "GET",
+      crossDomain: true
+  })
+  /* if the call is successful (status 200 OK) show results */
+  .done(function (result) {
+      /* if the results are meeningful, we can just console.log them */
+      console.log(result);
+      YTchannelId = result.items[0].id.channelId;
+      console.log(result.items[0].id.channelId)
+  })
+  /* if the call is NOT successful show errors */
+  .fail(function (jqXHR, error, errorThrown) {
+      console.log(jqXHR);
+      console.log(error);
+      console.log(errorThrown);
+  });
+}
+
+function findChannel (searchTerm, data) {
+
+}
+
+function getDataFromYouTube (searchTerm, search) {
+  console.log(searchTerm + ' channel');
+  // if (search) {
+  //   endpoint = "https://www.googleapis.com/youtube/v3/search"
+  // }
+  var result = $.ajax({
+      /* update API end point */
+      url: "",
+      data: {
+        q: searchTerm,
+        part: 'snippet',
+        maxResults: 6,
+        key: APIkey,
+        type: 'channel'
+      },
+      dataType: "jsonp",
+      /*set the call type GET / POST*/
+      type: "GET",
+      crossDomain: true
+  })
+  /* if the call is successful (status 200 OK) show results */
+  .done(function (result) {
+      /* if the results are meeningful, we can just console.log them */
+      console.log(result);
+  })
+  /* if the call is NOT successful show errors */
+  .fail(function (jqXHR, error, errorThrown) {
+      console.log(jqXHR);
+      console.log(error);
+      console.log(errorThrown);
+  });
+}
+///////////////////////////////////////////////////////////////////////////////////////
