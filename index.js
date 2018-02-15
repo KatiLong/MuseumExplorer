@@ -4,36 +4,106 @@
 //Google Maps
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 // AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM
-      const APIkey = 'AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM';
+const APIkey = 'AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM';
 
-      var map;
-      var infowindow;
-      var service;
+var map;
+var infowindow;
+var service;
 
-      var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
 
-  function initMap() {
-    var NYC = {lat: 40.749460, lng: -73.988631};
-    var Wellington = {lat: -41.2865, lng: 174.7762};
+function initMap() {
+  var Phoenix = {lat: 33.2696,lng:-111.8367}
+  var NYC = {lat: 40.749460, lng: -73.988631};
+  var Wellington = {lat: -41.2865, lng: 174.7762};
+  var Paris = {lat: 48.8566, lng: 2.3522}
+  var Motor = {lat: 50.8230, lng: -1.4536}
+  var Wight = {lat: 50.7005, lng: -1.2930}
+  var markers = [];
 
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: Wellington,
-      zoom: 12
-    });
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: NYC,
+    zoom: 12
+  });
 
-    infowindow = new google.maps.InfoWindow();
-    service = new google.maps.places.PlacesService(map);
+  infowindow = new google.maps.InfoWindow();
+  service = new google.maps.places.PlacesService(map);
 
-    console.log(service);
-    service.nearbySearch({
-      location: Wellington,
-      radius: 50000,
-      type: ['museum']
-    }, callback);
+  console.log(service);
+  // service.nearbySearch({
+  //   location: NYC,
+  //   radius: 50000,
+  //   keyword: 'museum',
+  //   maxResults: 20,
+  //   // rankby: distance
+  // }, callback);
 
-    console.log(google);
-  }
+  service.textSearch({
+    query: 'New York',
+    type: 'museum'
+  }, callback);
+
+  console.log(google);
+  // console.log(markers);
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('pac-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input)
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+//   searchBox.addListener('places_changed', function() {
+//     var places = searchBox.getPlaces();
+//     // var places = new google.maps.places.SearchBox(document.getElementById('pac-input')).getPlaces();
+
+//     if (places.length == 0) {
+//       return;
+//     }
+
+//     // Clear out the old markers.
+//     markers.forEach(function(marker) {
+//       marker.setMap(null);
+//     });
+//     markers = []
+
+//     var bounds = new google.maps.LatLngBounds();
+//     // For each place, get the icon, name and location.
+//     places.forEach(function(place) {
+//       if (!place.geometry) {
+//         console.log("Returned place contains no geometry");
+//         return;
+//       }
+//       var icon = {
+//         url: place.icon,
+//         size: new google.maps.Size(71, 71),
+//         origin: new google.maps.Point(0, 0),
+//         anchor: new google.maps.Point(17, 34),
+//         scaledSize: new google.maps.Size(25, 25)
+//       };
+
+//       // Create a marker for each place.
+//       markers.push(new google.maps.Marker({
+//         map: map,
+//         icon: icon,
+//         title: place.name,
+//         position: place.geometry.location
+//       }));
+
+//       if (place.geometry.viewport) {
+//         // Only geocodes have viewport.
+//         bounds.union(place.geometry.viewport);
+//       } else {
+//         bounds.extend(place.geometry.location);
+//       }
+//       console.log(markers);
+//   });
+//   map.fitBounds(bounds);
+// });
+/////////////////////////////////////////////////////////////////////////////////////////////
+}
 
   function callback(results, status) {
     console.log(`status parameter is ${status}`);
@@ -46,16 +116,17 @@
   }
 
   function createMarker(place) {
-    var marker = new google.maps.Marker({
+    markers = new google.maps.Marker({
       map: map,
       position: place.geometry.location,
       icon: iconBase + 'museum_maps.png'
     });
 
       // Opens new window when user clicks on marker
-    google.maps.event.addListener(marker, 'click', function() {
+    google.maps.event.addListener(markers, 'click', function() {
       // window.open("https://www.w3schools.com");
       getChannelFromYouTube(place.name);
+      // getDataFromYouTube();
       var request = {
         reference: place.reference
       };
@@ -71,65 +142,20 @@
     });
 
     // Shows name when user hovers over markers
-    google.maps.event.addListener(marker, 'mouseover', function() {
+    google.maps.event.addListener(markers, 'mouseover', function() {
       infowindow.setContent(place.name);
       infowindow.open(map, this);
       });
+
+
+    // Change Museum results as User moves around the map
   }
-
-  // $(initMap());
-
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  // service.getDetails({
-  //   placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
-  // }, function(place, status) {
-  //   if (status === google.maps.places.PlacesServiceStatus.OK) {
-  //     var marker = new google.maps.Marker({
-  //       map: map,
-  //       position: place.geometry.location
-  //     });
-  //     google.maps.event.addListener(marker, 'click', function() {
-  //       infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-  //         'Place ID: ' + place.place_id + '<br>' +
-  //         place.formatted_address + '</div>');
-  //       infowindow.open(map, this);
-  //     });
-  //   }
-  // });
-
-
 
 //Google Street View
 
 //YouTube API
 
 
-
-// function getApiData (searchTerm, callback) {
-//   //create API object [inside getApiData]
-//   $.getJSON('https://www.googleapis.com/youtube/v3/search', {
-//     part: 'snippet',
-//     maxResults: 5,
-//     key: APIkey,
-//     q: searchTerm
-//     },
-//     callback);
-// }
-// function getDataFromApi(searchTerm, callback) {
-//   const settings = {
-//     url: GITHUB_SEARCH_URL,
-//     data: {
-//       q: `${searchTerm} in:name`,
-//       per_page: 5
-//     },
-//     dataType: 'json',
-//     type: 'GET',
-//     success: callback
-//   };
-
-//   $.ajax(settings);
-// }
 
 // getApiData ('The MET', (data) => console.log(data))
 
@@ -138,34 +164,43 @@
 // If Channel is present,
 
 ///////////////////////////////////////////////////////////////////////////////////////
+//Google to YouTube "Translator"
+//Language translation for YouTube search Louvre Museum to Musee du Louvre
+//Youtube search parameters for accuracy
+
+
 var YTchannelId;
 
-function getChannelFromYouTube (searchTerm, search) {
-  console.log(searchTerm + ' channel');
+function getChannelFromYouTube (searchTerm) {
   // if (search) {
   //   endpoint = "https://www.googleapis.com/youtube/v3/search"
   // }
   var result = $.ajax({
-      /* update API end point */
-      url: "https://www.googleapis.com/youtube/v3/search",
-      data: {
-        q: searchTerm,
-        part: 'snippet',
-        maxResults: 1,
-        key: APIkey,
-        type: 'channel'
-      },
-      dataType: "jsonp",
-      /*set the call type GET / POST*/
-      type: "GET",
-      crossDomain: true
+    /* update API end point */
+    url: "https://www.googleapis.com/youtube/v3/search",
+    data: {
+      q: searchTerm + ' channel',
+      part: 'snippet',
+      maxResults: 20,
+      key: APIkey,
+      // order: 'relevance'
+      // location: '(-41.3064,174.8243)',
+      // locationRadius: '1000km',
+      // type: 'channel'
+    },
+    dataType: "jsonp",
+    /*set the call type GET / POST*/
+    type: "GET",
+    crossDomain: true
   })
   /* if the call is successful (status 200 OK) show results */
   .done(function (result) {
       /* if the results are meeningful, we can just console.log them */
       console.log(result);
-      YTchannelId = result.items[0].id.channelId;
-      console.log(result.items[0].id.channelId)
+      findChannel(result);
+      // YTchannelId = result.items[0].id.channelId;
+      // console.log(result.items[0].id.channelId)
+      // getDataFromYouTube(result.items[0].id.channelId);
   })
   /* if the call is NOT successful show errors */
   .fail(function (jqXHR, error, errorThrown) {
@@ -175,24 +210,35 @@ function getChannelFromYouTube (searchTerm, search) {
   });
 }
 
-function findChannel (searchTerm, data) {
 
+function findChannel (data) {
+  var foundElem = [];
+  data.items.forEach(function(elem) {
+    if (elem.id.kind === 'youtube#channel'){
+      console.log(elem);
+      foundElem.push(elem);
+    }
+  })
+  if (foundElem.length > 0)
+    getDataFromYouTube(foundElem[0].id.channelId);
+  else
+    console.log("No channel found");
 }
 
-function getDataFromYouTube (searchTerm, search) {
-  console.log(searchTerm + ' channel');
-  // if (search) {
-  //   endpoint = "https://www.googleapis.com/youtube/v3/search"
-  // }
+//Filter functions to be added here
+function filterChannel (foundElem) {
+  //filter results by keyword here
+}
+
+function getDataFromYouTube (channelId) {
   var result = $.ajax({
       /* update API end point */
-      url: "",
+      url: "https://www.googleapis.com/youtube/v3/playlists",
       data: {
-        q: searchTerm,
-        part: 'snippet',
-        maxResults: 6,
-        key: APIkey,
-        type: 'channel'
+        channelId: 'channelId',
+        part: 'contentDetails',
+        maxResults: 10,
+        key: APIkey
       },
       dataType: "jsonp",
       /*set the call type GET / POST*/
