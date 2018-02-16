@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang='en'>
+
 <head>
-  <meta charset="utf-8">
-  <title>Museum Explorer API Hack Project</title>
-  <link rel="stylesheet" type="text/css" href="main.css">
-  <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <title>Museum Explorer API Hack Project</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <input id="pac-input" class="controls" type="text"
-      placeholder="Enter a location">
-  <div id="map"></div>
 
-  <div id="js-results"></div>
+    <head class="header"></head>
+    <main class="wrapper">
+        <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+        <!-- <button type='button' class="controls">Search</button> -->
+        <section id="map"></section>
 
-  <script src="index.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM&libraries=places&callback=initMap" async defer></script>
- <!--    <script src="https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJb8Jg9pZYwokR-qHGtvSkLzs&key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM" async defer></script> -->
-   <!--  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM&libraries=places"></script> -->
+        <section id="js-results"></section>
+    </main>
+
+    <footer>
+        <p>Copyright Notice</p>
+        <ul class="footer-nav">
+            <li class="footer-nav-item">Powered by Google</li>
+        </ul>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM&libraries=places&callback=initMap" async defer></script>
+    <script src="app.js"></script>
+    <!--    <script src="https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJb8Jg9pZYwokR-qHGtvSkLzs&key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM" async defer></script> -->
+    <!--  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM&libraries=places"></script> -->
 </body>
+
 </html>
