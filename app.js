@@ -45,14 +45,13 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: NYC,
         zoom: 2,
-        gestureHandling: 'cooperative'
-        // disableDefaultUI: true
-        // draggable: false,
-        // scrollwheel: false,
-        // panControl: false,
-        // maxZoom: Zoom,
-        // minZoom: Zoom,
-        // zoom: Zoom
+        gestureHandling: 'cooperative',
+        zoomControl: true,
+        mapTypeControl: false,
+        scaleControl: true,
+        streetViewControl: false,
+        rotateControl: true,
+        fullscreenControl: true
     });
 
     infowindow = new google.maps.InfoWindow();
@@ -258,7 +257,7 @@ function findChannel(data) {
     })
     if (foundElem.length > 0) {
         console.log(foundElem[0].id.channelId);
-        getDataFromYouTube(foundElem[0].id.channelId);
+        getDataFromYouTube(foundElem[0].id.channelId, foundElem[0].snippet.channelTitle);
     } else {
         console.log("No channel found");
     }
@@ -269,10 +268,10 @@ function filterChannel(foundElem) {
     //filter results by keyword here
 }
 
-function getDataFromYouTube(channelId) {
+function getDataFromYouTube(channelId, channelTitle) {
     var result = $.ajax({
             /* update API end point */
-            url: "https://www.googleapis.com/youtube/v3/playlists",
+            url: "https://www.googleapis.com/youtube/v3/search",
             data: {
                 channelId: channelId,
                 part: 'snippet',
@@ -288,6 +287,7 @@ function getDataFromYouTube(channelId) {
         .done(function (result) {
             /* if the results are meeningful, we can just console.log them */
             console.log(result);
+            displayResults(result, channelTitle);
         })
         /* if the call is NOT successful show errors */
         .fail(function (jqXHR, error, errorThrown) {
@@ -296,4 +296,44 @@ function getDataFromYouTube(channelId) {
             console.log(errorThrown);
         });
 }
-///////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////\
+
+// function that generates results string
+function generateResults(elem) {
+    console.log(`Results string generated here`);
+    return `
+        <div class ="thumbnail-div">
+            <a href="https://www.youtube.com/watch?v=${elem.id.videoId}" target=_blank>
+                <img src="${elem.snippet.thumbnails.medium.url}" class="thumbnail-img">
+                <h3 class='video-title'>${elem.snippet.title}</h3>
+            </a>
+        </div>`;
+}
+
+function displayResults(data, channel) {
+    console.log(`Display Results ran`);
+    console.log(data);
+    const results = data.items.map((elem, index) => generateResults(elem));
+    $('.js-search-results').html(`<p id="results-str">${channel} Channel Videos</p>`);
+    $('.js-search-results').append(results);
+}
+
+function submitListen() {
+    console.log(`the submitListen function ran`);
+    $('.js-search-form').submit(event => {
+        event.preventDefault();
+        console.log(`Submit button heard`);
+
+        const queryTarget = $(event.currentTarget).find('.js-query');
+        const userText = queryTarget.val();
+        // clear out the input
+        queryTarget.val("");
+        $('.js-search-results').prop('hidden', false);
+
+        getApiData(userText);
+        // displayResults();
+    })
+}
+
+
+$(submitListen());

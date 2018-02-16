@@ -1,29 +1,29 @@
-## "Museum Explorer" | Thinkful API Capstone Project
-Museum Explorer is designed for everyone from amatuer art enthusiasts to a family looking to see what their local museums hold, it pools
+## "Museum Explorer" | Thinkful API Capstone
+Museum Explorer is designed for everyone from art enthusiasts to families looking to see what their local museums hold. It compiles digital information and online content for each museum, allowing the user to browse museums on map (by location) or gives the option to view featured museums.
 
 ## User Cases
 This app is for three types of users.
-As a user...I want to...In order to achieve....
-1. As an art enthusiast, I want to gather digital Art Resources in order to view all the resources in one place
-2. As a space travel enthusiast, I want to find the time of the next pass of the ISS over my location so that I may possibly view the ISS.
-3. As an elementary school teacher, I want to find the predicted location of the ISS at a future date and time to plan for future viewings and share that with my students.
+(As a user...I want to...In order to achieve....)
+1. As an art enthusiast, I want to gather digital Art Resources in order to view all the resources in one place.
+2. As a budget strapped tourist, I want to know what features are already available virtually in order to "travel" at home on my computer.
+3. As a patron of local businesses, I want to know what Museums are in my area and what features they have in order to best evaluate how to spend my time and money.
 
 ### UI Flow
-![UI Flow handwritten draft](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/ui-flow.jpg)
+![UI Flow handwritten draft]
 ### Wireframe _main
-![Wireframe _Main](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/wireframe-iss-main.jpg)
+![Wireframe _Main]
 ### Wireframe _User Cases
-![Wireframe _User Case 1](https://github.com/KSherrell/where-is-the-iss-open-notify-api-capstone/blob/master/wireframe/wireframe-iss-user-cases.jpg)
+![Wireframe _User Case 1]
 
 ## Working Prototype
-You can access a working prototype of the app here: http://where-is-the-iss-open-notify-api-capstone.learn2code.club/
+You can access a working prototype of the app here:
 
 ## Functionality
 The app's functionality includes:
-* The ability to view a video of the ISS traveling across the night sky.
-* The app shows the current location of the ISS, updated every 7 seconds.
-* The app returns the time and date of the next three passes of the ISS over a user-input location.
-* The app lists the current crewmembers of the ISS.
+* The ability to browse Museums by location on a searchable map.
+* The app contains a Featured Museum section, which contains museums that have distinct digital content, such as Open Access artwork or exceptional YouTube Channels.
+* The app displays details about each Museum, such as location, website, and hours.
+* The app
 
 
 ## Technology
@@ -32,13 +32,13 @@ The app's functionality includes:
 * JavaScript
 * jQuery
 
-* The app uses AJAX JSON calls to the <a href="http://api.open-notify.org/iss-now.json">Open Notify</a>Open Platform API to return ISS latitude and longitude, the time of the next three passes, and the names of the current crewmembers.
-* The app uses AJAX JSON calls to the <a href="http://www.convert-unix-time.com/api">Convert Unix Time</a>Open Platform API to return the unix timestamp converted to an UTC formatted date and time.
-* The app uses AJAX JSON calls to the <a href="https://maps.googleapis.com/maps/api">Google Maps and Google Geocode</a>Open Platform API to return the map showing the current location of the ISS and return the latitude and longitude of the user-input location.
+* The app uses AJAX JSON calls to the <a href="https://maps.googleapis.com/maps/api">Google Maps</a> Open Platform API, including the Places Library, to return an interactive map to search for Museums in a given area with clickable icons, which return Place Details for each museum result.
+* The app uses AJAX JSON calls to the YouTube V3 Data API to find Museum's channels and display a list of videos from that channel.
 
 ## Responsive
 App is built to be responsive across mobile, tablet, laptop, and desktop screen resolutions.
 
 ## Development Roadmap
 This is v1.0 of the app, but future enhancements are expected to include:
-* Time/Date of the next three passes shown in local time.
+* A better interface for non-English speaking users, including search-specific language translators to ensure all availble digital content (i.e. YouTube Channel) is displayed.
+*
