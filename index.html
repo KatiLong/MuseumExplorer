@@ -8,21 +8,25 @@
 </head>
 
 <body>
+    <header role="header">
+        <h1>Museum Explorer</h1>
+        <h3>Browse Museums on the map or find a Featured Museum</h3>
+    </header>
 
     <head class="header"></head>
-    <main class="wrapper">
+    <main role="main" class="wrapper">
         <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
         <!-- <button type='button' class="controls">Search</button> -->
         <section id="map"></section>
-
+        <section id="featured-museums">
+            <h2>Featured Museums</h2>
+        </section>
         <section class="js-search-results"></section>
+
     </main>
 
     <footer>
-        <p>Copyright Notice</p>
-        <ul class="footer-nav">
-            <li class="footer-nav-item">Powered by Google</li>
-        </ul>
+        <p>Copyright Notice | Powered by Google</p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM&libraries=places&callback=initMap" async defer></script>
