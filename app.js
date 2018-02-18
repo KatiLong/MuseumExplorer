@@ -1,3 +1,383 @@
+//var featuredMuseums = [
+//    {
+//        name: 'The MET',
+//        googleId: "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
+//        youTubeId: "UCDlz9C2bhSW6dcVn_PO5mYw",
+//        featuredContent: 'https://www.metmuseum.org/art/collection',
+//        relatedContent: "The MET Breuer & The Cloisters"
+//    },
+//    {
+//        name: 'The Field Museum',
+//        googleId: "ChIJV0AwM30rDogR2sd-X0cgErU",
+//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
+//    },
+//    {
+//        name: "Harvard Art Museums",
+//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
+//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
+//    }
+//    {
+//        name: "The British Museum",
+//        googleId: ,
+//        youTubeId: ,
+//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
+//    }
+//    {
+//        name: "Rijksmuseum",
+//        googleId: ,
+//        youTubeId: ,
+//        featuredContent: http://rijksmuseum.github.io/
+//    }
+//    {
+//        name: "Auckland Museum",
+//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
+//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
+//    }
+//    {
+//        name: "Crystal Bridges Museum",
+//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
+//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
+//    }
+//]
+
+var resources = [
+    {
+        name: 'Google Arts and Culture Institute',
+        website: 'https://www.google.com/culturalinstitute/beta/',
+        features: 'Recently best known for the application that compares your face to artwork, it is an amazing collection of online Art content.'
+    }
+]
+
+var mapStyle = [
+    {
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#1d2c4d"
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#8ec3b9"
+            }
+        ]
+    },
+    {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#1a3646"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.country",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#4b6878"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#64779e"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.neighborhood",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.province",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#4b6878"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#334e87"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#023e58"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#283d6a"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#6f9ba5"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#1d2c4d"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.business",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#023e58"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#3C7680"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#304a7d"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.icon",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#98a5be"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#1d2c4d"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#2c6675"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#255763"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#b0d5ce"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#023e58"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#98a5be"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            {
+                "color": "#1d2c4d"
+            }
+        ]
+    },
+    {
+        "featureType": "transit.line",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#283d6a"
+            }
+        ]
+    },
+    {
+        "featureType": "transit.station",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#3a4762"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#0e1626"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels.text",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            {
+                "color": "#4e6d70"
+            }
+        ]
+    }
+]
 // Client ID zWsHIInzwkCXLA9ZS5q4HAaLOwadiHOi
 // Client Secret kyGL18H4d80Ag6CD
 
@@ -13,12 +393,10 @@ var bounds;
 
 var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
-
-
 function initMap() {
-    var Phoenix = {
-        lat: 33.2696,
-        lng: -111.8367
+    var Center = {
+        lat: 0,
+        lng: 0
     }
     var NYC = {
         lat: 40.749460,
@@ -43,15 +421,16 @@ function initMap() {
     var markers = [];
 
     map = new google.maps.Map(document.getElementById('map'), {
-        center: NYC,
-        zoom: 2,
+        center: Center,
+        zoom: 1,
         gestureHandling: 'cooperative',
         zoomControl: true,
         mapTypeControl: false,
         scaleControl: true,
         streetViewControl: false,
         rotateControl: true,
-        fullscreenControl: true
+        fullscreenControl: true,
+        styles: mapStyle
     });
 
     infowindow = new google.maps.InfoWindow();
@@ -72,7 +451,7 @@ function initMap() {
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input)
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(input)
 
 
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -93,10 +472,18 @@ function initMap() {
             return;
         }
 
-        service.textSearch({
-            query: place.name,
-            type: 'museum'
+        service.nearbySearch({
+            location: place.geometry.location,
+            radius: 40000,
+            keyword: 'museum',
+            maxResults: 20,
+            // rankby: distance
         }, callback);
+
+        //        service.textSearch({
+        //            query: place.name,
+        //            type: 'museum'
+        //        }, callback);
 
         if (place.geometry.viewport) {
             // Only geocodes have viewport.
@@ -106,11 +493,17 @@ function initMap() {
         }
 
         map.fitBounds(bounds);
+        //        map.setZoom(12);
         //       console.log(markers);
         //   });
+        searchBox.val('');
     });
     /////////////////////////////////////////////////////////////////////////////////////////////
+    //    searchBox.addListener('blur', function () {
+    //        input.val('');
+    //    })
 }
+
 
 function callback(results, status) {
     console.log(`status parameter is ${status}`);
@@ -286,8 +679,9 @@ function getDataFromYouTube(channelId, channelTitle) {
         /* if the call is successful (status 200 OK) show results */
         .done(function (result) {
             /* if the results are meeningful, we can just console.log them */
+            console.log(channelTitle);
             console.log(result);
-            displayResults(result, channelTitle);
+            //            displayResults(result, channelTitle);
         })
         /* if the call is NOT successful show errors */
         .fail(function (jqXHR, error, errorThrown) {

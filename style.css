@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
+
 * {
     text-align: center;
+}
+
+body {
+    background-color: dimgrey;
+    color: floralwhite;
+    font-family: 'Roboto Slab', serif;
+}
+
+h3 {
+    font-weight: 300;
 }
 
 /* Always set the map height explicitly to define the size of the div
@@ -43,7 +55,6 @@ ul {
 }
 
 .js-search-results {
-    border-top: 5px grey solid;
     max-width: 800px;
     width: 100%;
     margin: 0 auto;
@@ -76,6 +87,10 @@ ul {
     font-size: 18px;
     font-weight: 400;
     text-align: left;
+}
+
+#featured-museums {
+    border-top: 3px solid floralwhite;
 }
 
 /* Optional: Makes the sample page fill the window. */
