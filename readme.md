@@ -9,7 +9,7 @@ This app is for three types of users.
 3. As a patron of local businesses, I want to know what Museums are in my area and what features they have in order to best evaluate how to spend my time and money.
 
 ### UI Flow
-![UI Flow handwritten draft]
+![UI Flow handwritten draft](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/FullSizeRender%2011.jpg)
 ### Wireframe _main
 ![Wireframe _Main]
 ### Wireframe _User Cases
