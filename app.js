@@ -1,48 +1,61 @@
-//var featuredMuseums = [
-//    {
-//        name: 'The MET',
-//        googleId: "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
-//        youTubeId: "UCDlz9C2bhSW6dcVn_PO5mYw",
-//        featuredContent: 'https://www.metmuseum.org/art/collection',
-//        relatedContent: "The MET Breuer & The Cloisters"
-//    },
-//    {
-//        name: 'The Field Museum',
-//        googleId: "ChIJV0AwM30rDogR2sd-X0cgErU",
-//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
-//    },
-//    {
-//        name: "Harvard Art Museums",
-//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
-//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
-//    }
-//    {
-//        name: "The British Museum",
-//        googleId: ,
-//        youTubeId: ,
-//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
-//    }
-//    {
-//        name: "Rijksmuseum",
-//        googleId: ,
-//        youTubeId: ,
-//        featuredContent: http://rijksmuseum.github.io/
-//    }
-//    {
-//        name: "Auckland Museum",
-//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
-//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
-//    }
-//    {
-//        name: "Crystal Bridges Museum",
-//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
-//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
-//    }
-//]
+var featuredMuseums = [
+    {
+        name: 'The MET',
+        googleId: "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
+        youTubeId: "UCDlz9C2bhSW6dcVn_PO5mYw",
+        image: 'https://media.timeout.com/images/103374200/image.jpg',
+        featuredContent: 'https://www.metmuseum.org/art/collection',
+        relatedContent: "The MET Breuer & The Cloisters"
+    },
+    {
+        name: 'The Field Museum',
+        googleId: "ChIJV0AwM30rDogR2sd-X0cgErU",
+        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+        image: 'https://media.timeout.com/images/103374200/image.jpg',
+        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
+    },
+    {
+        name: "Harvard Art Museums",
+        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
+        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+        image: 'https://media.timeout.com/images/103374200/image.jpg',
+        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
+    },
+    {
+        name: "The British Museum",
+        //        googleId: ,
+        //        youTubeId: ,
+        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
+    },
+    {
+        name: "Rijksmuseum",
+        //        googleId: ,
+        //        youTubeId: ,
+        featuredContent: 'http: //rijksmuseum.github.io/'
+    },
+    {
+        name: "Auckland Museum",
+        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
+        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
+    },
+    {
+        name: "Crystal Bridges Museum",
+        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
+        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
+    }
+]
+
+//var currentFeatInd = 0;
+//
+//function displayFeatured (data) {
+//
+//}
+//
+//function loadMoreFeatured (data) {
+//
+//}
 
 var resources = [
     {
@@ -437,13 +450,13 @@ function initMap() {
     service = new google.maps.places.PlacesService(map);
 
     console.log(service);
-    // service.nearbySearch({
-    //   location: NYC,
-    //   radius: 50000,
-    //   keyword: 'museum',
-    //   maxResults: 20,
-    //   // rankby: distance
-    // }, callback);
+    //     service.nearbySearch({
+    //       location: NYC,
+    //       radius: 50000,
+    //       keyword: 'museum',
+    //       maxResults: 20,
+    //       // rankby: distance
+    //     }, callback);
 
     console.log(google);
     // console.log(markers);
@@ -476,14 +489,13 @@ function initMap() {
             location: place.geometry.location,
             radius: 40000,
             keyword: 'museum',
-            maxResults: 20,
+            maxResults: 20
             // rankby: distance
         }, callback);
 
-        //        service.textSearch({
-        //            query: place.name,
-        //            type: 'museum'
-        //        }, callback);
+        //                        service.textSearch({
+        //                                    query: place.name,
+        //                                    type: 'museum'               }, callback);
 
         if (place.geometry.viewport) {
             // Only geocodes have viewport.
@@ -493,10 +505,12 @@ function initMap() {
         }
 
         map.fitBounds(bounds);
+
+        $('#pac-input').val('');
         //        map.setZoom(12);
         //       console.log(markers);
         //   });
-        searchBox.val('');
+        //        searchBox.val('');
     });
     /////////////////////////////////////////////////////////////////////////////////////////////
     //    searchBox.addListener('blur', function () {

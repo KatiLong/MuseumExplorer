@@ -2,6 +2,7 @@
 
 * {
     text-align: center;
+    box-sizing: border-box;
 }
 
 body {
@@ -14,13 +15,17 @@ h3 {
     font-weight: 300;
 }
 
+/*Featured Museums Color #255763 */
+
 /* Always set the map height explicitly to define the size of the div
 * element that contains the map. */
 
 #map {
     height: 400px;
+    max-width: 800px;
     width: 50%;
     margin: 20px auto;
+    color: black;
     /*display: inline;*/
 }
 
@@ -91,6 +96,47 @@ ul {
 
 #featured-museums {
     border-top: 3px solid floralwhite;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.featured-div {
+    /*    background: url("https://metmuseum.org/-/media/Images/Join%20and%20Give/Corporate%20Support/Corporate%20Support%20Promo%20Button.jpg?h=560&w=840&la=en&hash=87E36E5F38DFB00EDDD4AF41CDC542CCE559C593") no-repeat cover center;*/
+    display: inline-block;
+    width: 33%;
+    border: 1px black solid;
+}
+
+.featured-img {
+    width: 100%;
+    /*    position: relative;*/
+}
+
+.featured-header {
+    display: block;
+    color: floralwhite;
+    background-color: #255763;
+    width: 100%;
+    /*    height: 30px;*/
+}
+
+h4,
+p {
+    margin: auto 0;
+    padding: 1rem;
+    display: block;
+    text-align: center;
+}
+
+h4 {
+    color: floralwhite;
+    background-color: #255763;
+    width: 100%;
+}
+
+footer {
+    margin-top: 2rem;
 }
 
 /* Optional: Makes the sample page fill the window. */
