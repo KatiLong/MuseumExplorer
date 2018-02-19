@@ -742,6 +742,16 @@ function submitListen() {
         // displayResults();
     })
 }
-
+//////////////////////////////////////////////////////////
+//CSS Related Listeners
+$('.featured-div').hover(
+    function () {
+        $(this).append($(`<div class='feat-grey'>Online Art Gallery, Youtube Channel</div>`));
+    },
+    function () {
+        $(this).find(".feat-grey").remove();
+    }
+);
+//////////////////////////////////////////////////////////
 
 $(submitListen());
