@@ -406,117 +406,117 @@ var bounds;
 
 var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
-function initMap() {
-    var Center = {
-        lat: 0,
-        lng: 0
-    }
-    var NYC = {
-        lat: 40.749460,
-        lng: -73.988631
-    };
-    var Wellington = {
-        lat: -41.2865,
-        lng: 174.7762
-    };
-    var Paris = {
-        lat: 48.8566,
-        lng: 2.3522
-    }
-    var Motor = {
-        lat: 50.8230,
-        lng: -1.4536
-    }
-    var Wight = {
-        lat: 50.7005,
-        lng: -1.2930
-    }
-    var markers = [];
-
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: Center,
-        zoom: 1,
-        gestureHandling: 'cooperative',
-        zoomControl: true,
-        mapTypeControl: false,
-        scaleControl: true,
-        streetViewControl: false,
-        rotateControl: true,
-        fullscreenControl: true,
-        styles: mapStyle
-    });
-
-    infowindow = new google.maps.InfoWindow();
-    service = new google.maps.places.PlacesService(map);
-
-    console.log(service);
-    //     service.nearbySearch({
-    //       location: NYC,
-    //       radius: 50000,
-    //       keyword: 'museum',
-    //       maxResults: 20,
-    //       // rankby: distance
-    //     }, callback);
-
-    console.log(google);
-    // console.log(markers);
-
-    // Create the search box and link it to the UI element.
-    var input = document.getElementById('pac-input');
-    var searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(input)
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////////
-    // Listen for the event fired when the user selects a prediction and retrieve
-    // more details for that place.
-    searchBox.addListener('places_changed', function () {
-
-        bounds = new google.maps.LatLngBounds();
-
-        var places = searchBox.getPlaces();
-        var place = places[0];
-        // places long form
-        // var places = new google.maps.places.SearchBox(document.getElementById('pac-input')).getPlaces();
-        console.log(places);
-        console.log(places[0].name);
-
-        if (places.length == 0) {
-            return;
-        }
-
-        service.nearbySearch({
-            location: place.geometry.location,
-            radius: 40000,
-            keyword: 'museum',
-            maxResults: 20
-            // rankby: distance
-        }, callback);
-
-        //                        service.textSearch({
-        //                                    query: place.name,
-        //                                    type: 'museum'               }, callback);
-
-        if (place.geometry.viewport) {
-            // Only geocodes have viewport.
-            bounds.union(place.geometry.viewport);
-        } else {
-            bounds.extend(place.geometry.location);
-        }
-
-        map.fitBounds(bounds);
-
-        $('#pac-input').val('');
-        //        map.setZoom(12);
-        //       console.log(markers);
-        //   });
-        //        searchBox.val('');
-    });
-    /////////////////////////////////////////////////////////////////////////////////////////////
-    //    searchBox.addListener('blur', function () {
-    //        input.val('');
-    //    })
-}
+//function initMap() {
+//    var Center = {
+//        lat: 0,
+//        lng: 0
+//    }
+//    var NYC = {
+//        lat: 40.749460,
+//        lng: -73.988631
+//    };
+//    var Wellington = {
+//        lat: -41.2865,
+//        lng: 174.7762
+//    };
+//    var Paris = {
+//        lat: 48.8566,
+//        lng: 2.3522
+//    }
+//    var Motor = {
+//        lat: 50.8230,
+//        lng: -1.4536
+//    }
+//    var Wight = {
+//        lat: 50.7005,
+//        lng: -1.2930
+//    }
+//    var markers = [];
+//
+//    map = new google.maps.Map(document.getElementById('map'), {
+//        center: Center,
+//        zoom: 1,
+//        gestureHandling: 'cooperative',
+//        zoomControl: true,
+//        mapTypeControl: false,
+//        scaleControl: true,
+//        streetViewControl: false,
+//        rotateControl: true,
+//        fullscreenControl: true,
+//        styles: mapStyle
+//    });
+//
+//    infowindow = new google.maps.InfoWindow();
+//    service = new google.maps.places.PlacesService(map);
+//
+//    console.log(service);
+//    //     service.nearbySearch({
+//    //       location: NYC,
+//    //       radius: 50000,
+//    //       keyword: 'museum',
+//    //       maxResults: 20,
+//    //       // rankby: distance
+//    //     }, callback);
+//
+//    console.log(google);
+//    // console.log(markers);
+//
+//    // Create the search box and link it to the UI element.
+//    var input = document.getElementById('pac-input');
+//    var searchBox = new google.maps.places.SearchBox(input);
+//    map.controls[google.maps.ControlPosition.TOP_CENTER].push(input)
+//
+//
+//    /////////////////////////////////////////////////////////////////////////////////////////////
+//    // Listen for the event fired when the user selects a prediction and retrieve
+//    // more details for that place.
+//    searchBox.addListener('places_changed', function () {
+//
+//        bounds = new google.maps.LatLngBounds();
+//
+//        var places = searchBox.getPlaces();
+//        var place = places[0];
+//        // places long form
+//        // var places = new google.maps.places.SearchBox(document.getElementById('pac-input')).getPlaces();
+//        console.log(places);
+//        console.log(places[0].name);
+//
+//        if (places.length == 0) {
+//            return;
+//        }
+//
+//        service.nearbySearch({
+//            location: place.geometry.location,
+//            radius: 40000,
+//            keyword: 'museum',
+//            maxResults: 20
+//            // rankby: distance
+//        }, callback);
+//
+//        //                        service.textSearch({
+//        //                                    query: place.name,
+//        //                                    type: 'museum'               }, callback);
+//
+//        if (place.geometry.viewport) {
+//            // Only geocodes have viewport.
+//            bounds.union(place.geometry.viewport);
+//        } else {
+//            bounds.extend(place.geometry.location);
+//        }
+//
+//        map.fitBounds(bounds);
+//
+//        $('#pac-input').val('');
+//        //        map.setZoom(12);
+//        //       console.log(markers);
+//        //   });
+//        //        searchBox.val('');
+//    });
+//    /////////////////////////////////////////////////////////////////////////////////////////////
+//    //    searchBox.addListener('blur', function () {
+//    //        input.val('');
+//    //    })
+//}
 
 
 function callback(results, status) {

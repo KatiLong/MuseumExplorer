@@ -112,13 +112,25 @@ ul {
     color: floralwhite;
     background-color: #023e58;
     flex: 1 30px;
-    border: 1px black solid;
     margin: 5px;
+}
+
+/*
+.featured-div:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+}
+*/
+
+.text-container {
+    /*    position: relative;*/
+    width: 100%;
 }
 
 .featured-img {
     width: 100%;
-    position: relative;
+    /*    position: absolute;*/
+    /*    bottom: 0;*/
 }
 
 h4,
@@ -129,14 +141,19 @@ p {
     text-align: center;
 }
 
-#featured-museums p {
-    font-weight: 300;
-    position: absolute;
+#featured-museums p,
+h4 {
+    /*    position: absolute;*/
+}
+
+h4 {
+    top: 0;
 }
 
 footer {
     margin-top: 2rem;
 }
+
 
 @media all and (min-width: 1000px) {
     #map {
