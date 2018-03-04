@@ -13,50 +13,54 @@
         <h3>Find museums on the map or browse featured museums</h3>
     </header>
 
-    <head class="header"></head>
     <main role="main" class="wrapper">
-        <input id="pac-input" class="controls" type="text" placeholder="Enter a location or museum name">
-        <!-- <button type='button' class="controls">Search</button> -->
-        <section id="map"></section>
-        <section id="featured-museums">
-            <h2>Featured Museums</h2>
-            <div class="featured-wrapper">
-                <div class="featured-div one">
-                    <span class="text-container">
+        <section id="left-column">
+            <input id="pac-input" class="controls" type="text" placeholder="Enter a location or museum name">
+            <!-- <button type='button' class="controls">Search</button> -->
+            <section id="map"></section>
+            <section id="featured-museums">
+                <h2>Featured Museums</h2>
+                <div class="featured-wrapper">
+                    <div class="featured-div one">
+                        <div class="text-container">
+                            <h4>Museum Title</h4>
+                            <p style="display: none;">Online Art Gallery, Youtube Channel</p>
+                            <!--                           <img src="https://metmuseum.org/-/media/Images/Join%20and%20Give/Corporate%20Support/Corporate%20Support%20Promo%20Button.jpg?h=560&w=840&la=en&hash=87E36E5F38DFB00EDDD4AF41CDC542CCE559C593" class="featured-img" alt="gallery in the Classical Wing of the MET">-->
+                        </div>
+                    </div>
+                    <div class="featured-div two">
                         <h4>Museum Title</h4>
-                        <p style="display: none;">Online Art Gallery, Youtube Channel</p>
-                        <img src="https://metmuseum.org/-/media/Images/Join%20and%20Give/Corporate%20Support/Corporate%20Support%20Promo%20Button.jpg?h=560&w=840&la=en&hash=87E36E5F38DFB00EDDD4AF41CDC542CCE559C593" class="featured-img" alt="gallery in the Classical Wing of the MET">
-                    </span>
+                        <div class="text-container">
+                            <p style="display: none;">Online Art Gallery, Youtube Channel</p>
+                            <!--                           <img src="https://metmuseum.org/-/media/Images/Join%20and%20Give/Corporate%20Support/Corporate%20Support%20Promo%20Button.jpg?h=560&w=840&la=en&hash=87E36E5F38DFB00EDDD4AF41CDC542CCE559C593" class="featured-img" alt="gallery in the Classical Wing of the MET">-->
+                        </div>
+                    </div>
+                    <div class="featured-div three">
+                        <h4>Museum Title</h4>
+                        <div class="text-container">
+                            <p style="display: none;">Online Art Gallery, Youtube Channel</p>
+                            <!--                           <img src="https://metmuseum.org/-/media/Images/Join%20and%20Give/Corporate%20Support/Corporate%20Support%20Promo%20Button.jpg?h=560&w=840&la=en&hash=87E36E5F38DFB00EDDD4AF41CDC542CCE559C593" class="featured-img" alt="gallery in the Classical Wing of the MET">-->
+                        </div>
+                    </div>
                 </div>
-                <div class="featured-div two">
-                    <h4>Museum Title</h4>
-                    <span class="text-container">
-                        <p style="display: none;">Online Art Gallery, Youtube Channel</p>
-                        <img src="https://metmuseum.org/-/media/Images/Join%20and%20Give/Corporate%20Support/Corporate%20Support%20Promo%20Button.jpg?h=560&w=840&la=en&hash=87E36E5F38DFB00EDDD4AF41CDC542CCE559C593" class="featured-img" alt="gallery in the Classical Wing of the MET">
-                    </span>
+            </section>
+        </section>
+
+        <section id="right-column" style="display: none;">
+            <section id="museum-info-page">
+                <h2>The Field Museum</h2>
+                <img src="" alt="Museum Image Here">
+                <span class="text-container">
+                    <p>Chicago, Illinois, USA</p>
+                </span>
+                <div class="js-results-section">
+                    Youtube Channel Results will display here.
                 </div>
-                <div class="featured-div three">
-                    <h4>Museum Title</h4>
-                    <span class="text-container">
-                        <p style="display: none;">Online Art Gallery, Youtube Channel</p>
-                        <img src="https://metmuseum.org/-/media/Images/Join%20and%20Give/Corporate%20Support/Corporate%20Support%20Promo%20Button.jpg?h=560&w=840&la=en&hash=87E36E5F38DFB00EDDD4AF41CDC542CCE559C593" class="featured-img" alt="gallery in the Classical Wing of the MET">
-                    </span>
-                </div>
-            </div>
+            </section>
         </section>
         <!-- style="display: none;"
         visibility: hidden hides the element, but it still takes up space in the layout.
         display: none removes the element completely from the document, it doesn't take up any space.-->
-        <section id="museum-info-page">
-            <h2>The Field Museum</h2>
-            <img src="" alt="Museum Image Here">
-            <span class="text-container">
-                <p>Chicago, Illinois, USA</p>
-            </span>
-            <div class="js-results-section">
-                Youtube Channel Results will display here.
-            </div>
-        </section>
 
     </main>
 
