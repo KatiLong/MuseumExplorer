@@ -198,9 +198,11 @@ footer {
     right: 0;
 }
 
+/*
 #left-column {}
 
 #right-column {}
+*/
 
 /*/////////////Above this line, desktop styles. Below this line, mobile styles.///////////////*/
 
@@ -233,13 +235,12 @@ footer {
         color: green;
     }
     .row-one,
-    .row-two {
-        /* On small screens, we are no longer using row direction but column */
-        flex-direction: column;
+    .row-two {}
+    .featured-div {
+        width: 95%;
     }
-    .img-div {
+    .featured-img {
         height: 250px;
-        /*        width: 95%*/
     }
 }
 
