@@ -97,7 +97,7 @@ ul {
     border-top: 3px solid floralwhite;
     width: 100%;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto 15px;
 }
 
 .featured-wrapper {
@@ -120,9 +120,33 @@ ul {
     transition: opacity 500ms;
 }
 
+/*
 .text-container {
-    /*    position: relative;*/
-    background: url("https://metmuseum.org/-/media/Images/Join%20and%20Give/Corporate%20Support/Corporate%20Support%20Promo%20Button.jpg?h=560&w=840&la=en&hash=87E36E5F38DFB00EDDD4AF41CDC542CCE559C593" no-repeat cover) width: 100%;
+    position: relative;
+    background: rgba(0, 0, 0, 0) url("../images/met.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+*/
+
+.img-div {
+    width: 100%;
+    height: 90%;
+    min-height: 150px;
+}
+
+.one .img-div {
+    background: rgba(0, 0, 0, 0) url("../images/met.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+.two .img-div {
+    background: rgba(0, 0, 0, 0) url("../images/met.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+.three .img-div {
+    background: rgba(0, 0, 0, 0) url("../images/met.jpg") no-repeat center center;
+    background-size: cover;
 }
 
 .featured-img {
