@@ -538,6 +538,8 @@ function createMarker(place) {
 
     // Opens new window when user clicks on marker
     google.maps.event.addListener(markers, 'click', function () {
+        ////////////////function to check if place is featured museum//////////
+        checkIfFeatured(place.id);
         // window.open("https://www.w3schools.com");
         getChannelFromYouTube(place.name);
         // getDataFromYouTube();
@@ -546,11 +548,13 @@ function createMarker(place) {
         };
         service.getDetails(request, function (details, status) {
             console.log([
-          details.name,
-          details.formatted_address,
-          details.website,
-          details.rating,
-          details.formatted_phone_number]);
+                details.name,
+                    details.formatted_address,
+                    details.website,
+                    details.rating,
+                    details.formatted_phone_number,
+                    details.place_id
+            ]);
             // infowindow.open(map, marker);
         });
     });

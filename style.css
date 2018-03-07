@@ -206,7 +206,7 @@ h4 {
 
 #museum-info-page {
     width: 100%;
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -217,7 +217,7 @@ h2 {
 .museum-img {
     float: left;
     width: 20rem;
-    margin: 0 1.5% 0 2.5%;
+    margin: 0 1.5% 0 8.5%;
 }
 
 
