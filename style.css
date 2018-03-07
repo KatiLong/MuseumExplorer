@@ -6,8 +6,8 @@
 }
 
 body {
-    background-color: dimgrey;
-    color: floralwhite;
+    background-color: whitesmoke;
+    color: #515b60;
     font-family: 'Roboto Slab', serif;
 }
 
@@ -29,7 +29,8 @@ h3 {
 }
 
 .controls {
-    background-color: #fff;
+    background-color: whitesmoke;
+    /*    #fff*/
     border-radius: 2px;
     border: 1px solid transparent;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
@@ -92,7 +93,7 @@ footer {
 }
 
 #featured-museums {
-    border-top: 3px solid floralwhite;
+    border-top: 5px solid #073E57;
     width: 100%;
     max-width: 800px;
     margin: 0 auto 15px;
@@ -133,8 +134,9 @@ h4 {
 
 .featured-div {
     /* Two values: flex-grow | flex-basis */
-    color: floralwhite;
-    background-color: #023e58;
+    color: whitesmoke;
+    background-color: #073E57;
+    /*    #023e58*/
     display: inline-block;
     width: 32%;
     margin-bottom: 10px;
@@ -153,21 +155,36 @@ h4 {
 .img-div {
     width: 100%;
     height: 135px;
+    /*
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+*/
 }
 
 .one .img-div {
-    background: rgba(0, 0, 0, 0) url("../images/met.jpg") no-repeat center center;
+    background: url("../images/met.jpg") no-repeat center center;
     background-size: cover;
+    background-blend-mode: multiply;
+    background-color: grey;
 }
 
 .two .img-div {
     background: rgba(0, 0, 0, 0) url("../images/field-museum.jpg") no-repeat center center;
     background-size: cover;
+    background-blend-mode: multiply;
+    background-color: grey;
 }
 
 .three .img-div {
     background: rgba(0, 0, 0, 0) url("../images/met.jpg") no-repeat center center;
     background-size: cover;
+    background-blend-mode: multiply;
+    background-color: grey;
+}
+
+.img-div:hover {
+    background-blend-mode: normal;
 }
 
 .featured-img {
@@ -228,6 +245,9 @@ footer {
 @media only screen and (max-width: 320px) {
     body {
         color: purple;
+    }
+    #map {
+        height: 300px;
     }
 }
 
