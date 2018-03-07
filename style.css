@@ -7,7 +7,8 @@
 
 body {
     background-color: whitesmoke;
-    color: #515b60;
+    color: #073E57;
+    /*    #515b60 */
     font-family: 'Roboto Slab', serif;
 }
 
@@ -21,11 +22,17 @@ h3 {
 * element that contains the map. */
 
 #map {
+    /*/////Home Page/////*/
+    /*
     height: 375px;
     max-width: 800px;
+*/
     margin: 20px auto;
     color: black;
-    /*display: inline;*/
+    /*/////When Museum Info Page Displayed/////*/
+    height: 275px;
+    max-width: 725px;
+
 }
 
 .controls {
@@ -192,6 +199,27 @@ h4 {
     /*    position: absolute;*/
     /*    bottom: 0;*/
 }
+
+#right-column {
+    width: 100%;
+}
+
+#museum-info-page {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.museum-img {
+    float: left;
+    width: 20rem;
+    margin: 0 1.5% 0 2.5%;
+}
+
 
 footer {
     margin-top: 2rem;
