@@ -1,11 +1,52 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700');
 
 * {
-    text-align: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    /*The box-sizing property is used to tell the browser what the sizing properties (width and height) should include border-box.*/
     box-sizing: border-box;
+    /*reset Chrome user agent styles*/
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 0px;
+    -webkit-padding-after: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-padding-end: 0px;
+    /*reset Firefox user agent styles*/
+    -moz-margin-before: 0px;
+    -moz-margin-after: 0px;
+    -moz-margin-start: 0px;
+    -moz-margin-end: 0px;
+    -moz-padding-before: 0px;
+    -moz-padding-after: 0px;
+    -moz-padding-start: 0px;
+    -moz-padding-end: 0px;
+    /*reset Internet Explorer user agent styles*/
+    -ms-margin-before: 0px;
+    -ms-margin-after: 0px;
+    -ms-margin-start: 0px;
+    -ms-margin-end: 0px;
+    -ms-padding-before: 0px;
+    -ms-padding-after: 0px;
+    -ms-padding-start: 0px;
+    -ms-padding-end: 0px;
+    /*reset Opera user agent styles*/
+    -o-margin-before: 0px;
+    -o-margin-after: 0px;
+    -o-margin-start: 0px;
+    -o-margin-end: 0px;
+    -o-padding-before: 0px;
+    -o-padding-after: 0px;
+    -o-padding-start: 0px;
+    -o-padding-end: 0px;
 }
 
 body {
+    text-align: center;
     background-color: whitesmoke;
     color: #073E57;
     /*    #515b60 */
@@ -23,16 +64,16 @@ h3 {
 
 #map {
     /*/////Home Page/////*/
-    /*
     height: 375px;
     max-width: 800px;
-*/
+
     margin: 20px auto;
     color: black;
     /*/////When Museum Info Page Displayed/////*/
+    /*
     height: 275px;
     max-width: 725px;
-
+*/
 }
 
 .controls {
@@ -99,7 +140,7 @@ footer {
     text-align: left;
 }
 
-#featured-museums {
+.featured-museums {
     border-top: 5px solid #073E57;
     width: 100%;
     max-width: 800px;
@@ -132,11 +173,6 @@ h4 {
     font-weight: 500;
     list-style-type: none;
     text-align: left;
-    -webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    -webkit-padding-start: 0px;
 }
 
 .featured-div {
@@ -200,11 +236,8 @@ h4 {
     /*    bottom: 0;*/
 }
 
-#right-column {
-    width: 100%;
-}
 
-#museum-info-page {
+.museum-info-page {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -220,6 +253,9 @@ h2 {
     margin: 0 1.5% 0 8.5%;
 }
 
+.text-container {
+    margin-bottom: 20px;
+}
 
 footer {
     margin-top: 2rem;

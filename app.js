@@ -4,8 +4,8 @@ var featuredMuseums = [
         googleId: "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
         youTubeId: "UCDlz9C2bhSW6dcVn_PO5mYw",
         image: 'https://media.timeout.com/images/103374200/image.jpg',
-        featuredContent: 'https://www.metmuseum.org/art/collection',
-        relatedContent: "The MET Breuer & The Cloisters"
+        website: 'https://www.metmuseum.org/art/collection',
+        onlineContent: "The MET Breuer & The Cloisters"
     },
     {
         name: 'The Field Museum',
