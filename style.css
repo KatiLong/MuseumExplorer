@@ -53,8 +53,19 @@ body {
     font-family: 'Roboto Slab', serif;
 }
 
+h1 {
+    font-size: 35px;
+    margin: 20px;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 20px 0;
+}
+
 h3 {
     font-weight: 300;
+    font-size: 20px;
 }
 
 /*Featured Museums Color #255763 #023e58 */
@@ -164,7 +175,7 @@ footer {
 
 h4 {
     font-size: 20px;
-    margin: 5px;
+    margin: 15px 0;
 }
 
 .featured-wrapper ul {
@@ -172,7 +183,6 @@ h4 {
     line-height: 35px;
     font-weight: 500;
     list-style-type: none;
-    text-align: left;
 }
 
 .featured-div {
@@ -243,9 +253,6 @@ h4 {
     margin: 0 auto;
 }
 
-h2 {
-    font-size: 30px;
-}
 
 .museum-img {
     float: left;
