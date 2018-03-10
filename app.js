@@ -529,6 +529,10 @@ function callback(results, status) {
     }
 }
 
+function checkIfFeatured(id) {
+    console.log(`Place id is ${id}`);
+}
+
 function createMarker(place) {
     markers = new google.maps.Marker({
         map: map,
@@ -541,7 +545,7 @@ function createMarker(place) {
         ////////////////function to check if place is featured museum//////////
         checkIfFeatured(place.id);
         // window.open("https://www.w3schools.com");
-        getChannelFromYouTube(place.name);
+        //        getChannelFromYouTube(place.name);
         // getDataFromYouTube();
         var request = {
             reference: place.reference
