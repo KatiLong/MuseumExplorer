@@ -1,51 +1,88 @@
+//var featuredMuseums = [
+//    {
+//        name: 'The MET',
+//        googleId: "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
+//        youTubeId: "UCDlz9C2bhSW6dcVn_PO5mYw",
+//        image: 'https://media.timeout.com/images/103374200/image.jpg',
+//        website: 'https://www.metmuseum.org/art/collection',
+//        onlineContent: "The MET Breuer & The Cloisters"
+//    },
+//    {
+//        name: 'The Field Museum',
+//        googleId: "ChIJV0AwM30rDogR2sd-X0cgErU",
+//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+//        image: 'https://media.timeout.com/images/103374200/image.jpg',
+//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
+//    },
+//    {
+//        name: "Harvard Art Museums",
+//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
+//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+//        image: 'https://media.timeout.com/images/103374200/image.jpg',
+//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
+//    },
+//    {
+//        name: "The British Museum",
+//        //        googleId: ,
+//        //        youTubeId: ,
+//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
+//    },
+//    {
+//        name: "Rijksmuseum",
+//        //        googleId: ,
+//        //        youTubeId: ,
+//        featuredContent: 'http: //rijksmuseum.github.io/'
+//    },
+//    {
+//        name: "Auckland Museum",
+//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
+//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
+//    },
+//    {
+//        name: "Crystal Bridges Museum",
+//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
+//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
+//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
+//    }
+//]
+
 var featuredMuseums = [
     {
-        name: 'The MET',
-        googleId: "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
-        youTubeId: "UCDlz9C2bhSW6dcVn_PO5mYw",
-        image: 'https://media.timeout.com/images/103374200/image.jpg',
-        website: 'https://www.metmuseum.org/art/collection',
-        onlineContent: "The MET Breuer & The Cloisters"
+        "name": "The MET",
+        "googleId": "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
+        "youTubeId": "UCDlz9C2bhSW6dcVn_PO5mYw"
     },
     {
-        name: 'The Field Museum',
-        googleId: "ChIJV0AwM30rDogR2sd-X0cgErU",
-        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-        image: 'https://media.timeout.com/images/103374200/image.jpg',
-        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
+        "name": "The Louvre",
+        "googleId": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+        "youTubeId": "UCDlz9C2bhSW6dcVn_PO5mYw"
     },
     {
-        name: "Harvard Art Museums",
-        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
-        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-        image: 'https://media.timeout.com/images/103374200/image.jpg',
-        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
+        "name": "Museum of New Zealand Te Papa Tongarewa",
+        "googleId": "ChIJnRaYrdGvOG0RMJot6PyfQJo",
+        "youTubeId": "UC6cnrd8SMMC2x9rud3RfqlA"
     },
     {
-        name: "The British Museum",
-        //        googleId: ,
-        //        youTubeId: ,
-        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
-    },
-    {
-        name: "Rijksmuseum",
-        //        googleId: ,
-        //        youTubeId: ,
-        featuredContent: 'http: //rijksmuseum.github.io/'
-    },
-    {
-        name: "Auckland Museum",
-        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
-        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
-    },
-    {
-        name: "Crystal Bridges Museum",
-        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
-        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
+        "name": "The Field Museum",
+        "googleId": "ChIJV0AwM30rDogR2sd-X0cgErU",
+        "youTubeId": "UC32ZWrUYSWXzupp2SiYw9mQ"
     }
 ]
+
+//STEP 1 Populate the Parks options
+
+//STEP 2 - get the input from the user
+
+
+//STEP 3 - Results of park information from the external API will be returned(fullName, description, weatherInfo, states, directionsInfo, url)
+
+function getMuseumDetails(googleId, youTubeId) {
+    //getDetails call
+
+    //youTube ajax call
+
+}
 
 //var currentFeatInd = 0;
 //
@@ -550,10 +587,12 @@ function createMarker(place) {
         var request = {
             reference: place.reference
         };
+
         service.getDetails(request, function (details, status) {
+
             console.log([
                 details.name,
-                    details.formatted_address,
+                details.formatted_address,
                     details.website,
                     details.rating,
                     details.formatted_phone_number,
