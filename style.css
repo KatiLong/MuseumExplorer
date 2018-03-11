@@ -64,8 +64,19 @@ h2 {
     margin: 15px 0;
 }
 
+h1 {
+    font-size: 35px;
+    margin: 20px;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 20px 0;
+}
+
 h3 {
     font-weight: 300;
+    font-size: 20px;
 }
 
 /*Featured Museums Color #255763 #023e58 */
@@ -174,7 +185,11 @@ footer {
 
 h4 {
     font-size: 20px;
+<<<<<<< HEAD
     margin: 8px;
+=======
+    margin: 15px 0;
+>>>>>>> a816da58d73951847aeac03f2a8b58678d84e7fa
 }
 
 .featured-wrapper ul {
@@ -252,6 +267,10 @@ h4 {
     margin: 0 auto;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a816da58d73951847aeac03f2a8b58678d84e7fa
 .museum-img {
     float: left;
     width: 20rem;
