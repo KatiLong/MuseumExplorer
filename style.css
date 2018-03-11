@@ -74,6 +74,16 @@ h2 {
     margin: 20px 0;
 }
 
+h1 {
+    font-size: 35px;
+    margin: 20px;
+}
+
+h2 {
+    font-size: 30px;
+    margin: 20px 0;
+}
+
 h3 {
     font-weight: 300;
     font-size: 20px;
@@ -185,11 +195,8 @@ footer {
 
 h4 {
     font-size: 20px;
-<<<<<<< HEAD
-    margin: 8px;
-=======
     margin: 15px 0;
->>>>>>> a816da58d73951847aeac03f2a8b58678d84e7fa
+
 }
 
 .featured-wrapper ul {
@@ -267,11 +274,7 @@ h4 {
     margin: 0 auto;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> a816da58d73951847aeac03f2a8b58678d84e7fa
-.museum-img {
+<<<<<<< HEAD <<<<<<< HEAD============== > > > > > > > a816da58d73951847aeac03f2a8b58678d84e7fa > > > > > > > a816da58d73951847aeac03f2a8b58678d84e7fa .museum-img {
     float: left;
     width: 20rem;
     margin: 0 1.5% 0 8.5%;
