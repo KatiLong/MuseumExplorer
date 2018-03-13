@@ -219,8 +219,11 @@ h4 {
 
 .featured-div:hover {
     background-color: #16516B;
+    cursor: pointer;
 }
-.two {
+
+.two,
+.five {
     margin-left: 1%;
     margin-right: 1%;
 }
@@ -248,14 +251,35 @@ h4 {
 }
 
 .two .img-div {
-    background: rgba(0, 0, 0, 0) url("../images/field-museum.jpg") no-repeat center center;
+    background: rgba(0, 0, 0, 0) url("../images/louvre.jpg") no-repeat center center;
     background-size: cover;
     background-blend-mode: multiply;
     background-color: grey;
 }
 
 .three .img-div {
-    background: rgba(0, 0, 0, 0) url("../images/met.jpg") no-repeat center center;
+    background: rgba(0, 0, 0, 0) url("../images/te-papa.jpg") no-repeat center center;
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-color: grey;
+}
+
+.four .img-div {
+    background: rgba(0, 0, 0, 0) url("../images/field-museum.jpg") no-repeat center center;
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-color: grey;
+}
+
+.five .img-div {
+    background: rgba(0, 0, 0, 0) url("../images/british-museum.jpg") no-repeat center center;
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-color: grey;
+}
+
+.six .img-div {
+    background: rgba(0, 0, 0, 0) url("../images/rijksmuseum.jpg") no-repeat center center;
     background-size: cover;
     background-blend-mode: multiply;
     background-color: grey;

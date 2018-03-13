@@ -791,6 +791,8 @@ function submitListen() {
 }
 //////////////////////////////////////////////////////////
 //CSS Related Listeners
+
+//Lightens div whenever user hovers over entire box
 $('.featured-div').hover(
     function () {
         $(this).find("div").css({
@@ -805,5 +807,24 @@ $('.featured-div').hover(
 );
 
 //////////////////////////////////////////////////////////
+//Click on museum from Map
 
-$(submitListen());
+
+function displayFeatMuseum(index) {
+    console.log("displayFeatMuseum's ran");
+}
+
+//Click on featured museum
+$('.featured-div').on('click', function () {
+    //Hide Map Main
+    //Display Museum Info Main
+    //Generate Museum Info
+    displayFeatMuseum();
+})
+
+
+
+
+$(function () {
+    submitListen();
+});
