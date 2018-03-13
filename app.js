@@ -94,13 +94,13 @@ function getMuseumDetails(googleId, youTubeId) {
 //
 //}
 
-var resources = [
-    {
-        name: 'Google Arts and Culture Institute',
-        website: 'https://www.google.com/culturalinstitute/beta/',
-        features: 'Recently best known for the application that compares your face to artwork, it is an amazing collection of online Art content.'
-    }
-]
+//var resources = [
+//    {
+//        name: 'Google Arts and Culture Institute',
+//        website: 'https://www.google.com/culturalinstitute/beta/',
+//        features: 'Recently best known for the application that compares your face to artwork, it is an amazing collection of online Art content.'
+//    }
+//]
 
 var mapStyle = [
     {
@@ -791,14 +791,19 @@ function submitListen() {
 }
 //////////////////////////////////////////////////////////
 //CSS Related Listeners
-//$('.featured-div').hover(
-//    function () {
-//        $(this).append($(`<div class='feat-grey'>Online Art Gallery, Youtube Channel</div>`));
-//    },
-//    function () {
-//        $(this).find(".feat-grey").remove();
-//    }
-//);
+$('.featured-div').hover(
+    function () {
+        $(this).find("div").css({
+            "background-blend-mode": "normal"
+        })
+    },
+    function () {
+        $(this).find("div").css({
+            "background-blend-mode": "multiply"
+        })
+    }
+);
+
 //////////////////////////////////////////////////////////
 
 $(submitListen());
