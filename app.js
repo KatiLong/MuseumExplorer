@@ -722,6 +722,7 @@ function findChannel(data) {
 //Filter functions to be added here
 function filterChannel(foundElem) {
     //filter results by keyword here
+    console.log(`Filter channel results function ran`);
 }
 
 function getDataFromYouTube(channelId, channelTitle) {
@@ -813,8 +814,8 @@ $('.featured-div').hover(
 
 function displayMuseumPage() {
     console.log(`display museum page ran`);
-    $('#featured-museums').toggle();
-    $('#museum-info-page').toggle();
+    $('#featured-museums').hide();
+    $('#museum-info-page').show();
 }
 
 function changeMapStyle() {
@@ -831,8 +832,8 @@ function renderFeatMuseum(target) {
 
 function displayFeatMuseum() {
     console.log("displayFeatMuseum's ran");
-    $('#museum - info - page').toggle();
-    $('#map').toggle();
+    $('#map').hide();
+    $('#museum-info-page').show();
 }
 
 function changeFeaturedStyle() {
