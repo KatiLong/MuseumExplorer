@@ -814,7 +814,7 @@ $('.featured-div').hover(
 function displayMuseumPage() {
     console.log(`display museum page ran`);
     $('#featured-museums').toggle();
-    $('.museum-info-page').toggle();
+    $('#museum-info-page').toggle();
 }
 
 function changeMapStyle() {
@@ -831,7 +831,7 @@ function renderFeatMuseum(target) {
 
 function displayFeatMuseum() {
     console.log("displayFeatMuseum's ran");
-    $('.museum-info-page').toggle();
+    $('#museum - info - page').toggle();
     $('#map').toggle();
 }
 
