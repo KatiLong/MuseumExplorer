@@ -1,3 +1,4 @@
+'use strict';
 //var featuredMuseums = [
 //    {
 //        name: 'The MET',
