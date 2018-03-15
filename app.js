@@ -701,12 +701,17 @@ function findYoutubeChannel(searchTerm) {
 
 function findChannel(data) {
     var foundElem = [];
+    //searches results for Youtube Channels
     data.items.forEach(function (elem) {
         if (elem.id.kind === 'youtube#channel') {
             console.log(elem);
             foundElem.push(elem);
         }
     })
+    // Use filterChannel function to check returned channels for viability
+    //    foundElem.forEach(filterChannel)
+
+    //returns first channel result
     if (foundElem.length > 0) {
         console.log(foundElem[0].id.channelId);
         getDataFromYouTube(foundElem[0].id.channelId, foundElem[0].snippet.channelTitle);
@@ -728,7 +733,7 @@ function getDataFromYouTube(channelId, channelTitle) {
             data: {
                 channelId: channelId,
                 part: 'snippet',
-                maxResults: 10,
+                maxResults: 9,
                 key: APIkey
             },
             dataType: "jsonp",
@@ -741,7 +746,7 @@ function getDataFromYouTube(channelId, channelTitle) {
             /* if the results are meeningful, we can just console.log them */
             console.log(channelTitle);
             console.log(result);
-            //            displayResults(result, channelTitle);
+            displayResults(result, channelTitle);
         })
         /* if the call is NOT successful show errors */
         .fail(function (jqXHR, error, errorThrown) {
@@ -752,9 +757,16 @@ function getDataFromYouTube(channelId, channelTitle) {
 }
 ///////////////////////////////////////////////////////////////////////////////////////\
 
+function displayResults(data, channel) {
+    console.log(`Display Results ran`);
+    console.log(data);
+    const results = data.items.map((elem, index) => generateResults(elem));
+    $('.js-results-section').html(`<p id="results-str">${channel} Channel Videos</p>`);
+    $('.js-results-section').append(results);
+}
 // function that generates results string
 function generateResults(elem) {
-    console.log(`Results string generated here`);
+    console.log(`generate results ran`);
     return `
         <div class ="thumbnail-div">
             <a href="https://www.youtube.com/watch?v=${elem.id.videoId}" target=_blank>
@@ -764,13 +776,6 @@ function generateResults(elem) {
         </div>`;
 }
 
-function displayResults(data, channel) {
-    console.log(`Display Results ran`);
-    console.log(data);
-    const results = data.items.map((elem, index) => generateResults(elem));
-    $('.js-search-results').html(`<p id="results-str">${channel} Channel Videos</p>`);
-    $('.js-search-results').append(results);
-}
 
 //////////////////////////////////////////////////////////
 //CSS Related Listeners
