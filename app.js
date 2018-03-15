@@ -579,13 +579,7 @@ function createMarker(place) {
 
     // Opens new window when user clicks on marker
     google.maps.event.addListener(markers, 'click', function () {
-        ////////////////function to check if place is featured museum//////////
-        checkIfFeatured(place.id);
 
-        changeMapStyle();
-        displayMuseumPage();
-        //        getChannelFromYouTube(place.name);
-        // getDataFromYouTube();
         var request = {
             reference: place.reference
         };
@@ -595,13 +589,15 @@ function createMarker(place) {
             console.log([
                 details.name,
                 details.formatted_address,
-                    details.website,
-                    details.rating,
-                    details.formatted_phone_number,
-                    details.place_id
+                details.website,
+                details.rating,
+                details.formatted_phone_number,
+                details.place_id
             ]);
             // infowindow.open(map, marker);
         });
+        //Invoke parent function to display museum info
+        renderMuseumPage(place);
     });
 
     // Shows name when user hovers over markers
@@ -663,7 +659,7 @@ function createMarker(place) {
 
 var YTchannelId;
 
-function getChannelFromYouTube(searchTerm) {
+function findYoutubeChannel(searchTerm) {
     // if (search) {
     //   endpoint = "https://www.googleapis.com/youtube/v3/search"
     // }
@@ -776,22 +772,6 @@ function displayResults(data, channel) {
     $('.js-search-results').append(results);
 }
 
-function submitListen() {
-    console.log(`the submitListen function ran`);
-    $('.js-search-form').submit(event => {
-        event.preventDefault();
-        console.log(`Submit button heard`);
-
-        const queryTarget = $(event.currentTarget).find('.js-query');
-        const userText = queryTarget.val();
-        // clear out the input
-        queryTarget.val("");
-        $('.js-search-results').prop('hidden', false);
-
-        getApiData(userText);
-        // displayResults();
-    })
-}
 //////////////////////////////////////////////////////////
 //CSS Related Listeners
 
@@ -811,6 +791,15 @@ $('.featured-div').hover(
 
 //////////////////////////////////////////////////////////
 //Click on museum from Map
+
+function renderMuseumPage(place) {
+    checkIfFeatured(place.id); //function to check if place is featured museum
+    changeMapStyle();
+    findYoutubeChannel(place.name);
+    getDataFromYouTube();
+
+    displayMuseumPage();
+}
 
 function displayMuseumPage() {
     console.log(`display museum page ran`);
@@ -856,6 +845,6 @@ $('.featured-div').on('click', function () {
 
 
 
-$(function () {
-    submitListen();
-});
+//$(function () {
+//    submitListen();
+//});
