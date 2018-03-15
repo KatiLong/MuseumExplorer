@@ -146,24 +146,6 @@ footer {
     line-height: 30px;
 }
 
-/*
-.thumbnail-div {
-    max-width: 500px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    margin: 15px auto;
-}
-
-.thumbnail-img {
-    display: inline-block;
-    position: relative;
-    height: 138px;
-    margin-right: 16px;
-}
-*/
-
 .video-title {
     -webkit-margin-before: 0;
     -webkit-margin-after: 0;
@@ -196,14 +178,16 @@ footer {
 
 h4 {
     font-size: 20px;
-    margin: 15px 0;
+    height: 26px;
+    overflow-x: hidden;
+    margin: 15px auto;
 
 }
 
 .featured-wrapper ul {
     font-size: 18px;
     line-height: 35px;
-    font-weight: 500;
+    /*    font-weight: 500;*/
     list-style-type: none;
 }
 
@@ -220,6 +204,10 @@ h4 {
 .featured-div:hover {
     background-color: #16516B;
     cursor: pointer;
+}
+
+.featured-div p {
+    line-height: 30px;
 }
 
 .two,
@@ -304,7 +292,7 @@ h4 {
     margin: 0 auto;
 }
 
-<<<<<<< HEAD <<<<<<< HEAD============== > > > > > > > a816da58d73951847aeac03f2a8b58678d84e7fa > > > > > > > a816da58d73951847aeac03f2a8b58678d84e7fa .museum-img {
+.museum-img {
     float: left;
     width: 20rem;
     margin: 0 1.5% 0 8.5%;
@@ -352,11 +340,10 @@ footer {
     body {
         color: green;
     }
-    .row {}
     .featured-div {
         width: 95%;
     }
-    .featured-img {
+    .img-div {
         height: 250px;
     }
 }
@@ -369,6 +356,9 @@ footer {
     }
     #map {
         height: 300px;
+    }
+    .img-div {
+        height: 200px;
     }
 }
 

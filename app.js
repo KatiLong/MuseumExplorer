@@ -581,7 +581,9 @@ function createMarker(place) {
     google.maps.event.addListener(markers, 'click', function () {
         ////////////////function to check if place is featured museum//////////
         checkIfFeatured(place.id);
-        // window.open("https://www.w3schools.com");
+
+        changeMapStyle();
+        displayMuseumPage();
         //        getChannelFromYouTube(place.name);
         // getDataFromYouTube();
         var request = {
@@ -809,9 +811,28 @@ $('.featured-div').hover(
 //////////////////////////////////////////////////////////
 //Click on museum from Map
 
+function displayMuseumPage() {
+    console.log(`display museum page ran`);
+    $('.museum-info-page').toggle();
+    $('.featured-museums').toggle();
+}
 
-function displayFeatMuseum(index) {
+function changeMapStyle() {
+    console.log('changeMapStyle ran');
+    $('body').find('#map').css({
+        "height": "275px",
+        "max-width": "725px"
+    })
+}
+
+function renderFeatMuseum(target) {
+    console.log(`render Featured Museum ran, target is ${target}`);
+};
+
+function displayFeatMuseum() {
     console.log("displayFeatMuseum's ran");
+    $('.museum-info-page').toggle();
+    $('#map').toggle();
 }
 
 //Click on featured museum
@@ -819,6 +840,8 @@ $('.featured-div').on('click', function () {
     //Hide Map Main
     //Display Museum Info Main
     //Generate Museum Info
+    let currentTarget = this;
+    renderFeatMuseum(this);
     displayFeatMuseum();
 })
 
