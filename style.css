@@ -134,7 +134,7 @@ footer {
     text-align: left;
 }
 
-.featured-museums {
+#featured-museums {
     border-top: 5px solid #073E57;
     width: 100%;
     max-width: 800px;
@@ -270,12 +270,14 @@ h4 {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
+    padding: 30px 10px;
+    border-top: 5px solid #073E57;
 }
 
 .museum-img {
     float: left;
     width: 20rem;
-    margin: 0 1.5% 0 8.5%;
+    margin: 0 1.5% 0 8%;
 }
 
 .text-container {

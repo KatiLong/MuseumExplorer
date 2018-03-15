@@ -813,13 +813,13 @@ $('.featured-div').hover(
 
 function displayMuseumPage() {
     console.log(`display museum page ran`);
+    $('#featured-museums').toggle();
     $('.museum-info-page').toggle();
-    $('.featured-museums').toggle();
 }
 
 function changeMapStyle() {
     console.log('changeMapStyle ran');
-    $('body').find('#map').css({
+    $('#map').css({
         "height": "275px",
         "max-width": "725px"
     })
@@ -835,13 +835,20 @@ function displayFeatMuseum() {
     $('#map').toggle();
 }
 
+function changeFeaturedStyle() {
+    $('#featured-museums').css({
+        "border-top": "none"
+    })
+}
+
 //Click on featured museum
 $('.featured-div').on('click', function () {
+    let currentTarget = this;
+    //Generate Museum Info
+    renderFeatMuseum(this);
     //Hide Map Main
     //Display Museum Info Main
-    //Generate Museum Info
-    let currentTarget = this;
-    renderFeatMuseum(this);
+    changeFeaturedStyle();
     displayFeatMuseum();
 })
 
