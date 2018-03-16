@@ -159,6 +159,40 @@ function populateFeatThumbnails(featuredMuseums) {
     $(".featured-wrapper").html(buildTheHtmlOutput);
 }
 
+function populateFeatMuseum(target) {
+    console.log(`render Featured Museum ran, target is ${target}`);
+    var buildTheHtmlOutput = "";
+
+    $.each(featuredMuseums, function (featuredMuseumsIndex, featuredMuseumsValue) {
+        //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
+        buildTheHtmlOutput += '<div class="featured-div ' + featuredMuseumsValue.cssClass + ' js-' + (featuredMuseumsIndex + 1) + '">';
+        buildTheHtmlOutput += '<h4>' + featuredMuseumsValue.name + '</h4>';
+        buildTheHtmlOutput += '<div class="img-div">';
+        buildTheHtmlOutput += '<p>' + featuredMuseumsValue.city + '</p>';
+        buildTheHtmlOutput += '<ul>';
+        if (!featuredMuseumsValue.artwork) { //Displays The Field Museums Second YouTube Channel instead of Online Gallery Link
+            buildTheHtmlOutput += '<li>';
+            buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youTubeId2 + '" target="_blank">The Brain Scoop</a>';
+            buildTheHtmlOutput += '</li>';
+        } else {
+            buildTheHtmlOutput += '<li>';
+            buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.artwork + '" target="_blank">Online Art Gallery</a>';
+            buildTheHtmlOutput += '</li>';
+        }
+        //        (!featuredMuseumsValue.artwork) ?
+        buildTheHtmlOutput += '<li>';
+        buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youTubeId + '" target="_blank">Youtube Channel</a>';
+        buildTheHtmlOutput += '</li>';
+        buildTheHtmlOutput += '</ul>';
+        buildTheHtmlOutput += '</div>';
+        buildTheHtmlOutput += '</div>';
+    });
+
+    //use the HTML output to show it in the index.html
+    $(".museum-info-page").html(buildTheHtmlOutput);
+
+};
+
 //STEP 1 Populate the Parks options
 
 //STEP 2 - get the input from the user
@@ -669,6 +703,15 @@ function createMarker(place) {
     // Opens new window when user clicks on marker
     google.maps.event.addListener(markers, 'click', function () {
 
+        var currentPlace = '';
+
+        currentPlace += `{`
+        currentPlace += `address: ${place.vincinity}` //address
+        currentPlace += `types: ${place.types}`
+        console.log(place);
+        console.log(place.photos[0].getUrl({
+            maxWidth: 640
+        }));
         var request = {
             reference: place.reference
         };
@@ -850,7 +893,7 @@ function displayResults(data, channel) {
     console.log(`Display Results ran`);
     console.log(data);
     const results = data.items.map((elem, index) => generateResults(elem));
-    $('.js-results-section').html(`<p id="results-str">${channel} Channel Videos</p>`);
+    $('.js-results-section').html(`<h2 id="results-str">${channel} Channel Videos</h2> <p>I'm Emily, the Chief Curiosity Correspondent of The Field Museum in Chicago, former volunteer of the University of Montana Zoological Museum, and I'd like to share some of the amazing things we have in the collection with the Internet!</p>`);
     $('.js-results-section').append(results);
 }
 // function that generates results string
@@ -908,10 +951,6 @@ function changeMapStyle() {
     })
 }
 
-function populateFeatMuseum(target) {
-    console.log(`render Featured Museum ran, target is ${target}`);
-
-};
 
 function displayFeatMuseum() {
     console.log("displayFeatMuseum's ran");
@@ -929,7 +968,7 @@ function changeFeaturedStyle() {
 $('.featured-wrapper').on('click', '.featured-div', function () {
     let currentTarget = this;
     //Generate Museum Info
-    populateFeatMuseum(this);
+    //    populateFeatMuseum(this);
     //Hide Map Main
     //Display Museum Info Main
     changeFeaturedStyle();
