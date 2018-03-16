@@ -53,9 +53,11 @@ var featuredMuseums = [{
         "googleId": "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
         "youTubeId": "UCDlz9C2bhSW6dcVn_PO5mYw",
         "address": "1000 5th Ave, New York, NY 10028, USA",
+        "city": "New York, USA",
         "website": "https://www.metmuseum.org/",
         "image": "../images/met.jpg",
-        "artwork": "https://artsandculture.google.com/partner/the-metropolitan-museum-of-art",
+        "artwork": "https://www.metmuseum.org/art/collection",
+        "artwork2": "https://artsandculture.google.com/partner/the-metropolitan-museum-of-art",
         "youtube2": "",
         "cssClass": "one"
     },
@@ -64,9 +66,11 @@ var featuredMuseums = [{
         "googleId": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
         "youTubeId": "UCDlz9C2bhSW6dcVn_PO5mYw",
         "address": "Rue de Rivoli, 75001 Paris, France",
+        "city": "Paris, France",
         "website": "https://www.louvre.fr/en",
         "image": "../images/louvre.jpg",
-        "artwork": "",
+        "artwork": "https://www.louvre.fr/en/selections",
+        "artwork2": "",
         "youtube2": "",
         "cssClass": "two"
     },
@@ -75,9 +79,11 @@ var featuredMuseums = [{
         "googleId": "ChIJnRaYrdGvOG0RMJot6PyfQJo",
         "youTubeId": "UC6cnrd8SMMC2x9rud3RfqlA",
         "address": "55 Cable St, Te Aro, Wellington 6011, New Zealand",
+        "city": "Wellington, NZ",
         "website": "http://www.tepapa.govt.nz/",
         "image": "../images/te-papa.jpg",
-        "artwork": "",
+        "artwork": "https://collections.tepapa.govt.nz/",
+        "artwork2": "",
         "youtube2": "",
         "cssClass": "three"
     },
@@ -85,10 +91,12 @@ var featuredMuseums = [{
         "name": "The Field Museum",
         "googleId": "ChIJV0AwM30rDogR2sd-X0cgErU",
         "youTubeId": "UC32ZWrUYSWXzupp2SiYw9mQ",
-        "address": "Chicago, USA",
+        "address": "1400 S Lake Shore Dr, Chicago, IL 60605, USA",
+        "city": "Chicago, USA",
         "website": "https://www.fieldmuseum.org/",
         "image": "../images/field-museum.jpg",
         "artwork": "",
+        "artwork2": "",
         "youtube2": "UCkyfHZ6bY2TjqbJhiH8Y2QQ",
         "cssClass": "four"
     },
@@ -97,9 +105,11 @@ var featuredMuseums = [{
         "googleId": "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
         "youTubeId": "UCvpQ-l09fCVxJd3urZbxzHg",
         "address": "Great Russell St, Bloomsbury, London WC1B 3DG, UK",
+        "city": "London, England",
         "website": "http://www.britishmuseum.org/",
         "image": "../images/british-museum.jpg",
         "artwork": "Preview: http://www.britishmuseum.org/research/collection_online/search.aspx\nPreview: https://britishmuseum.withgoogle.com",
+        "artwork2": "",
         "youtube2": "",
         "cssClass": "five"
     },
@@ -108,9 +118,11 @@ var featuredMuseums = [{
         "googleId": "",
         "youTubeId": "UCEXuPfYt1M3e8DT1LDeSfVg",
         "address": "Museumstraat 1, 1071 XX Amsterdam, Netherlands",
+        "city": "Amsterdam, Netherlands",
         "website": "http: //rijksmuseum.github.io/",
         "image": "../images/rijksmuseum.jpg",
         "artwork": "https://www.rijksmuseum.nl/nl/rijksstudio?ii=3&p=0&from=2018-03-12T19%3A21%3A31.2689755Z",
+        "artwork2": "",
         "youtube2": "",
         "cssClass": "six"
     }];
@@ -599,7 +611,7 @@ function initMap() {
         service.nearbySearch({
             location: place.geometry.location,
             radius: 40000,
-            keyword: 'museum',
+            type: 'museum',
             maxResults: 20
             // rankby: distance
         }, callback);
