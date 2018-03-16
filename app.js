@@ -135,7 +135,7 @@ function populateFeatMuseums(featuredMuseums) {
         buildTheHtmlOutput += '<div class="featured-div ' + featuredMuseumsValue.cssClass + ' js-' + (featuredMuseumsKey + 1) + '">';
         buildTheHtmlOutput += '<h4>' + featuredMuseumsValue.name + '</h4>';
         buildTheHtmlOutput += '<div class="img-div">';
-        buildTheHtmlOutput += '<p>' + featuredMuseumsValue.address + '</p>';
+        buildTheHtmlOutput += '<p>' + featuredMuseumsValue.city + '</p>';
         buildTheHtmlOutput += '<ul>';
         buildTheHtmlOutput += '<li>Online Art Gallery</li>';
         buildTheHtmlOutput += '<li>';
@@ -922,7 +922,7 @@ function changeFeaturedStyle() {
 }
 
 //Click on featured museum
-$('.featured-div').on('click', function () {
+$('.featured-wrapper').on('click', '.featured-div', function () {
     let currentTarget = this;
     //Generate Museum Info
     renderFeatMuseum(this);
