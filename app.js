@@ -127,29 +127,32 @@ var featuredMuseums = [{
         "cssClass": "six"
     }];
 
-function populateFeatMuseums(featuredMuseums) {
+function populateFeatThumbnails(featuredMuseums) {
     var buildTheHtmlOutput = "";
 
-    $.each(featuredMuseums, function (featuredMuseumsKey, featuredMuseumsValue) {
+    $.each(featuredMuseums, function (featuredMuseumsIndex, featuredMuseumsValue) {
         //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
-        buildTheHtmlOutput += '<div class="featured-div ' + featuredMuseumsValue.cssClass + ' js-' + (featuredMuseumsKey + 1) + '">';
+        buildTheHtmlOutput += '<div class="featured-div ' + featuredMuseumsValue.cssClass + ' js-' + (featuredMuseumsIndex + 1) + '">';
         buildTheHtmlOutput += '<h4>' + featuredMuseumsValue.name + '</h4>';
         buildTheHtmlOutput += '<div class="img-div">';
         buildTheHtmlOutput += '<p>' + featuredMuseumsValue.city + '</p>';
         buildTheHtmlOutput += '<ul>';
-        buildTheHtmlOutput += '<li>Online Art Gallery</li>';
+        if (!featuredMuseumsValue.artwork) { //Displays The Field Museums Second YouTube Channel instead of Online Gallery Link
+            buildTheHtmlOutput += '<li>';
+            buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youTubeId2 + '" target="_blank">The Brain Scoop</a>';
+            buildTheHtmlOutput += '</li>';
+        } else {
+            buildTheHtmlOutput += '<li>';
+            buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.artwork + '" target="_blank">Online Art Gallery</a>';
+            buildTheHtmlOutput += '</li>';
+        }
+        //        (!featuredMuseumsValue.artwork) ?
         buildTheHtmlOutput += '<li>';
         buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youTubeId + '" target="_blank">Youtube Channel</a>';
         buildTheHtmlOutput += '</li>';
         buildTheHtmlOutput += '</ul>';
         buildTheHtmlOutput += '</div>';
         buildTheHtmlOutput += '</div>';
-        //        buildTheHtmlOutput += '<ul>';
-        //        buildTheHtmlOutput += "<p>" + videosArrayValue.snippet.title + "</p>"; //output vide title
-        //        buildTheHtmlOutput += "<a href='https://www.youtube.com/watch?v=" + videosArrayValue.id.videoId + "' target='_blank'>"; //taget blank is going to open the video in a new window
-        //        buildTheHtmlOutput += "<img src='" + videosArrayValue.snippet.thumbnails.high.url + "'/>"; //display video's thumbnail
-        //        buildTheHtmlOutput += "</a>";
-        //        buildTheHtmlOutput += "</li>";
     });
 
     //use the HTML output to show it in the index.html
@@ -905,8 +908,9 @@ function changeMapStyle() {
     })
 }
 
-function renderFeatMuseum(target) {
+function populateFeatMuseum(target) {
     console.log(`render Featured Museum ran, target is ${target}`);
+
 };
 
 function displayFeatMuseum() {
@@ -925,7 +929,7 @@ function changeFeaturedStyle() {
 $('.featured-wrapper').on('click', '.featured-div', function () {
     let currentTarget = this;
     //Generate Museum Info
-    renderFeatMuseum(this);
+    populateFeatMuseum(this);
     //Hide Map Main
     //Display Museum Info Main
     changeFeaturedStyle();
@@ -936,5 +940,5 @@ $('.featured-wrapper').on('click', '.featured-div', function () {
 
 
 $(function () {
-    populateFeatMuseums(featuredMuseums);
+    populateFeatThumbnails(featuredMuseums);
 });
