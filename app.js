@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 //var featuredMuseums = [
 //    {
 //        name: 'The MET',
@@ -48,28 +48,101 @@
 //    }
 //]
 
-var featuredMuseums = [
-    {
+var featuredMuseums = [{
         "name": "The MET",
         "googleId": "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
-        "youTubeId": "UCDlz9C2bhSW6dcVn_PO5mYw"
+        "youTubeId": "UCDlz9C2bhSW6dcVn_PO5mYw",
+        "address": "1000 5th Ave, New York, NY 10028, USA",
+        "website": "https://www.metmuseum.org/",
+        "image": "../images/met.jpg",
+        "artwork": "https://artsandculture.google.com/partner/the-metropolitan-museum-of-art",
+        "youtube2": "",
+        "cssClass": "one"
     },
     {
         "name": "The Louvre",
         "googleId": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
-        "youTubeId": "UCDlz9C2bhSW6dcVn_PO5mYw"
+        "youTubeId": "UCDlz9C2bhSW6dcVn_PO5mYw",
+        "address": "Rue de Rivoli, 75001 Paris, France",
+        "website": "https://www.louvre.fr/en",
+        "image": "../images/louvre.jpg",
+        "artwork": "",
+        "youtube2": "",
+        "cssClass": "two"
     },
     {
         "name": "Museum of New Zealand Te Papa Tongarewa",
         "googleId": "ChIJnRaYrdGvOG0RMJot6PyfQJo",
-        "youTubeId": "UC6cnrd8SMMC2x9rud3RfqlA"
+        "youTubeId": "UC6cnrd8SMMC2x9rud3RfqlA",
+        "address": "55 Cable St, Te Aro, Wellington 6011, New Zealand",
+        "website": "http://www.tepapa.govt.nz/",
+        "image": "../images/te-papa.jpg",
+        "artwork": "",
+        "youtube2": "",
+        "cssClass": "three"
     },
     {
         "name": "The Field Museum",
         "googleId": "ChIJV0AwM30rDogR2sd-X0cgErU",
-        "youTubeId": "UC32ZWrUYSWXzupp2SiYw9mQ"
-    }
-]
+        "youTubeId": "UC32ZWrUYSWXzupp2SiYw9mQ",
+        "address": "Chicago, USA",
+        "website": "https://www.fieldmuseum.org/",
+        "image": "../images/field-museum.jpg",
+        "artwork": "",
+        "youtube2": "UCkyfHZ6bY2TjqbJhiH8Y2QQ",
+        "cssClass": "four"
+    },
+    {
+        "name": "The British Museum",
+        "googleId": "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
+        "youTubeId": "UCvpQ-l09fCVxJd3urZbxzHg",
+        "address": "Great Russell St, Bloomsbury, London WC1B 3DG, UK",
+        "website": "http://www.britishmuseum.org/",
+        "image": "../images/british-museum.jpg",
+        "artwork": "Preview: http://www.britishmuseum.org/research/collection_online/search.aspx\nPreview: https://britishmuseum.withgoogle.com",
+        "youtube2": "",
+        "cssClass": "five"
+    },
+    {
+        "name": "Rijksmuseum",
+        "googleId": "",
+        "youTubeId": "UCEXuPfYt1M3e8DT1LDeSfVg",
+        "address": "Museumstraat 1, 1071 XX Amsterdam, Netherlands",
+        "website": "http: //rijksmuseum.github.io/",
+        "image": "../images/rijksmuseum.jpg",
+        "artwork": "https://www.rijksmuseum.nl/nl/rijksstudio?ii=3&p=0&from=2018-03-12T19%3A21%3A31.2689755Z",
+        "youtube2": "",
+        "cssClass": "six"
+    }];
+
+function populateFeatMuseums(featuredMuseums) {
+    var buildTheHtmlOutput = "";
+
+    $.each(featuredMuseums, function (featuredMuseumsKey, featuredMuseumsValue) {
+        //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
+        buildTheHtmlOutput += '<div class="featured-div one js-' + (featuredMuseumsKey + 1) + '">';
+        buildTheHtmlOutput += '<h4>' + featuredMuseumsValue.name + '</h4>';
+        buildTheHtmlOutput += '<div class="img-div">';
+        buildTheHtmlOutput += '<p>' + featuredMuseumsValue.address + '</p>';
+        buildTheHtmlOutput += '<ul>';
+        buildTheHtmlOutput += '<li>Online Art Gallery</li>';
+        buildTheHtmlOutput += '<li>';
+        buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youTubeId + '" target="_blank">';
+        buildTheHtmlOutput += '</li>';
+        buildTheHtmlOutput += '</ul>';
+        buildTheHtmlOutput += '</div>';
+        buildTheHtmlOutput += '</div>';
+        //        buildTheHtmlOutput += '<ul>';
+        //        buildTheHtmlOutput += "<p>" + videosArrayValue.snippet.title + "</p>"; //output vide title
+        //        buildTheHtmlOutput += "<a href='https://www.youtube.com/watch?v=" + videosArrayValue.id.videoId + "' target='_blank'>"; //taget blank is going to open the video in a new window
+        //        buildTheHtmlOutput += "<img src='" + videosArrayValue.snippet.thumbnails.high.url + "'/>"; //display video's thumbnail
+        //        buildTheHtmlOutput += "</a>";
+        //        buildTheHtmlOutput += "</li>";
+    });
+
+    //use the HTML output to show it in the index.html
+    $(".featured-wrapper .row").html(buildTheHtmlOutput);
+}
 
 //STEP 1 Populate the Parks options
 
@@ -851,6 +924,6 @@ $('.featured-div').on('click', function () {
 
 
 
-//$(function () {
-//    submitListen();
-//});
+$(function () {
+    //    populateFeatMuseums(featuredMuseums);
+});
