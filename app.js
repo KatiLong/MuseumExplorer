@@ -132,14 +132,14 @@ function populateFeatMuseums(featuredMuseums) {
 
     $.each(featuredMuseums, function (featuredMuseumsKey, featuredMuseumsValue) {
         //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
-        buildTheHtmlOutput += '<div class="featured-div one js-' + (featuredMuseumsKey + 1) + '">';
+        buildTheHtmlOutput += '<div class="featured-div ' + featuredMuseumsValue.cssClass + ' js-' + (featuredMuseumsKey + 1) + '">';
         buildTheHtmlOutput += '<h4>' + featuredMuseumsValue.name + '</h4>';
         buildTheHtmlOutput += '<div class="img-div">';
         buildTheHtmlOutput += '<p>' + featuredMuseumsValue.address + '</p>';
         buildTheHtmlOutput += '<ul>';
         buildTheHtmlOutput += '<li>Online Art Gallery</li>';
         buildTheHtmlOutput += '<li>';
-        buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youTubeId + '" target="_blank">';
+        buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youTubeId + '" target="_blank">Youtube Channel</a>';
         buildTheHtmlOutput += '</li>';
         buildTheHtmlOutput += '</ul>';
         buildTheHtmlOutput += '</div>';
@@ -153,7 +153,7 @@ function populateFeatMuseums(featuredMuseums) {
     });
 
     //use the HTML output to show it in the index.html
-    $(".featured-wrapper .row").html(buildTheHtmlOutput);
+    $(".featured-wrapper").html(buildTheHtmlOutput);
 }
 
 //STEP 1 Populate the Parks options
@@ -866,19 +866,18 @@ function generateResults(elem) {
 //////////////////////////////////////////////////////////
 //CSS Related Listeners
 
-//Lightens div whenever user hovers over entire box
-$('.featured-div').hover(
-    function () {
-        $(this).find("div").css({
-            "background-blend-mode": "normal"
-        })
-    },
-    function () {
-        $(this).find("div").css({
-            "background-blend-mode": "multiply"
-        })
-    }
-);
+//Lightens div whenever user hovers over entire box, using on-mouseenter/mouseleave for Event Delegation
+$('.featured-wrapper').on('mouseenter', '.featured-div', function (event) {
+    // do something
+    $(this).find("div").css({
+        "background-blend-mode": "normal"
+    })
+}).on('mouseleave', '.featured-div', function (event) {
+    // do something different
+    $(this).find("div").css({
+        "background-blend-mode": "multiply"
+    })
+});
 
 //////////////////////////////////////////////////////////
 //Click on museum from Map
@@ -937,5 +936,5 @@ $('.featured-div').on('click', function () {
 
 
 $(function () {
-    //    populateFeatMuseums(featuredMuseums);
+    populateFeatMuseums(featuredMuseums);
 });
