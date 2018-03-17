@@ -1,53 +1,3 @@
-//'use strict';
-//var featuredMuseums = [
-//    {
-//        name: 'The MET',
-//        googleId: "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
-//        youTubeId: "UCDlz9C2bhSW6dcVn_PO5mYw",
-//        image: 'https://media.timeout.com/images/103374200/image.jpg',
-//        website: 'https://www.metmuseum.org/art/collection',
-//        onlineContent: "The MET Breuer & The Cloisters"
-//    },
-//    {
-//        name: 'The Field Museum',
-//        googleId: "ChIJV0AwM30rDogR2sd-X0cgErU",
-//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-//        image: 'https://media.timeout.com/images/103374200/image.jpg',
-//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
-//    },
-//    {
-//        name: "Harvard Art Museums",
-//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
-//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-//        image: 'https://media.timeout.com/images/103374200/image.jpg',
-//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
-//    },
-//    {
-//        name: "The British Museum",
-//        //        googleId: ,
-//        //        youTubeId: ,
-//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"'
-//    },
-//    {
-//        name: "Rijksmuseum",
-//        //        googleId: ,
-//        //        youTubeId: ,
-//        featuredContent: 'http: //rijksmuseum.github.io/'
-//    },
-//    {
-//        name: "Auckland Museum",
-//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
-//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
-//    },
-//    {
-//        name: "Crystal Bridges Museum",
-//        googleId: "ChIJbaeXiER344kRR_f4e89EQuM",
-//        youTubeId: "UC32ZWrUYSWXzupp2SiYw9mQ",
-//        featuredContent: 'https://www.youtube.com/thebrainscoop, The Brain Scoop Channel ID: "UCkyfHZ6bY2TjqbJhiH8Y2QQ"',
-//    }
-//]
-
 var featuredMuseums = [{
         "name": "The MET",
         "googleId": "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
@@ -707,12 +657,12 @@ function createMarker(place) {
 
         var currentPlace = '';
 
-        currentPlace += `{`;
-        currentPlace += `address: ${place.vincinity},`; //address
-        currentPlace += `types: ${place.types}`;
-        currentPlace += `}`;
+        currentPlace += '{';
+        currentPlace += '"address":' + place.vincinity + ','; //address
+        currentPlace += '"types":' + place.types;
+        currentPlace += '}';
 
-        console.log(JSON.parse(currentPlace));
+        console.log(currentPlace);
 
         console.log(place);
         console.log(place.photos[0].getUrl({
