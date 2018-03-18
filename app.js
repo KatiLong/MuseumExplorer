@@ -1,79 +1,79 @@
 var featuredMuseums = [{
         "name": "The MET",
         "googleId": "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
-        "youTubeId": "UCDlz9C2bhSW6dcVn_PO5mYw",
-        "address": "1000 5th Ave, New York, NY 10028, USA",
+        "youtubeId": "UCDlz9C2bhSW6dcVn_PO5mYw",
+        "address": "1000 5th Ave",
         "city": "New York, USA",
         "website": "https://www.metmuseum.org/",
         "image": "../images/met.jpg",
         "artwork": "https://www.metmuseum.org/art/collection",
         "artwork2": "https://artsandculture.google.com/partner/the-metropolitan-museum-of-art",
-        "youtube2": "",
+        "youtubeId2": "",
         "cssClass": "one"
     },
     {
         "name": "The Louvre",
         "googleId": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
-        "youTubeId": "UCDlz9C2bhSW6dcVn_PO5mYw",
-        "address": "Rue de Rivoli, 75001 Paris, France",
+        "youtubeId": "UCDlz9C2bhSW6dcVn_PO5mYw",
+        "address": "Rue de Rivoli",
         "city": "Paris, France",
         "website": "https://www.louvre.fr/en",
         "image": "../images/louvre.jpg",
         "artwork": "https://www.louvre.fr/en/selections",
         "artwork2": "",
-        "youtube2": "",
+        "youtubeId2": "",
         "cssClass": "two"
     },
     {
         "name": "Museum of New Zealand Te Papa Tongarewa",
         "googleId": "ChIJnRaYrdGvOG0RMJot6PyfQJo",
-        "youTubeId": "UC6cnrd8SMMC2x9rud3RfqlA",
-        "address": "55 Cable St, Te Aro, Wellington 6011, New Zealand",
+        "youtubeId": "UC6cnrd8SMMC2x9rud3RfqlA",
+        "address": "55 Cable St",
         "city": "Wellington, NZ",
         "website": "http://www.tepapa.govt.nz/",
         "image": "../images/te-papa.jpg",
         "artwork": "https://collections.tepapa.govt.nz/",
         "artwork2": "",
-        "youtube2": "",
+        "youtubeId2": "",
         "cssClass": "three"
     },
     {
         "name": "The Field Museum",
         "googleId": "ChIJV0AwM30rDogR2sd-X0cgErU",
-        "youTubeId": "UC32ZWrUYSWXzupp2SiYw9mQ",
-        "address": "1400 S Lake Shore Dr, Chicago, IL 60605, USA",
+        "youtubeId": "UC32ZWrUYSWXzupp2SiYw9mQ",
+        "address": "1400 S Lake Shore Dr",
         "city": "Chicago, USA",
         "website": "https://www.fieldmuseum.org/",
         "image": "../images/field-museum.jpg",
         "artwork": "",
         "artwork2": "",
-        "youtube2": "UCkyfHZ6bY2TjqbJhiH8Y2QQ",
+        "youtubeId2": "UCkyfHZ6bY2TjqbJhiH8Y2QQ",
         "cssClass": "four"
     },
     {
         "name": "The British Museum",
         "googleId": "ChIJB9OTMDIbdkgRp0JWbQGZsS8",
-        "youTubeId": "UCvpQ-l09fCVxJd3urZbxzHg",
-        "address": "Great Russell St, Bloomsbury, London WC1B 3DG, UK",
+        "youtubeId": "UCvpQ-l09fCVxJd3urZbxzHg",
+        "address": "Great Russell St, Bloomsbury",
         "city": "London, England",
         "website": "http://www.britishmuseum.org/",
         "image": "../images/british-museum.jpg",
         "artwork": "Preview: http://www.britishmuseum.org/research/collection_online/search.aspx\nPreview: https://britishmuseum.withgoogle.com",
         "artwork2": "",
-        "youtube2": "",
+        "youtubeId2": "",
         "cssClass": "five"
     },
     {
         "name": "Rijksmuseum",
-        "googleId": "",
-        "youTubeId": "UCEXuPfYt1M3e8DT1LDeSfVg",
-        "address": "Museumstraat 1, 1071 XX Amsterdam, Netherlands",
+        "googleId": "ChIJ5Ra7we4JxkcRhYVAaq5zQ9U",
+        "youtubeId": "UCEXuPfYt1M3e8DT1LDeSfVg",
+        "address": "Museumstraat 1, 1071 XX",
         "city": "Amsterdam, Netherlands",
         "website": "http: //rijksmuseum.github.io/",
         "image": "../images/rijksmuseum.jpg",
         "artwork": "https://www.rijksmuseum.nl/nl/rijksstudio?ii=3&p=0&from=2018-03-12T19%3A21%3A31.2689755Z",
         "artwork2": "",
-        "youtube2": "",
+        "youtubeId2": "",
         "cssClass": "six"
     }];
 
@@ -87,11 +87,9 @@ function populateFeatThumbnails(featuredMuseums) {
         buildTheHtmlOutput += '<div class="img-div">';
         buildTheHtmlOutput += '<p>' + featuredMuseumsValue.city + '</p>';
         buildTheHtmlOutput += '<ul>';
-        console.log(featuredMuseumsValue.youTubeId);
-        console.log(featuredMuseumsValue.youtube2);
         if (!featuredMuseumsValue.artwork) { //Displays The Field Museums Second YouTube Channel instead of Online Gallery Link
             buildTheHtmlOutput += '<li>';
-            buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youtube2 + '" target="_blank">The Brain Scoop</a>';
+            buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youtubeId2 + '" target="_blank">The Brain Scoop</a>';
             buildTheHtmlOutput += '</li>';
         } else {
             buildTheHtmlOutput += '<li>';
@@ -100,7 +98,7 @@ function populateFeatThumbnails(featuredMuseums) {
         }
         //        (!featuredMuseumsValue.artwork) ?
         buildTheHtmlOutput += '<li>';
-        buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youTubeId + '" target="_blank">Youtube Channel</a>';
+        buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youtubeIdubeId + '" target="_blank">Youtube Channel</a>';
         buildTheHtmlOutput += '</li>';
         buildTheHtmlOutput += '</ul>';
         buildTheHtmlOutput += '</div>';
