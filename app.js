@@ -565,8 +565,20 @@ function createMarker(place) {
     google.maps.event.addListener(markers, 'click', function () {
 
         var currentPlace = '';
+        var currentPhoto = '';
+
+        if (!place.photos[0].getUrl({
+                maxHeight: 640
+            })) {
+            currentPhoto = place.photos[0].getUrl({
+                maxHeight: 640
+            })
+        }
 
         currentPlace += '{';
+        currentPlace += '"photo":' + place.photos[0].getUrl({
+            maxHeight: 640
+        }) + ','; //address
         currentPlace += '"address":' + place.vincinity + ','; //address
         currentPlace += '"types":' + place.types;
         currentPlace += '}';
@@ -575,8 +587,10 @@ function createMarker(place) {
 
         console.log(place);
         console.log(place.photos[0].getUrl({
-            maxWidth: 640
+            maxHeight: 640
         }));
+        console.log(JSON.parse(currentPlace));
+
         var request = {
             reference: place.reference
         };
@@ -840,11 +854,6 @@ function populateFeatMuseum(index) {
     buildTheHtmlOutput += '</span>';
     buildTheHtmlOutput += '</div>';
 
-    //    console.log('url(' + featuredMuseums[index].image + ')');
-    //    $('#museum-info-page').find('.museum-img').css({
-    //        "background-image": "url(" + featuredMuseums[index].image + ")"
-    //    })
-
 
     console.log(buildTheHtmlOutput);
     //use the HTML output to show it in the index.html
@@ -853,6 +862,16 @@ function populateFeatMuseum(index) {
     getDataFromYouTube(featuredMuseums[index].youtubeId, featuredMuseums[index].name);
 
 };
+
+function populateMapMuseum() {
+    console.log("populateMapMuseum ran");
+    var buildTheHtmlOutput = "";
+
+
+    $("#info-container").html(buildTheHtmlOutput);
+
+    getDataFromYouTube()
+}
 
 
 //STEP 1 Populate the Parks options
@@ -866,7 +885,7 @@ function renderMuseumPage(place) {
     checkIfFeatured(place.id); //function to check if place is featured museum
     changeMapStyle();
     findYoutubeChannel(place.name);
-    getDataFromYouTube();
+    populateMapMuseum();
 
     displayMuseumPage();
 }
