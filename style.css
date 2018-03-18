@@ -261,7 +261,7 @@ h4 {
 }
 
 
-.js-results-section {
+.yt-results-section {
     max-width: 800px;
     width: 100%;
     margin: 20px auto;
@@ -278,8 +278,7 @@ h4 {
 .thumbnail-div {
     display: inline-block;
     width: 32%;
-    background-color: #073E57;
-    color: whitesmoke;
+    /*    background-color: #073E57;*/
 }
 
 .thumbnail-div h3 {
@@ -288,6 +287,7 @@ h4 {
     font-size: 16px;
     margin: 8px 0;
     text-align: center;
+    color: black;
 }
 
 .featured-wrapper a:-webkit-any-link {
