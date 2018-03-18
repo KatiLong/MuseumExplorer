@@ -82,7 +82,7 @@ function populateFeatThumbnails(featuredMuseums) {
 
     $.each(featuredMuseums, function (featuredMuseumsIndex, featuredMuseumsValue) {
         //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
-        buildTheHtmlOutput += '<div class="featured-div ' + featuredMuseumsValue.cssClass + ' js-' + (featuredMuseumsIndex + 1) + '">';
+        buildTheHtmlOutput += '<div class="featured-div ' + featuredMuseumsValue.cssClass + ' js-' + (featuredMuseumsIndex) + '">';
         buildTheHtmlOutput += '<h4>' + featuredMuseumsValue.name + '</h4>';
         buildTheHtmlOutput += '<div class="img-div">';
         buildTheHtmlOutput += '<p>' + featuredMuseumsValue.city + '</p>';
@@ -113,7 +113,8 @@ function populateFeatMuseum(index) {
     console.log(`Populate Featured Museum ran, index is ${index}`);
     var buildTheHtmlOutput = "";
 
-    buildTheHtmlOutput += '<div class="museum-img"></div>';
+
+    buildTheHtmlOutput += '<div class="museum-img" style="background-image: url(' + featuredMuseums[index].image + ')"></div>';
     buildTheHtmlOutput += '<span class="text-container">';
     buildTheHtmlOutput += '<h2>' + featuredMuseums[index].name + '</h2>';
     buildTheHtmlOutput += '<p>' + featuredMuseums[index].address + '</p>';
@@ -122,9 +123,17 @@ function populateFeatMuseum(index) {
     buildTheHtmlOutput += '</span>';
     buildTheHtmlOutput += '</div>';
 
+    //    console.log('url(' + featuredMuseums[index].image + ')');
+    //    $('#museum-info-page').find('.museum-img').css({
+    //        "background-image": "url(" + featuredMuseums[index].image + ")"
+    //    })
+
+
     console.log(buildTheHtmlOutput);
     //use the HTML output to show it in the index.html
-    $("#museum-info-page").prepend(buildTheHtmlOutput);
+    $("#info-container").html(buildTheHtmlOutput);
+
+    getDataFromYouTube(featuredMuseums[index].youtubeId, featuredMuseums[index].name);
 
 };
 
@@ -757,7 +766,7 @@ function findYoutubeChannel(searchTerm) {
         .done(function (result) {
             /* if the results are meeningful, we can just console.log them */
             console.log(result);
-            findChannel(result);
+            identifyChannelResult(result);
             // YTchannelId = result.items[0].id.channelId;
             // console.log(result.items[0].id.channelId)
             // getDataFromYouTube(result.items[0].id.channelId);
@@ -771,15 +780,16 @@ function findYoutubeChannel(searchTerm) {
 }
 
 
-function findChannel(data) {
+function identifyChannelResult(data) {
     var foundElem = [];
     //searches results for Youtube Channels
     data.items.forEach(function (elem) {
         if (elem.id.kind === 'youtube#channel') {
-            console.log(elem);
             foundElem.push(elem);
         }
     })
+
+    console.log(foundElem);
     // Use filterChannel function to check returned channels for viability
     //    foundElem.forEach(filterChannel)
 
@@ -833,7 +843,7 @@ function displayResults(data, channel) {
     console.log(`Display Results ran`);
     console.log(data);
     const results = data.items.map((elem, index) => generateResults(elem));
-    $('.js-results-section').html(`<h2 id="results-str">${channel} Channel Videos</h2> <p>I'm Emily, the Chief Curiosity Correspondent of The Field Museum in Chicago, former volunteer of the University of Montana Zoological Museum, and I'd like to share some of the amazing things we have in the collection with the Internet!</p>`);
+    $('.js-results-section').html(`<h2 id="results-str">${channel} Channel Videos</h2>`);
     $('.js-results-section').append(results);
 }
 // function that generates results string
@@ -910,7 +920,6 @@ $('.featured-wrapper').on('click', '.featured-div', function (event) {
     let currentTarget = $(event.currentTarget).closest('.featured-div').attr('class');
     //Generate Museum Info
     populateFeatMuseum(currentTarget[currentTarget.length - 1]);
-
     //Hide Map Main
     //Display Museum Info Main
     changeFeaturedStyle();

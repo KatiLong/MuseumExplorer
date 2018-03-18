@@ -290,7 +290,7 @@ h4 {
     text-align: center;
 }
 
-a:-webkit-any-link {
+.featured-wrapper a:-webkit-any-link {
     color: whitesmoke;
     cursor: pointer;
     text-decoration: underline;
