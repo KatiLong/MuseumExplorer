@@ -131,11 +131,10 @@ function populateFeatMuseum(index) {
 };
 
 function findFeaturedClass(target) {
-    var index;
-    var classStr = $(target).closest('.featured-div').find('class');
+    var index, classStr, indexClass;
+    //    classStr = $(target).closest('.featured-div').attr('class').split(' ');
+    //    indexClass = classStr[classStr.length - 1]; //last class
 
-
-    classStr = '';
 
     return index;
 }
@@ -916,12 +915,14 @@ function changeFeaturedStyle() {
 }
 
 //Click on featured museum
-$('.featured-wrapper').on('click', '.featured-div', function () {
-    let currentTarget = this;
+$('.featured-wrapper').on('click', '.featured-div', function (event) {
+    //string of the current Featured div classes
+    let currentTarget = $(event.currentTarget).closest('.featured-div').attr('class');
     //Generate Museum Info
-    findFeaturedClass(currentTarget);
+    findFeaturedClass(currentTarget[currentTarget.length - 1]);
     //    populateFeatMuseum(findFeaturedClass(currentTarget));
-
+    console.log('current target is: ' + currentTarget);
+    console.log();
 
     //Hide Map Main
     //Display Museum Info Main
