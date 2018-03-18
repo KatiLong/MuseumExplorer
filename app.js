@@ -110,11 +110,8 @@ function populateFeatThumbnails(featuredMuseums) {
 }
 
 function populateFeatMuseum(index) {
-    console.log(`render Featured Museum ran, target is ${target}`);
+    console.log(`Populate Featured Museum ran, index is ${index}`);
     var buildTheHtmlOutput = "";
-
-    //.split
-    //.parseInt
 
     buildTheHtmlOutput += '<div class="museum-img"></div>';
     buildTheHtmlOutput += '<span class="text-container">';
@@ -125,19 +122,12 @@ function populateFeatMuseum(index) {
     buildTheHtmlOutput += '</span>';
     buildTheHtmlOutput += '</div>';
 
+    console.log(buildTheHtmlOutput);
     //use the HTML output to show it in the index.html
-    $(".museum-info-page").html(buildTheHtmlOutput);
+    $("#museum-info-page").prepend(buildTheHtmlOutput);
 
 };
 
-function findFeaturedClass(target) {
-    var index, classStr, indexClass;
-    //    classStr = $(target).closest('.featured-div').attr('class').split(' ');
-    //    indexClass = classStr[classStr.length - 1]; //last class
-
-
-    return index;
-}
 
 //STEP 1 Populate the Parks options
 
@@ -919,10 +909,7 @@ $('.featured-wrapper').on('click', '.featured-div', function (event) {
     //string of the current Featured div classes
     let currentTarget = $(event.currentTarget).closest('.featured-div').attr('class');
     //Generate Museum Info
-    findFeaturedClass(currentTarget[currentTarget.length - 1]);
-    //    populateFeatMuseum(findFeaturedClass(currentTarget));
-    console.log('current target is: ' + currentTarget);
-    console.log();
+    populateFeatMuseum(currentTarget[currentTarget.length - 1]);
 
     //Hide Map Main
     //Display Museum Info Main
