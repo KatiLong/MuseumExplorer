@@ -77,90 +77,6 @@ var featuredMuseums = [{
         "cssClass": "six"
     }];
 
-function populateFeatThumbnails(featuredMuseums) {
-    var buildTheHtmlOutput = "";
-
-    $.each(featuredMuseums, function (featuredMuseumsIndex, featuredMuseumsValue) {
-        //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
-        buildTheHtmlOutput += '<div class="featured-div ' + featuredMuseumsValue.cssClass + ' js-' + (featuredMuseumsIndex) + '">';
-        buildTheHtmlOutput += '<h4>' + featuredMuseumsValue.name + '</h4>';
-        buildTheHtmlOutput += '<div class="img-div">';
-        buildTheHtmlOutput += '<p>' + featuredMuseumsValue.city + '</p>';
-        buildTheHtmlOutput += '<ul>';
-        if (!featuredMuseumsValue.artwork) { //Displays The Field Museums Second YouTube Channel instead of Online Gallery Link
-            buildTheHtmlOutput += '<li>';
-            buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youtubeId2 + '" target="_blank">The Brain Scoop</a>';
-            buildTheHtmlOutput += '</li>';
-        } else {
-            buildTheHtmlOutput += '<li>';
-            buildTheHtmlOutput += '<a href="' + featuredMuseumsValue.artwork + '" target="_blank">Online Art Gallery</a>';
-            buildTheHtmlOutput += '</li>';
-        }
-        //        (!featuredMuseumsValue.artwork) ?
-        buildTheHtmlOutput += '<li>';
-        buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youtubeIdubeId + '" target="_blank">Youtube Channel</a>';
-        buildTheHtmlOutput += '</li>';
-        buildTheHtmlOutput += '</ul>';
-        buildTheHtmlOutput += '</div>';
-        buildTheHtmlOutput += '</div>';
-    });
-
-    //use the HTML output to show it in the index.html
-    $(".featured-wrapper").html(buildTheHtmlOutput);
-}
-
-function populateFeatMuseum(index) {
-    console.log(`Populate Featured Museum ran, index is ${index}`);
-    var buildTheHtmlOutput = "";
-
-
-    buildTheHtmlOutput += '<div class="museum-img" style="background-image: url(' + featuredMuseums[index].image + ')"></div>';
-    buildTheHtmlOutput += '<span class="text-container">';
-    buildTheHtmlOutput += '<h2>' + featuredMuseums[index].name + '</h2>';
-    buildTheHtmlOutput += '<p>' + featuredMuseums[index].address + '</p>';
-    buildTheHtmlOutput += '<p>' + featuredMuseums[index].city + '</p>';
-    buildTheHtmlOutput += '<p>Website: <a href="' + featuredMuseums[index].website + '">' + featuredMuseums[index].website + '</a></p>';
-    buildTheHtmlOutput += '</span>';
-    buildTheHtmlOutput += '</div>';
-
-    //    console.log('url(' + featuredMuseums[index].image + ')');
-    //    $('#museum-info-page').find('.museum-img').css({
-    //        "background-image": "url(" + featuredMuseums[index].image + ")"
-    //    })
-
-
-    console.log(buildTheHtmlOutput);
-    //use the HTML output to show it in the index.html
-    $("#info-container").html(buildTheHtmlOutput);
-
-    getDataFromYouTube(featuredMuseums[index].youtubeId, featuredMuseums[index].name);
-
-};
-
-
-//STEP 1 Populate the Parks options
-
-//STEP 2 - get the input from the user
-
-
-//STEP 3 - Results of park information from the external API will be returned(fullName, description, weatherInfo, states, directionsInfo, url)
-
-function getMuseumDetails(googleId, youTubeId) {
-    //getDetails call
-
-    //youTube ajax call
-
-}
-
-//var currentFeatInd = 0;
-//
-//function displayFeatured (data) {
-//
-//}
-//
-//function loadMoreFeatured (data) {
-//
-//}
 
 //var resources = [
 //    {
@@ -837,14 +753,14 @@ function getDataFromYouTube(channelId, channelTitle) {
             console.log(errorThrown);
         });
 }
-///////////////////////////////////////////////////////////////////////////////////////\
+
 
 function displayResults(data, channel) {
     console.log(`Display Results ran`);
     console.log(data);
     const results = data.items.map((elem, index) => generateResults(elem));
-    $('.js-results-section').html(`<h2 id="results-str">${channel} Channel Videos</h2>`);
-    $('.js-results-section').append(results);
+    $('.yt-results-section').html(`<h2 id="results-str">${channel} Channel Videos</h2>`);
+    $('.yt-results-section').append(results);
 }
 // function that generates results string
 function generateResults(elem) {
@@ -875,7 +791,75 @@ $('.featured-wrapper').on('mouseenter', '.featured-div', function (event) {
     })
 });
 
-//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+
+function populateFeatThumbnails(featuredMuseums) {
+    var buildTheHtmlOutput = "";
+
+    $.each(featuredMuseums, function (featuredMuseumsIndex, featuredMuseumsValue) {
+        //create and populate one LI for each of the results ( "+=" means concatenate to the previous one)
+        buildTheHtmlOutput += '<div class="featured-div ' + featuredMuseumsValue.cssClass + ' js-' + (featuredMuseumsIndex) + '">';
+        buildTheHtmlOutput += '<h4>' + featuredMuseumsValue.name + '</h4>';
+        buildTheHtmlOutput += '<div class="img-div">';
+        buildTheHtmlOutput += '<p>' + featuredMuseumsValue.city + '</p>';
+        buildTheHtmlOutput += '<ul>';
+        if (!featuredMuseumsValue.artwork) { //Displays The Field Museums Second YouTube Channel instead of Online Gallery Link
+            buildTheHtmlOutput += '<li>';
+            buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youtubeId2 + '" target="_blank">The Brain Scoop</a>';
+            buildTheHtmlOutput += '</li>';
+        } else {
+            buildTheHtmlOutput += '<li>';
+            buildTheHtmlOutput += '<a href="' + featuredMuseumsValue.artwork + '" target="_blank">Online Art Gallery</a>';
+            buildTheHtmlOutput += '</li>';
+        }
+        //        (!featuredMuseumsValue.artwork) ?
+        buildTheHtmlOutput += '<li>';
+        buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youtubeIdubeId + '" target="_blank">Youtube Channel</a>';
+        buildTheHtmlOutput += '</li>';
+        buildTheHtmlOutput += '</ul>';
+        buildTheHtmlOutput += '</div>';
+        buildTheHtmlOutput += '</div>';
+    });
+
+    //use the HTML output to show it in the index.html
+    $(".featured-wrapper").html(buildTheHtmlOutput);
+}
+
+function populateFeatMuseum(index) {
+    console.log(`Populate Featured Museum ran, index is ${index}`);
+    var buildTheHtmlOutput = "";
+
+
+    buildTheHtmlOutput += '<div class="museum-img" style="background-image: url(' + featuredMuseums[index].image + ')"></div>';
+    buildTheHtmlOutput += '<span class="text-container">';
+    buildTheHtmlOutput += '<h2>' + featuredMuseums[index].name + '</h2>';
+    buildTheHtmlOutput += '<p>' + featuredMuseums[index].address + '</p>';
+    buildTheHtmlOutput += '<p>' + featuredMuseums[index].city + '</p>';
+    buildTheHtmlOutput += '<p>Website: <a href="' + featuredMuseums[index].website + '">' + featuredMuseums[index].website + '</a></p>';
+    buildTheHtmlOutput += '</span>';
+    buildTheHtmlOutput += '</div>';
+
+    //    console.log('url(' + featuredMuseums[index].image + ')');
+    //    $('#museum-info-page').find('.museum-img').css({
+    //        "background-image": "url(" + featuredMuseums[index].image + ")"
+    //    })
+
+
+    console.log(buildTheHtmlOutput);
+    //use the HTML output to show it in the index.html
+    $("#info-container").html(buildTheHtmlOutput);
+
+    getDataFromYouTube(featuredMuseums[index].youtubeId, featuredMuseums[index].name);
+
+};
+
+
+//STEP 1 Populate the Parks options
+//STEP 2 - get the input from the user
+//STEP 3 - Results of park information from the external API will be returned(fullName, description, weatherInfo, states, directionsInfo, url)
+
+
 //Click on museum from Map
 
 function renderMuseumPage(place) {
