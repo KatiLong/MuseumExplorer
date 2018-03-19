@@ -58,7 +58,7 @@ var featuredMuseums = [{
         "city": "London, England",
         "website": "http://www.britishmuseum.org/",
         "image": "../images/british-museum.jpg",
-        "artwork": "Preview: http://www.britishmuseum.org/research/collection_online/search.aspx\nPreview: https://britishmuseum.withgoogle.com",
+        "artwork": "https://www.britishmuseum.org/research/collection_online/search.aspx",
         "artwork2": "",
         "youtubeId2": "",
         "cssClass": "five"
@@ -432,26 +432,26 @@ function initMap() {
         lat: 0,
         lng: 0
     }
-    var NYC = {
-        lat: 40.749460,
-        lng: -73.988631
-    };
-    var Wellington = {
-        lat: -41.2865,
-        lng: 174.7762
-    };
-    var Paris = {
-        lat: 48.8566,
-        lng: 2.3522
-    }
-    var Motor = {
-        lat: 50.8230,
-        lng: -1.4536
-    }
-    var Wight = {
-        lat: 50.7005,
-        lng: -1.2930
-    }
+    //    var NYC = {
+    //        lat: 40.749460,
+    //        lng: -73.988631
+    //    };
+    //    var Wellington = {
+    //        lat: -41.2865,
+    //        lng: 174.7762
+    //    };
+    //    var Paris = {
+    //        lat: 48.8566,
+    //        lng: 2.3522
+    //    }
+    //    var Motor = {
+    //        lat: 50.8230,
+    //        lng: -1.4536
+    //    }
+    //    var Wight = {
+    //        lat: 50.7005,
+    //        lng: -1.2930
+    //    }
     var markers = [];
 
     map = new google.maps.Map(document.getElementById('map'), {
@@ -528,7 +528,7 @@ function initMap() {
         map.fitBounds(bounds);
 
         $('#pac-input').val('');
-        //        map.setZoom(12);
+        map.setZoom(10);
         //       //console.log(markers);
         //   });
         //        searchBox.val('');
@@ -674,21 +674,18 @@ function findYoutubeChannel(searchTerm) {
         .done(function (result) {
             /* if the results are meeningful, we can just //console.log them */
             //console.log(result);
-            identifyChannelResult(result);
-            // YTchannelId = result.items[0].id.channelId;
-            // //console.log(result.items[0].id.channelId)
-            // getDataFromYouTube(result.items[0].id.channelId);
+            identifyChannelResult(result, searchTerm);
         })
         /* if the call is NOT successful show errors */
         .fail(function (jqXHR, error, errorThrown) {
-            //console.log(jqXHR);
-            //console.log(error);
-            //console.log(errorThrown);
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
         });
 }
 
 
-function identifyChannelResult(data) {
+function identifyChannelResult(data, searchTerm) {
     var foundElem = [];
     //searches results for Youtube Channels
     data.items.forEach(function (elem) {
@@ -700,14 +697,14 @@ function identifyChannelResult(data) {
     //console.log(foundElem);
     // Use filterChannel function to check returned channels for viability
     //    foundElem.forEach(filterChannel)
-
+    console.log(searchTerm + ' channel');
     //returns first channel result
     if (foundElem.length > 0) {
         //console.log(foundElem[0].id.channelId);
         getDataFromYouTube(foundElem[0].id.channelId, foundElem[0].snippet.channelTitle);
     } else {
         console.log("No channel found");
-
+        $('.yt-results-section').html('');
     }
 }
 
@@ -753,8 +750,8 @@ function displayResults(data, channel) {
     //console.log(data);
     const results = data.items.map((elem, index) => generateResults(elem));
     //add conditional
-
     //if empty, display no results
+
 
     //if returns results, run functions below
     $('.yt-results-section').html(`<h2 id="results-str">${channel} Channel Videos</h2>`);
@@ -955,6 +952,9 @@ function changeFeaturedStyle() {
     $('#featured-museums').css({
         "border-top": "none"
     })
+    $('.thumbnail-div').css({
+        "width": "44%"
+    })
 }
 
 //Click on featured museum
@@ -967,6 +967,7 @@ $('.featured-wrapper').on('click', '.featured-div', function (event) {
     //Display Museum Info Main
     changeFeaturedStyle();
     displayFeatMuseum();
+
 })
 
 

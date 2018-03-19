@@ -13,7 +13,7 @@
         <h3>Use the map to search for museums by name or location, or browse Featured Museums below</h3>
     </header>
 
-    <main role="main" class="google-map">
+    <main role="main" class="google-map" style="display: none;">
         <input id="pac-input" class="controls" type="text" placeholder="Enter a location or museum name">
         <!-- <button type='button' class="controls">Search</button> -->
         <section id="map"></section>
@@ -100,132 +100,142 @@
         </div>
     </main>
 
-    <main id="museum-info-page" style="display: none;">
+    <main id="museum-info-page">
         <div id="info-container">
-            <!--
-<div class="museum-img"></div>
-<span class="text-container">
+            <div class="museum-img">
+            </div>
+            <span class="text-container">
                 <h2>The Field Museum</h2>
                 <p>1400 S Lake Shore Dr, Chicago, IL 60605, USA</p>
                 <p>Website: <a href="https://www.fieldmuseum.org/">https://www.fieldmuseum.org/</a></p>
                 <p>Rating: 4.5</p>
             </span>
--->
         </div>
+        <div id="results-wrapper">
+            <div class="yt-results-section">
+                <h2 id="results-str">
+                    The Field Museum Channel Videos</h2>
+                <div class="thumbnail-div">
+                    <a href="https://www.youtube.com/watch?v=OM7WJpVDi8E" target="_blank">
+                        <img src="https://i.ytimg.com/vi/OM7WJpVDi8E/mqdefault.jpg" class="thumbnail-img">
+                        <h3 class="video-title">Horns vs. Antlers</h3>
+                    </a>
+                </div>
+                <div class="thumbnail-div">
+                    <a href="https://www.youtube.com/watch?v=vn6heiOkloE" target="_blank">
+                        <img src="https://i.ytimg.com/vi/vn6heiOkloE/mqdefault.jpg" class="thumbnail-img">
+                        <h3 class="video-title">I waited 4+ years for this: the World Taxidermy Championships!</h3>
+                    </a>
+                </div>
+                <div class="thumbnail-div">
+                    <a href="https://www.youtube.com/watch?v=3ViOua7rz6E" target="_blank">
+                        <img src="https://i.ytimg.com/vi/3ViOua7rz6E/mqdefault.jpg" class="thumbnail-img">
+                        <h3 class="video-title">Ask Emily #1</h3>
+                    </a>
+                </div>
+                <div class="thumbnail-div">
+                    <a href="https://www.youtube.com/watch?v=JZTTckEIaDI" target="_blank">
+                        <img src="https://i.ytimg.com/vi/JZTTckEIaDI/mqdefault.jpg" class="thumbnail-img">
+                        <h3 class="video-title">Chicago Adventure, Part One: Beetles 'n Bats</h3>
+                    </a>
+                </div>
+                <div class="thumbnail-div">
+                    <a href="https://www.youtube.com/watch?v=bUlogQh_pCI" target="_blank">
+                        <img src="https://i.ytimg.com/vi/bUlogQh_pCI/mqdefault.jpg" class="thumbnail-img">
+                        <h3 class="video-title">The Brain Scoop</h3>
+                    </a>
+                </div>
+                <div class="thumbnail-div">
+                    <a href="https://www.youtube.com/watch?v=BCIviuuWumg" target="_blank">
+                        <img src="https://i.ytimg.com/vi/BCIviuuWumg/mqdefault.jpg" class="thumbnail-img">
+                        <h3 class="video-title">Bloopers, Deleted Scenes, and Other Oddities, Part Seven</h3>
+                    </a>
+                </div>
+                <div class="thumbnail-div">
+                    <a href="https://www.youtube.com/watch?v=2NygtUEvY9k" target="_blank">
+                        <img src="https://i.ytimg.com/vi/2NygtUEvY9k/mqdefault.jpg" class="thumbnail-img">
+                        <h3 class="video-title">Mammoths vs. Mastodons: Can we 'de-extinct' them both?</h3>
+                    </a>
+                </div>
+                <div class="thumbnail-div">
+                    <a href="https://www.youtube.com/watch?v=2_y7n7OGslg" target="_blank">
+                        <img src="https://i.ytimg.com/vi/2_y7n7OGslg/mqdefault.jpg" class="thumbnail-img">
+                        <h3 class="video-title">What is a Museum?</h3>
+                    </a>
+                </div>
+                <div class="thumbnail-div">
+                    <a href="https://www.youtube.com/watch?v=8bf4LvptPyY" target="_blank">
+                        <img src="https://i.ytimg.com/vi/8bf4LvptPyY/mqdefault.jpg" class="thumbnail-img">
+                        <h3 class="video-title">Ask Emily #6</h3>
+                    </a>
+                </div>
 
-        <div class="yt-results-section">
-            <h2 id="results-str">The Field Museum Channel Videos</h2>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=OM7WJpVDi8E" target="_blank">
-                    <img src="https://i.ytimg.com/vi/OM7WJpVDi8E/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Horns vs. Antlers</h3>
-                </a>
             </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=vn6heiOkloE" target="_blank">
-                    <img src="https://i.ytimg.com/vi/vn6heiOkloE/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">I waited 4+ years for this: the World Taxidermy Championships!</h3>
-                </a>
+            <div class="results-section-2">
+                <a href=""></a>
+                <h2 id="results-str">
+                    Online Artwork</h2>
+                <img src="../images/met-screenshot.jpg" alt="The Met's online works" class="art-preview">
+                <!--
+<h2 id="results-str">The Brain Scoop Channel Videos</h2>
+<div class="thumbnail-div">
+<a href="https://www.youtube.com/watch?v=OM7WJpVDi8E" target="_blank">
+<img src="https://i.ytimg.com/vi/OM7WJpVDi8E/mqdefault.jpg" class="thumbnail-img">
+<h3 class="video-title">Horns vs. Antlers</h3>
+</a>
+</div>
+<div class="thumbnail-div">
+<a href="https://www.youtube.com/watch?v=vn6heiOkloE" target="_blank">
+<img src="https://i.ytimg.com/vi/vn6heiOkloE/mqdefault.jpg" class="thumbnail-img">
+<h3 class="video-title">I waited 4+ years for this: the World Taxidermy Championships!</h3>
+</a>
+</div>
+<div class="thumbnail-div">
+<a href="https://www.youtube.com/watch?v=3ViOua7rz6E" target="_blank">
+<img src="https://i.ytimg.com/vi/3ViOua7rz6E/mqdefault.jpg" class="thumbnail-img">
+<h3 class="video-title">Ask Emily #1</h3>
+</a>
+</div>
+<div class="thumbnail-div">
+<a href="https://www.youtube.com/watch?v=JZTTckEIaDI" target="_blank">
+<img src="https://i.ytimg.com/vi/JZTTckEIaDI/mqdefault.jpg" class="thumbnail-img">
+<h3 class="video-title">Chicago Adventure, Part One: Beetles 'n Bats</h3>
+</a>
+</div>
+<div class="thumbnail-div">
+<a href="https://www.youtube.com/watch?v=bUlogQh_pCI" target="_blank">
+<img src="https://i.ytimg.com/vi/bUlogQh_pCI/mqdefault.jpg" class="thumbnail-img">
+<h3 class="video-title">The Brain Scoop</h3>
+</a>
+</div>
+<div class="thumbnail-div">
+<a href="https://www.youtube.com/watch?v=BCIviuuWumg" target="_blank">
+<img src="https://i.ytimg.com/vi/BCIviuuWumg/mqdefault.jpg" class="thumbnail-img">
+<h3 class="video-title">Bloopers, Deleted Scenes, and Other Oddities, Part Seven</h3>
+</a>
+</div>
+<div class="thumbnail-div">
+<a href="https://www.youtube.com/watch?v=2NygtUEvY9k" target="_blank">
+<img src="https://i.ytimg.com/vi/2NygtUEvY9k/mqdefault.jpg" class="thumbnail-img">
+<h3 class="video-title">Mammoths vs. Mastodons: Can we 'de-extinct' them both?</h3>
+</a>
+</div>
+<div class="thumbnail-div">
+<a href="https://www.youtube.com/watch?v=2_y7n7OGslg" target="_blank">
+<img src="https://i.ytimg.com/vi/2_y7n7OGslg/mqdefault.jpg" class="thumbnail-img">
+<h3 class="video-title">What is a Museum?</h3>
+</a>
+</div>
+<div class="thumbnail-div">
+<a href="https://www.youtube.com/watch?v=8bf4LvptPyY" target="_blank">
+<img src="https://i.ytimg.com/vi/8bf4LvptPyY/mqdefault.jpg" class="thumbnail-img">
+<h3 class="video-title">Ask Emily #6</h3>
+</a>
+</div>
+-->
+
             </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=3ViOua7rz6E" target="_blank">
-                    <img src="https://i.ytimg.com/vi/3ViOua7rz6E/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Ask Emily #1</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=JZTTckEIaDI" target="_blank">
-                    <img src="https://i.ytimg.com/vi/JZTTckEIaDI/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Chicago Adventure, Part One: Beetles 'n Bats</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=bUlogQh_pCI" target="_blank">
-                    <img src="https://i.ytimg.com/vi/bUlogQh_pCI/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">The Brain Scoop</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=BCIviuuWumg" target="_blank">
-                    <img src="https://i.ytimg.com/vi/BCIviuuWumg/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Bloopers, Deleted Scenes, and Other Oddities, Part Seven</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=2NygtUEvY9k" target="_blank">
-                    <img src="https://i.ytimg.com/vi/2NygtUEvY9k/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Mammoths vs. Mastodons: Can we 'de-extinct' them both?</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=2_y7n7OGslg" target="_blank">
-                    <img src="https://i.ytimg.com/vi/2_y7n7OGslg/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">What is a Museum?</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=8bf4LvptPyY" target="_blank">
-                    <img src="https://i.ytimg.com/vi/8bf4LvptPyY/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Ask Emily #6</h3>
-                </a>
-            </div>
-        </div>
-        <div class="yt-results-section-2" style="display: none;">
-            <h2 id="results-str">The Brain Scoop Channel Videos</h2>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=OM7WJpVDi8E" target="_blank">
-                    <img src="https://i.ytimg.com/vi/OM7WJpVDi8E/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Horns vs. Antlers</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=vn6heiOkloE" target="_blank">
-                    <img src="https://i.ytimg.com/vi/vn6heiOkloE/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">I waited 4+ years for this: the World Taxidermy Championships!</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=3ViOua7rz6E" target="_blank">
-                    <img src="https://i.ytimg.com/vi/3ViOua7rz6E/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Ask Emily #1</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=JZTTckEIaDI" target="_blank">
-                    <img src="https://i.ytimg.com/vi/JZTTckEIaDI/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Chicago Adventure, Part One: Beetles 'n Bats</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=bUlogQh_pCI" target="_blank">
-                    <img src="https://i.ytimg.com/vi/bUlogQh_pCI/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">The Brain Scoop</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=BCIviuuWumg" target="_blank">
-                    <img src="https://i.ytimg.com/vi/BCIviuuWumg/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Bloopers, Deleted Scenes, and Other Oddities, Part Seven</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=2NygtUEvY9k" target="_blank">
-                    <img src="https://i.ytimg.com/vi/2NygtUEvY9k/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Mammoths vs. Mastodons: Can we 'de-extinct' them both?</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=2_y7n7OGslg" target="_blank">
-                    <img src="https://i.ytimg.com/vi/2_y7n7OGslg/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">What is a Museum?</h3>
-                </a>
-            </div>
-            <div class="thumbnail-div">
-                <a href="https://www.youtube.com/watch?v=8bf4LvptPyY" target="_blank">
-                    <img src="https://i.ytimg.com/vi/8bf4LvptPyY/mqdefault.jpg" class="thumbnail-img">
-                    <h3 class="video-title">Ask Emily #6</h3>
-                </a>
-            </div>
+
         </div>
 
     </main>
