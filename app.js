@@ -416,7 +416,7 @@ var mapStyle = [
 // Client Secret kyGL18H4d80Ag6CD
 
 //Google Maps
-////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////
 // AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM
 const APIkey = 'AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM';
 
@@ -470,7 +470,7 @@ function initMap() {
     infowindow = new google.maps.InfoWindow();
     service = new google.maps.places.PlacesService(map);
 
-    console.log(service);
+    //console.log(service);
     //     service.nearbySearch({
     //       location: NYC,
     //       radius: 50000,
@@ -479,8 +479,8 @@ function initMap() {
     //       // rankby: distance
     //     }, callback);
 
-    console.log(google);
-    // console.log(markers);
+    //console.log(google);
+    // //console.log(markers);
 
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
@@ -488,7 +488,7 @@ function initMap() {
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(input)
 
 
-    /////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener('places_changed', function () {
@@ -499,8 +499,8 @@ function initMap() {
         var place = places[0];
         // places long form
         // var places = new google.maps.places.SearchBox(document.getElementById('pac-input')).getPlaces();
-        console.log(places);
-        console.log(places[0].name);
+        //console.log(places);
+        //console.log(places[0].name);
 
         if (places.length == 0) {
             return;
@@ -529,11 +529,11 @@ function initMap() {
 
         $('#pac-input').val('');
         //        map.setZoom(12);
-        //       console.log(markers);
+        //       //console.log(markers);
         //   });
         //        searchBox.val('');
     });
-    /////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////
     //    searchBox.addListener('blur', function () {
     //        input.val('');
     //    })
@@ -541,9 +541,9 @@ function initMap() {
 
 
 function callback(results, status) {
-    console.log(`status parameter is ${status}`);
-    console.log(results);
-    console.log(results[0].place_id);
+    //console.log(`status parameter is ${status}`);
+    //console.log(results);
+    //console.log(results[0].place_id);
     // getPlaceDetailsById (results[0].place_id);
     if (status === google.maps.places.PlacesServiceStatus.OK) {
         results.forEach(createMarker);
@@ -551,7 +551,7 @@ function callback(results, status) {
 }
 
 function checkIfFeatured(id) {
-    console.log(`Place id is ${id}`);
+    //console.log(`Place id is ${id}`);
 }
 
 function createMarker(place) {
@@ -563,52 +563,30 @@ function createMarker(place) {
 
     // Opens new window when user clicks on marker
     google.maps.event.addListener(markers, 'click', function () {
-
-        var currentPlace = '';
-        var currentPhoto = '';
-
-        if (!place.photos[0].getUrl({
-                maxHeight: 640
-            })) {
-            currentPhoto = place.photos[0].getUrl({
-                maxHeight: 640
-            })
-        }
-
-        currentPlace += '{';
-        currentPlace += '"photo":' + place.photos[0].getUrl({
-            maxHeight: 640
-        }) + ','; //address
-        currentPlace += '"address":' + place.vincinity + ','; //address
-        currentPlace += '"types":' + place.types;
-        currentPlace += '}';
-
-        console.log(currentPlace);
-
-        console.log(place);
-        console.log(place.photos[0].getUrl({
-            maxHeight: 640
-        }));
-        console.log(JSON.parse(currentPlace));
+        var currentWebsite;
 
         var request = {
             reference: place.reference
         };
 
         service.getDetails(request, function (details, status) {
-
-            console.log([
-                details.name,
-                details.formatted_address,
-                details.website,
-                details.rating,
-                details.formatted_phone_number,
-                details.place_id
-            ]);
+            currentWebsite = details.website;
+            console.log(currentWebsite);
+            //console.log([
+            //            details.name,
+            //                details.formatted_address,
+            //                details.website,
+            //                details.rating,
+            //                details.formatted_phone_number,
+            //                details.place_id
+            //            ]);
             // infowindow.open(map, marker);
+            renderMuseumPage(place, currentWebsite);
         });
         //Invoke parent function to display museum info
-        renderMuseumPage(place);
+
+
+
     });
 
     // Shows name when user hovers over markers
@@ -631,7 +609,7 @@ function createMarker(place) {
 //     // For each place, get the icon, name and location.
 //     places.forEach(function(place) {
 //       if (!place.geometry) {
-//         console.log("Returned place contains no geometry");
+//         //console.log("Returned place contains no geometry");
 //         return;
 //       }
 //       var icon = {
@@ -656,13 +634,13 @@ function createMarker(place) {
 //YouTube API
 
 
-// getApiData ('The MET', (data) => console.log(data))
+// getApiData ('The MET', (data) => //console.log(data))
 
 // Function takes in Museum Name from Google as parameter
 // API call using YouTube search to identify if channel is present
 // If Channel is present,
 
-///////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////
 //Google to YouTube "Translator"
 //Language translation for YouTube search Louvre Museum to Musee du Louvre
 //Youtube search parameters for accuracy
@@ -694,18 +672,18 @@ function findYoutubeChannel(searchTerm) {
         })
         /* if the call is successful (status 200 OK) show results */
         .done(function (result) {
-            /* if the results are meeningful, we can just console.log them */
-            console.log(result);
+            /* if the results are meeningful, we can just //console.log them */
+            //console.log(result);
             identifyChannelResult(result);
             // YTchannelId = result.items[0].id.channelId;
-            // console.log(result.items[0].id.channelId)
+            // //console.log(result.items[0].id.channelId)
             // getDataFromYouTube(result.items[0].id.channelId);
         })
         /* if the call is NOT successful show errors */
         .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
+            //console.log(jqXHR);
+            //console.log(error);
+            //console.log(errorThrown);
         });
 }
 
@@ -719,23 +697,24 @@ function identifyChannelResult(data) {
         }
     })
 
-    console.log(foundElem);
+    //console.log(foundElem);
     // Use filterChannel function to check returned channels for viability
     //    foundElem.forEach(filterChannel)
 
     //returns first channel result
     if (foundElem.length > 0) {
-        console.log(foundElem[0].id.channelId);
+        //console.log(foundElem[0].id.channelId);
         getDataFromYouTube(foundElem[0].id.channelId, foundElem[0].snippet.channelTitle);
     } else {
         console.log("No channel found");
+
     }
 }
 
 //Filter functions to be added here
 function filterChannel(foundElem) {
     //filter results by keyword here
-    console.log(`Filter channel results function ran`);
+    //console.log(`Filter channel results function ran`);
 }
 
 function getDataFromYouTube(channelId, channelTitle) {
@@ -755,30 +734,35 @@ function getDataFromYouTube(channelId, channelTitle) {
         })
         /* if the call is successful (status 200 OK) show results */
         .done(function (result) {
-            /* if the results are meeningful, we can just console.log them */
-            console.log(channelTitle);
-            console.log(result);
+            /* if the results are meeningful, we can just //console.log them */
+            //console.log(channelTitle);
+            //console.log(result);
             displayResults(result, channelTitle);
         })
         /* if the call is NOT successful show errors */
         .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
+            //console.log(jqXHR);
+            //console.log(error);
+            //console.log(errorThrown);
         });
 }
 
 
 function displayResults(data, channel) {
-    console.log(`Display Results ran`);
-    console.log(data);
+    //console.log(`Display Results ran`);
+    //console.log(data);
     const results = data.items.map((elem, index) => generateResults(elem));
+    //add conditional
+
+    //if empty, display no results
+
+    //if returns results, run functions below
     $('.yt-results-section').html(`<h2 id="results-str">${channel} Channel Videos</h2>`);
     $('.yt-results-section').append(results);
 }
 // function that generates results string
 function generateResults(elem) {
-    console.log(`generate results ran`);
+    //console.log(`generate results ran`);
     return `
         <div class ="thumbnail-div">
             <a href="https://www.youtube.com/watch?v=${elem.id.videoId}" target=_blank>
@@ -789,7 +773,7 @@ function generateResults(elem) {
 }
 
 
-//////////////////////////////////////////////////////////
+//////////////////////////////
 //CSS Related Listeners
 
 //Lightens div whenever user hovers over entire box, using on-mouseenter/mouseleave for Event Delegation
@@ -805,7 +789,7 @@ $('.featured-wrapper').on('mouseenter', '.featured-div', function (event) {
     })
 });
 
-//////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////
 
 
 function populateFeatThumbnails(featuredMuseums) {
@@ -841,7 +825,7 @@ function populateFeatThumbnails(featuredMuseums) {
 }
 
 function populateFeatMuseum(index) {
-    console.log(`Populate Featured Museum ran, index is ${index}`);
+    //console.log(`Populate Featured Museum ran, index is ${index}`);
     var buildTheHtmlOutput = "";
 
 
@@ -855,7 +839,7 @@ function populateFeatMuseum(index) {
     buildTheHtmlOutput += '</div>';
 
 
-    console.log(buildTheHtmlOutput);
+    //console.log(buildTheHtmlOutput);
     //use the HTML output to show it in the index.html
     $("#info-container").html(buildTheHtmlOutput);
 
@@ -863,14 +847,37 @@ function populateFeatMuseum(index) {
 
 };
 
-function populateMapMuseum() {
-    console.log("populateMapMuseum ran");
+function populateMapMuseum(place, website) {
+    //console.log("populateMapMuseum ran");
     var buildTheHtmlOutput = "";
+    var placePhoto;
+
+    if (!place.photos) {
+        placePhoto = '../images/no-image.jpg'; //no image image
+    } else {
+        //console.log(place.photos[0]);
+        placePhoto = place.photos[0].getUrl({
+            maxHeight: 640
+        })
+    }
+
+    console.log(place);
+    //    console.log(place.photos[0].getUrl({
+    //        maxHeight: 640
+    //    }));
+
+    buildTheHtmlOutput += '<div class="museum-img" style="background-image: url(' + placePhoto + ')"></div>';
+    buildTheHtmlOutput += '<span class="text-container">';
+    buildTheHtmlOutput += '<h2>' + place.name + '</h2>';
+    buildTheHtmlOutput += '<p>' + place.vicinity + '</p>';
+    buildTheHtmlOutput += '<p>Website: <a href="' + website + '">' + website + '</a></p>';
+    buildTheHtmlOutput += '</span>';
+    buildTheHtmlOutput += '</div>';
 
 
     $("#info-container").html(buildTheHtmlOutput);
 
-    getDataFromYouTube()
+    //    getDataFromYouTube()
 }
 
 
@@ -881,23 +888,56 @@ function populateMapMuseum() {
 
 //Click on museum from Map
 
-function renderMuseumPage(place) {
+//        var currentPlace = '';
+//        var currentPhoto;
+//
+//        //?? Throws an error when there is no photo, how to prevent that?`
+//        if (!place.photos) {
+//            currentPhoto = '';
+//        } else {
+//            //console.log(place.photos[0]);
+//            currentPhoto = place.photos[0].getUrl({
+//                maxHeight: 640
+//            })
+//        }
+//
+//        currentPlace += '{';
+//        currentPlace += '"photo":' + currentPhoto + ','; //address
+//        currentPlace += '"address":' + place.vincinity + ','; //address
+//        currentPlace += '"types":' + place.types;
+//        currentPlace += '}';
+//
+//        //console.log(currentPlace);
+//
+//        //console.log(place);
+//        //        //console.log(place.photos[0].getUrl({
+//        //            maxHeight: 640
+//        //        }));
+//        //console.log(JSON.parse(currentPlace));
+
+
+
+function renderMuseumPage(place, website) {
+
+    console.log(website);
+
     checkIfFeatured(place.id); //function to check if place is featured museum
+
     changeMapStyle();
     findYoutubeChannel(place.name);
-    populateMapMuseum();
+    populateMapMuseum(place, website);
 
     displayMuseumPage();
 }
 
 function displayMuseumPage() {
-    console.log(`display museum page ran`);
+    //console.log(`display museum page ran`);
     $('#featured-museums').hide();
     $('#museum-info-page').show();
 }
 
 function changeMapStyle() {
-    console.log('changeMapStyle ran');
+    //console.log('changeMapStyle ran');
     $('#map').css({
         "height": "275px",
         "max-width": "725px"
@@ -906,7 +946,7 @@ function changeMapStyle() {
 
 
 function displayFeatMuseum() {
-    console.log("displayFeatMuseum's ran");
+    //console.log("displayFeatMuseum's ran");
     $('#map').hide();
     $('#museum-info-page').show();
 }
