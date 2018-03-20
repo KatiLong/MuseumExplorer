@@ -534,7 +534,7 @@ function initMap() {
         map.fitBounds(bounds);
 
         $('#pac-input').val('');
-        map.setZoom(10);
+        //        map.setZoom(10);
         //       //console.log(markers);
         //   });
         //        searchBox.val('');
@@ -784,7 +784,7 @@ function displayResults(data, channel, id) {
     //    `<a href="https://www.youtube.com/channel/ + ${id} + '" target="_blank">View Youtube Channel</a>`;
 
     //if returns results, run functions below
-    $('.yt-results-section').html(`<h2 id="results-str">${channel} Channel Videos</h2> <a href="https://www.youtube.com/channel/${id}" target="_blank"><p>View on Youtube</p></a>`);
+    $('.yt-results-section').html(`<h2 id="results-str"><a href="https://www.youtube.com/channel/${id}" target="_blank">${channel} Channel Videos</a></h2>`);
     $('.yt-results-section').append(results);
 }
 // function that generates results string

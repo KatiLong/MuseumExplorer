@@ -74,6 +74,10 @@ h3 {
     font-size: 20px;
 }
 
+a {
+    color: #073E57;
+}
+
 /*Featured Museums Color #255763 #023e58 */
 
 /* Always set the map height explicitly to define the size of the div
@@ -128,10 +132,15 @@ h3 {
     */
 }
 
+#featured-museums a {
+    color: whitesmoke;
+}
+
 .featured-wrapper {
     font-size: 0;
     width: 100%;
 }
+
 
 .row {
     width: 100%;
@@ -310,9 +319,11 @@ h4 {
     margin: 0 auto;
 }
 
+/*
 #info-container a {
     color: #073E57;
 }
+*/
 
 .thumbnail-div {
     display: inline-block;
@@ -321,9 +332,9 @@ h4 {
 }
 
 .thumbnail-div h3 {
-    height: 22px;
+    height: 40px;
     overflow-x: hidden;
-    font-size: 16px;
+    font-size: 15px;
     margin: 8px 0;
     text-align: center;
     color: black;
@@ -342,7 +353,14 @@ h4 {
 #results-str {
     font-size: 22px;
     line-height: 30px;
+    margin: 20px 0;
 }
+
+/*
+#results-str a {
+    color: #073E57
+}
+*/
 
 .video-title {
     -webkit-margin-before: 0;
