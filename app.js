@@ -84,13 +84,8 @@ var featuredMuseums = [{
     }];
 
 
-//var resources = [
-//    {
-//        name: 'Google Arts and Culture Institute',
-//        website: 'https://www.google.com/culturalinstitute/beta/',
-//        features: 'Recently best known for the application that compares your face to artwork, it is an amazing collection of online Art content.'
-//    }
-//]
+/////////////////////////////////////////////////////////////////////////
+//////////////////////// Google Maps ///////////////////////////////////
 
 var mapStyle = [
     {
@@ -418,12 +413,35 @@ var mapStyle = [
         ]
     }
 ]
+
+
+//Google Map Tester Locations
+//    var NYC = {
+//        lat: 40.749460,
+//        lng: -73.988631
+//    };
+//    var Wellington = {
+//        lat: -41.2865,
+//        lng: 174.7762
+//    };
+//    var Paris = {
+//        lat: 48.8566,
+//        lng: 2.3522
+//    }
+//    var Motor = {
+//        lat: 50.8230,
+//        lng: -1.4536
+//    }
+//    var Wight = {
+//        lat: 50.7005,
+//        lng: -1.2930
+//    }
+
 // Client ID zWsHIInzwkCXLA9ZS5q4HAaLOwadiHOi
 // Client Secret kyGL18H4d80Ag6CD
 
-//Google Maps
-////////////////////////////////////////////////////
 // AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM
+
 const APIkey = 'AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM';
 
 var map;
@@ -433,31 +451,12 @@ var bounds;
 
 var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
+// The Map
 function initMap() {
     var Center = {
         lat: 0,
         lng: 0
     }
-    //    var NYC = {
-    //        lat: 40.749460,
-    //        lng: -73.988631
-    //    };
-    //    var Wellington = {
-    //        lat: -41.2865,
-    //        lng: 174.7762
-    //    };
-    //    var Paris = {
-    //        lat: 48.8566,
-    //        lng: 2.3522
-    //    }
-    //    var Motor = {
-    //        lat: 50.8230,
-    //        lng: -1.4536
-    //    }
-    //    var Wight = {
-    //        lat: 50.7005,
-    //        lng: -1.2930
-    //    }
     var markers = [];
 
     map = new google.maps.Map(document.getElementById('map'), {
@@ -476,25 +475,11 @@ function initMap() {
     infowindow = new google.maps.InfoWindow();
     service = new google.maps.places.PlacesService(map);
 
-    //console.log(service);
-    //     service.nearbySearch({
-    //       location: NYC,
-    //       radius: 50000,
-    //       keyword: 'museum',
-    //       maxResults: 20,
-    //       // rankby: distance
-    //     }, callback);
-
-    //console.log(google);
-    // //console.log(markers);
-
     // Create the search box and link it to the UI element.
     var input = document.getElementById('pac-input');
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(input)
 
-
-    ///////////////////////////////////////////////
     // Listen for the event fired when the user selects a prediction and retrieve
     // more details for that place.
     searchBox.addListener('places_changed', function () {
@@ -503,15 +488,15 @@ function initMap() {
 
         var places = searchBox.getPlaces();
         var place = places[0];
+
         // places long form
         // var places = new google.maps.places.SearchBox(document.getElementById('pac-input')).getPlaces();
-        //console.log(places);
-        //console.log(places[0].name);
+
 
         if (places.length == 0) {
             return;
         }
-
+        // Places Search Option: Nearby Search
         service.nearbySearch({
             location: place.geometry.location,
             radius: 40000,
@@ -520,6 +505,7 @@ function initMap() {
             // rankby: distance
         }, callback);
 
+        //Places Search Option: Text Search
         //                        service.textSearch({
         //                                    query: place.name,
         //                                    type: 'museum'               }, callback);
@@ -535,31 +521,19 @@ function initMap() {
 
         $('#pac-input').val('');
         //        map.setZoom(10);
-        //       //console.log(markers);
-        //   });
-        //        searchBox.val('');
+
     });
-    ///////////////////////////////////////////////
-    //    searchBox.addListener('blur', function () {
-    //        input.val('');
-    //    })
 }
 
-
+//callback function as dictated by Google Maps API
 function callback(results, status) {
     //console.log(`status parameter is ${status}`);
-    //console.log(results);
-    //console.log(results[0].place_id);
-    // getPlaceDetailsById (results[0].place_id);
+
     if (status === google.maps.places.PlacesServiceStatus.OK) {
         results.forEach(createMarker);
     }
 }
-
-function checkIfFeatured(id) {
-    //console.log(`Place id is ${id}`);
-}
-
+//creates markers for each museum found by NearbySearch
 function createMarker(place) {
     markers = new google.maps.Marker({
         map: map,
@@ -567,7 +541,7 @@ function createMarker(place) {
         icon: iconBase + 'museum_maps.png'
     });
 
-    // Opens new window when user clicks on marker
+    // Displays Museum's info when user clicks on Marker
     google.maps.event.addListener(markers, 'click', function () {
         var currentWebsite;
 
@@ -589,10 +563,6 @@ function createMarker(place) {
             // infowindow.open(map, marker);
             renderMuseumPage(place, currentWebsite);
         });
-        //Invoke parent function to display museum info
-
-
-
     });
 
     // Shows name when user hovers over markers
@@ -612,27 +582,8 @@ function createMarker(place) {
 // markers = [];
 
 
-//     // For each place, get the icon, name and location.
-//     places.forEach(function(place) {
-//       if (!place.geometry) {
-//         //console.log("Returned place contains no geometry");
-//         return;
-//       }
-//       var icon = {
-//         url: place.icon,
-//         size: new google.maps.Size(71, 71),
-//         origin: new google.maps.Point(0, 0),
-//         anchor: new google.maps.Point(17, 34),
-//         scaledSize: new google.maps.Size(25, 25)
-//       };
-
-//       // Create a marker for each place.
-//       markers.push(new google.maps.Marker({
-//         map: map,
-//         icon: icon,
-//         title: place.name,
-//         position: place.geometry.location
-//       }));
+//End of Google Maps//
+/////////////////////////////////////////////////////////////////////////////////////
 
 
 //Google Street View
@@ -642,9 +593,6 @@ function createMarker(place) {
 
 // getApiData ('The MET', (data) => //console.log(data))
 
-// Function takes in Museum Name from Google as parameter
-// API call using YouTube search to identify if channel is present
-// If Channel is present,
 
 /////////////////////////////////////////////
 //Google to YouTube "Translator"
@@ -966,7 +914,7 @@ function renderMuseumPage(place, website) {
 
     console.log(website);
 
-    checkIfFeatured(place.id); //function to check if place is featured museum
+    //    checkIfFeatured(place.id); //function to check if place is featured museum
 
     changeMapStyle();
     findYoutubeChannel(place.name);
