@@ -843,16 +843,16 @@ function populateFeatMuseum(index) {
     buildTheHtmlOutput1 += '</div>';
 
     //HTML string for featured Online Content
-    if (index === 3) { //exception for Field Museum format
+    if (index === '3') { //exception for Field Museum format
         console.log('Field Museum was chosen');
         buildTheHtmlOutput2 += '<p>Field Museum was chosen</p>'
-    } else if (index === 4) { // for British Museum Format
+    } else if (index === '4') { // for British Museum Format
         console.log('The British Museum was Chosen')
         buildTheHtmlOutput2 += '<p>The British Museum was Chosen</p>'
         //Online Artwork link, screenshot artwork artwork2
         //Feature interactive Google with title "The Museum of the World"
     } else {
-        buildTheHtmlOutput2 += `<a href="${featuredMuseums[index].artwork}">`;
+        buildTheHtmlOutput2 += `<a href="${featuredMuseums[index].artwork}" target="_blank">`;
         buildTheHtmlOutput2 += `<h2 id="results-str">Online Artwork</h2>`;
         buildTheHtmlOutput2 += '</a>';
         buildTheHtmlOutput2 += `<img src="${featuredMuseums[index].screenshot}" alt="Artwork Gallery Screenshot" class="art-preview">`
