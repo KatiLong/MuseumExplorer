@@ -702,22 +702,46 @@ function identifyChannelResult(data, searchTerm) {
 
     //console.log(foundElem);
     // Use filterChannel function to check returned channels for viability
-    //    foundElem.forEach(filterChannel)
-    console.log(searchTerm + ' channel');
-    //returns first channel result
+
+    //    console.log(foundElem[0].snippet.channelTitle);
+
     if (foundElem.length > 0) {
-        //console.log(foundElem[0].id.channelId);
-        getDataFromYouTube(foundElem[0].id.channelId, foundElem[0].snippet.channelTitle);
+        var museumName = searchTerm.split(" ");
+        var foundChannel = foundElem[0].snippet.channelTitle;
+        var counter = 0;
+
+        console.log(museumName);
+        console.log(foundChannel);
+        for (var i = 0; i < museumName.length; i++) {
+            if (foundChannel.indexOf(museumName[i]) != -1) {
+                console.log(museumName[i], 'yes');
+                counter++;
+            } else {
+                console.log(museumName[i], "no");
+            }
+        }
+        if (counter >= parseInt(museumName.length / 2)) {
+            console.log('counter is greater than half');
+            //returns first channel result
+            //console.log(foundElem[0].id.channelId);
+            getDataFromYouTube(foundElem[0].id.channelId, foundElem[0].snippet.channelTitle);
+        } else {
+            console.log('No relevant channels found');
+            $('.yt-results-section').html('');
+        }
+        console.log(counter);
     } else {
         console.log("No channel found");
         $('.yt-results-section').html('');
     }
+
 }
 
 //Filter functions to be added here
-function filterChannel(foundElem) {
+function filterChannel(foundElem, ) {
     //filter results by keyword here
     //console.log(`Filter channel results function ran`);
+
 }
 
 function getDataFromYouTube(channelId, channelTitle) {
@@ -891,7 +915,7 @@ function populateMapMuseum(place, website) {
     buildTheHtmlOutput += '<span class="text-container">';
     buildTheHtmlOutput += '<h2>' + place.name + '</h2>';
     buildTheHtmlOutput += '<p>' + place.vicinity + '</p>';
-    buildTheHtmlOutput += '<p>Website: <a href="' + website + '">' + website + '</a></p>';
+    buildTheHtmlOutput += '<p><a href="' + website + '">Website</a></p>';
     buildTheHtmlOutput += '</span>';
     buildTheHtmlOutput += '</div>';
 
