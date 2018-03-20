@@ -950,7 +950,18 @@ function displayFeatMuseum() {
 
 function changeFeaturedStyle() {
     $('#featured-museums').css({
-        "border-top": "none"
+        "width": "25%",
+        "float": "left",
+        "overflow-y": "hidden",
+        "border-right": "5px solid #073E57"
+    })
+    $('#museum-info-page').css({
+        "float": "right",
+        "margin": "none",
+        "width": "75%"
+    })
+    $('.featured-div').css({
+        "width": "80%"
     })
     $('.thumbnail-div').css({
         "width": "44%"
