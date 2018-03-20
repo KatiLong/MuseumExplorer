@@ -78,6 +78,14 @@ a {
     color: #073E57;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 /*Featured Museums Color #255763 #023e58 */
 
 /* Always set the map height explicitly to define the size of the div

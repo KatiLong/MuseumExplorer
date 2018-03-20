@@ -979,6 +979,10 @@ function displayMuseumPage() {
     //console.log(`display museum page ran`);
     $('#featured-museums').hide();
     $('#museum-info-page').show();
+
+    //Hide feat-button display #hFeat
+    $('#feat-button').show();
+    $('#hFeat').hide();
 }
 
 function changeMapStyle() {
@@ -995,6 +999,10 @@ function displayFeatMuseum() {
     $('#map').hide();
     $('#museum-info-page').show();
     $('.results-section-2').show();
+
+    //Display Map Button
+    $('#hMap').hide();
+    $('#map-button').show();
 }
 
 function changeFeaturedStyle() {
@@ -1024,14 +1032,39 @@ $('.featured-wrapper').on('click', '.featured-div', function (event) {
     //Generate Museum Info
     populateFeatMuseum(currentTarget[currentTarget.length - 1]);
     //Hide Map Main
+
     //Display Museum Info Main
     changeFeaturedStyle();
     displayFeatMuseum();
 
-})
+});
 
+/////////////////////////////////////////////////////////
+//Restart Buttons
 
+$('header').on('click', '#map-button', function (event) {
+    //Reload Page
+    event.preventDefault();
+    window.location.reload(true);
+});
 
+$('header').on('click', '#feat-button', function (event) {
+    //Show Map
+    $('#map').show();
+    //Hide museum-info
+    $('#museum-info-page').hide();
+    //show Feat Museums
+    $('#featured-museums').show();
+
+    //Hide feat-button display #hFeat
+    $('#feat-button').hide();
+    $('#hFeat').show();
+
+    //display #map-button hide #hMap
+    $('#hMap').hide();
+    $('#map-button').show();
+
+});
 
 $(function () {
     populateFeatThumbnails(featuredMuseums);
