@@ -878,7 +878,7 @@ function populateFeatMuseum(index) {
     } else {
         buildTheHtmlOutput2 += `<a href="${featuredMuseums[index].artwork}" target="_blank">`;
         buildTheHtmlOutput2 += `<h2 id="results-str">Online Artwork</h2>`;
-        buildTheHtmlOutput2 += '</a>';
+        buildTheHtmlOutput2 += `< /a>`;
         buildTheHtmlOutput2 += `<img src="${featuredMuseums[index].screenshot}" alt="Artwork Gallery Screenshot" class="art-preview">`
 
     }
