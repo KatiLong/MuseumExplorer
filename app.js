@@ -6,6 +6,7 @@ var featuredMuseums = [{
         "city": "New York, USA",
         "website": "https://www.metmuseum.org/",
         "image": "../images/met.jpg",
+        "screenshot": "../images/met-screenshot.jpg",
         "artwork": "https://www.metmuseum.org/art/collection",
         "artwork2": "https://artsandculture.google.com/partner/the-metropolitan-museum-of-art",
         "youtubeId2": "",
@@ -19,6 +20,7 @@ var featuredMuseums = [{
         "city": "Paris, France",
         "website": "https://www.louvre.fr/en",
         "image": "../images/louvre.jpg",
+        "screenshot": "../images/louvre-screenshot.jpg",
         "artwork": "https://www.louvre.fr/en/selections",
         "artwork2": "",
         "youtubeId2": "",
@@ -32,6 +34,7 @@ var featuredMuseums = [{
         "city": "Wellington, NZ",
         "website": "http://www.tepapa.govt.nz/",
         "image": "../images/te-papa.jpg",
+        "screenshot": "../images/tepapa-screenshot.jpg",
         "artwork": "https://collections.tepapa.govt.nz/",
         "artwork2": "",
         "youtubeId2": "",
@@ -45,6 +48,7 @@ var featuredMuseums = [{
         "city": "Chicago, USA",
         "website": "https://www.fieldmuseum.org/",
         "image": "../images/field-museum.jpg",
+        "screenshot": "",
         "artwork": "",
         "artwork2": "",
         "youtubeId2": "UCkyfHZ6bY2TjqbJhiH8Y2QQ",
@@ -58,8 +62,9 @@ var featuredMuseums = [{
         "city": "London, England",
         "website": "http://www.britishmuseum.org/",
         "image": "../images/british-museum.jpg",
-        "artwork": "https://www.britishmuseum.org/research/collection_online/search.aspx",
-        "artwork2": "",
+        "screenshot": "../images/british-screenshot.jpg",
+        "artwork": "https://britishmuseum.withgoogle.com",
+        "artwork2": "http://www.britishmuseum.org/research/collection_online/search.aspx",
         "youtubeId2": "",
         "cssClass": "five"
     },
@@ -71,7 +76,8 @@ var featuredMuseums = [{
         "city": "Amsterdam, Netherlands",
         "website": "http: //rijksmuseum.github.io/",
         "image": "../images/rijksmuseum.jpg",
-        "artwork": "https://www.rijksmuseum.nl/nl/rijksstudio?ii=3&p=0&from=2018-03-12T19%3A21%3A31.2689755Z",
+        "screenshot": "../images/rijks-screenshot.jpg",
+        "artwork": "https://www.rijksmuseum.nl/en/rijksstudio",
         "artwork2": "",
         "youtubeId2": "",
         "cssClass": "six"
@@ -734,7 +740,7 @@ function getDataFromYouTube(channelId, channelTitle) {
             /* if the results are meeningful, we can just //console.log them */
             //console.log(channelTitle);
             //console.log(result);
-            displayResults(result, channelTitle);
+            displayResults(result, channelTitle, channelId);
         })
         /* if the call is NOT successful show errors */
         .fail(function (jqXHR, error, errorThrown) {
@@ -745,16 +751,16 @@ function getDataFromYouTube(channelId, channelTitle) {
 }
 
 
-function displayResults(data, channel) {
+function displayResults(data, channel, id) {
     //console.log(`Display Results ran`);
     //console.log(data);
     const results = data.items.map((elem, index) => generateResults(elem));
     //add conditional
     //if empty, display no results
-
+    //    `<a href="https://www.youtube.com/channel/ + ${id} + '" target="_blank">View Youtube Channel</a>`;
 
     //if returns results, run functions below
-    $('.yt-results-section').html(`<h2 id="results-str">${channel} Channel Videos</h2>`);
+    $('.yt-results-section').html(`<h2 id="results-str">${channel} Channel Videos</h2> <a href="https://www.youtube.com/channel/${id}" target="_blank"><p>View on Youtube</p></a>`);
     $('.yt-results-section').append(results);
 }
 // function that generates results string
@@ -823,22 +829,40 @@ function populateFeatThumbnails(featuredMuseums) {
 
 function populateFeatMuseum(index) {
     //console.log(`Populate Featured Museum ran, index is ${index}`);
-    var buildTheHtmlOutput = "";
+    var buildTheHtmlOutput1 = "";
+    var buildTheHtmlOutput2 = "";
 
+    //HTML string for Upper Info Section
+    buildTheHtmlOutput1 += '<div class="museum-img" style="background-image: url(' + featuredMuseums[index].image + ')"></div>';
+    buildTheHtmlOutput1 += '<span class="text-container">';
+    buildTheHtmlOutput1 += '<h2>' + featuredMuseums[index].name + '</h2>';
+    buildTheHtmlOutput1 += '<p>' + featuredMuseums[index].address + '</p>';
+    buildTheHtmlOutput1 += '<p>' + featuredMuseums[index].city + '</p>';
+    buildTheHtmlOutput1 += '<p>Website: <a href="' + featuredMuseums[index].website + '">' + featuredMuseums[index].website + '</a></p>';
+    buildTheHtmlOutput1 += '</span>';
+    buildTheHtmlOutput1 += '</div>';
 
-    buildTheHtmlOutput += '<div class="museum-img" style="background-image: url(' + featuredMuseums[index].image + ')"></div>';
-    buildTheHtmlOutput += '<span class="text-container">';
-    buildTheHtmlOutput += '<h2>' + featuredMuseums[index].name + '</h2>';
-    buildTheHtmlOutput += '<p>' + featuredMuseums[index].address + '</p>';
-    buildTheHtmlOutput += '<p>' + featuredMuseums[index].city + '</p>';
-    buildTheHtmlOutput += '<p>Website: <a href="' + featuredMuseums[index].website + '">' + featuredMuseums[index].website + '</a></p>';
-    buildTheHtmlOutput += '</span>';
-    buildTheHtmlOutput += '</div>';
+    //HTML string for featured Online Content
+    if (index === 3) { //exception for Field Museum format
+        console.log('Field Museum was chosen');
+        buildTheHtmlOutput2 += '<p>Field Museum was chosen</p>'
+    } else if (index === 4) { // for British Museum Format
+        console.log('The British Museum was Chosen')
+        buildTheHtmlOutput2 += '<p>The British Museum was Chosen</p>'
+        //Online Artwork link, screenshot artwork artwork2
+        //Feature interactive Google with title "The Museum of the World"
+    } else {
+        buildTheHtmlOutput2 += `<a href="${featuredMuseums[index].artwork}">`;
+        buildTheHtmlOutput2 += `<h2 id="results-str">Online Artwork</h2>`;
+        buildTheHtmlOutput2 += '</a>';
+        buildTheHtmlOutput2 += `<img src="${featuredMuseums[index].screenshot}" alt="Artwork Gallery Screenshot" class="art-preview">`
 
+    }
 
     //console.log(buildTheHtmlOutput);
     //use the HTML output to show it in the index.html
-    $("#info-container").html(buildTheHtmlOutput);
+    $("#info-container").html(buildTheHtmlOutput1);
+    $(".results-section-2").html(buildTheHtmlOutput2);
 
     getDataFromYouTube(featuredMuseums[index].youtubeId, featuredMuseums[index].name);
 
@@ -946,6 +970,7 @@ function displayFeatMuseum() {
     //console.log("displayFeatMuseum's ran");
     $('#map').hide();
     $('#museum-info-page').show();
+    $('.results-section-2').show();
 }
 
 function changeFeaturedStyle() {
