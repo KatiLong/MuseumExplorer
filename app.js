@@ -673,14 +673,14 @@ function identifyChannelResult(data, searchTerm) {
 
 }
 //API Call searching by channel for videos
-function getDataFromYouTube(channelId, channelTitle) {
+function getDataFromYouTube(channelId, channelTitle, resultCount) {
     var result = $.ajax({
             /* update API end point */
             url: "https://www.googleapis.com/youtube/v3/search",
             data: {
                 channelId: channelId,
                 part: 'snippet',
-                maxResults: 9,
+                maxResults: (resultCount) ? resultCount : 9, //Allows for total number of results to be changed
                 key: APIkey
             },
             dataType: "jsonp",
@@ -823,7 +823,7 @@ function populateFeatMuseum(index) {
     $("#info-container").html(buildTheHtmlOutput1);
     $(".results-section-2").html(buildTheHtmlOutput2);
 
-    getDataFromYouTube(featuredMuseums[index].youtubeId, featuredMuseums[index].name);
+    getDataFromYouTube(featuredMuseums[index].youtubeId, featuredMuseums[index].name, 6);
 
 };
 
@@ -857,7 +857,6 @@ function populateMapMuseum(place, website) {
 
     $("#info-container").html(buildTheHtmlOutput);
 
-    //    getDataFromYouTube()
 }
 
 
