@@ -308,7 +308,7 @@ h4 {
 }
 
 .results-section-2 {
-    width: 50%;
+    width: 100%;
     display: inline-block;
     vertical-align: top;
 
@@ -317,8 +317,16 @@ h4 {
     vertical-align: top;*/
 }
 
+.results-section-2 a {
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+    padding: 2%;
+}
+
 .art-preview {
     width: 100%;
+    height: 220px;
 }
 
 #info-container {
