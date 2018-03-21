@@ -582,30 +582,20 @@ function createMarker(place) {
 // markers = [];
 
 
-//End of Google Maps//
-/////////////////////////////////////////////////////////////////////////////////////
+////////////////End of Google Maps////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-//Google Street View
-
-//YouTube API
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////Youtube API Functions//////////////
 
 
 // getApiData ('The MET', (data) => //console.log(data))
 
 
-/////////////////////////////////////////////
-//Google to YouTube "Translator"
-//Language translation for YouTube search Louvre Museum to Musee du Louvre
-//Youtube search parameters for accuracy
-
-
 var YTchannelId;
-
+//API Call using Google Name as Search Term to find museum channel
 function findYoutubeChannel(searchTerm) {
-    // if (search) {
-    //   endpoint = "https://www.googleapis.com/youtube/v3/search"
-    // }
+
     var result = $.ajax({
             /* update API end point */
             url: "https://www.googleapis.com/youtube/v3/search",
@@ -637,8 +627,7 @@ function findYoutubeChannel(searchTerm) {
             console.log(errorThrown);
         });
 }
-
-
+//Filtering found Channels
 function identifyChannelResult(data, searchTerm) {
     var foundElem = [];
     //searches results for Youtube Channels
@@ -649,10 +638,9 @@ function identifyChannelResult(data, searchTerm) {
     })
 
     //console.log(foundElem);
-    // Use filterChannel function to check returned channels for viability
+    //console.log(foundElem[0].snippet.channelTitle);
 
-    //    console.log(foundElem[0].snippet.channelTitle);
-
+    //if results are found
     if (foundElem.length > 0) {
         var museumName = searchTerm.split(" ");
         var foundChannel = foundElem[0].snippet.channelTitle;
@@ -684,14 +672,7 @@ function identifyChannelResult(data, searchTerm) {
     }
 
 }
-
-//Filter functions to be added here
-function filterChannel(foundElem, ) {
-    //filter results by keyword here
-    //console.log(`Filter channel results function ran`);
-
-}
-
+//API Call searching by channel for videos
 function getDataFromYouTube(channelId, channelTitle) {
     var result = $.ajax({
             /* update API end point */
@@ -716,39 +697,45 @@ function getDataFromYouTube(channelId, channelTitle) {
         })
         /* if the call is NOT successful show errors */
         .fail(function (jqXHR, error, errorThrown) {
-            //console.log(jqXHR);
-            //console.log(error);
-            //console.log(errorThrown);
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
         });
 }
-
-
+//Displays videos to page if found
 function displayResults(data, channel, id) {
     //console.log(`Display Results ran`);
     //console.log(data);
-    const results = data.items.map((elem, index) => generateResults(elem));
-    //add conditional
-    //if empty, display no results
-    //    `<a href="https://www.youtube.com/channel/ + ${id} + '" target="_blank">View Youtube Channel</a>`;
 
-    //if returns results, run functions below
+    //Adds Header describing Channel
     $('.yt-results-section').html(`<h2 id="results-str"><a href="https://www.youtube.com/channel/${id}" target="_blank">${channel} Channel Videos</a></h2>`);
-    $('.yt-results-section').append(results);
+
+    //if no videos are found from Channel, tell the user
+    if (data.items.length === 0) {
+        $('.yt-results-section').append('<h6>No Videos Found</h6>');
+    } //otherwise generate HTML string for results and append to HTML
+    else {
+        const results = data.items.map((elem, index) => generateResults(elem));
+        $('.yt-results-section').append(results);
+    }
 }
-// function that generates results string
+//generates HTML string for each video result
 function generateResults(elem) {
+    let HTMLOutput = ``;
     //console.log(`generate results ran`);
-    return `
-        <div class ="thumbnail-div">
-            <a href="https://www.youtube.com/watch?v=${elem.id.videoId}" target=_blank>
-                <img src="${elem.snippet.thumbnails.medium.url}" class="thumbnail-img">
-                <h3 class='video-title'>${elem.snippet.title}</h3>
-            </a>
-        </div>`;
+    HTMLOutput += `<div class ="thumbnail-div">`;
+    HTMLOutput += `<a href="https://www.youtube.com/watch?v=${elem.id.videoId}" target=_blank>`;
+    HTMLOutput += `<img src="${elem.snippet.thumbnails.medium.url}" class="thumbnail-img">`;
+    HTMLOutput += `<h3 class='video-title'>${elem.snippet.title}</h3>`;
+    HTMLOutput += `</a>`;
+    HTMLOutput += `</div>`;
+    return HTMLOutput;
 }
 
+///////////////End of Youtube API Functions//////////////
+//////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 //CSS Related Listeners
 
 //Lightens div whenever user hovers over entire box, using on-mouseenter/mouseleave for Event Delegation
@@ -863,7 +850,7 @@ function populateMapMuseum(place, website) {
     buildTheHtmlOutput += '<span class="text-container">';
     buildTheHtmlOutput += '<h2>' + place.name + '</h2>';
     buildTheHtmlOutput += '<p>' + place.vicinity + '</p>';
-    buildTheHtmlOutput += '<p><a href="' + website + '">Website</a></p>';
+    buildTheHtmlOutput += '<p><a href="' + website + '" target="_blank">Website</a></p>';
     buildTheHtmlOutput += '</span>';
     buildTheHtmlOutput += '</div>';
 

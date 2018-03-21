@@ -336,6 +336,7 @@ h4 {
 .thumbnail-div {
     display: inline-block;
     width: 32%;
+    padding: .2%;
     /*    background-color: #073E57;*/
 }
 
