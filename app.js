@@ -550,6 +550,7 @@ function createMarker(place) {
     // Displays Museum's info when user clicks on Marker
     google.maps.event.addListener(markers, 'click', function () {
         var currentWebsite;
+        var currentPlace = '';
 
         var request = {
             reference: place.reference
@@ -560,8 +561,31 @@ function createMarker(place) {
             console.log(currentWebsite);
             console.log(details);
             // infowindow.open(map, marker);
-            renderMuseumPage(place, currentWebsite);
+            renderMuseumPage(place, currentWebsite, currentPlace);
+
+            console.log(place.vicinity, place.types);
+
+            //            currentPlace["address"] = place.vicinity;
+            //            currentPlace["types"] = place.types;
+
+//            details.formatted_phone_number
+//            details.rating
+//            details.url   //Link to Place on Google Maps
+
+            currentPlace += '{';
+            currentPlace += '"address":"' + details.formatted_address + '",'; //address
+            currentPlace += '"types":"' + details.types + '"';
+            currentPlace += '}';
+
+            console.log(currentPlace);
+            //            console.log(JSON.parse(currentPlace));
+            //console.log(place);
+                    console.log(details.photos[0].getUrl({
+                        maxHeight: 640
+                    }));
+
         });
+        console.log(currentPlace);
     });
 
     // Shows name when user hovers over markers
@@ -862,20 +886,6 @@ function populateMapMuseum(place, website) {
 //STEP 2 - get the input from the user
 //STEP 3 - Results of park information from the external API will be returned(fullName, description, weatherInfo, states, directionsInfo, url)
 
-//        currentPlace += '{';
-//        currentPlace += '"photo":' + currentPhoto + ','; //address
-//        currentPlace += '"address":' + place.vincinity + ','; //address
-//        currentPlace += '"types":' + place.types;
-//        currentPlace += '}';
-//
-//        //console.log(currentPlace);
-//
-//        //console.log(place);
-//        //        //console.log(place.photos[0].getUrl({
-//        //            maxHeight: 640
-//        //        }));
-//        //console.log(JSON.parse(currentPlace));
-
 
 //////////////////////////////////////////////////////////////////////////////
 //CSS Related Listeners
@@ -929,9 +939,10 @@ function changeFeaturedStyle() {
     })
 }
 
-function renderMuseumPage(place, website) {
+function renderMuseumPage(place, website, details) {
 
     console.log(website);
+    console.log(details);
 
     //    checkIfFeatured(place.id); //function to check if place is featured museum
 
