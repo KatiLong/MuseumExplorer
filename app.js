@@ -558,14 +558,7 @@ function createMarker(place) {
         service.getDetails(request, function (details, status) {
             currentWebsite = details.website;
             console.log(currentWebsite);
-            //console.log([
-            //            details.name,
-            //                details.formatted_address,
-            //                details.website,
-            //                details.rating,
-            //                details.formatted_phone_number,
-            //                details.place_id
-            //            ]);
+            console.log(details);
             // infowindow.open(map, marker);
             renderMuseumPage(place, currentWebsite);
         });
@@ -745,23 +738,8 @@ function generateResults(elem) {
 ///////////////End of Youtube API Functions//////////////
 //////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////////
-//CSS Related Listeners
-
-//Lightens div whenever user hovers over entire box, using on-mouseenter/mouseleave for Event Delegation
-$('.featured-wrapper').on('mouseenter', '.featured-div', function (event) {
-    // do something
-    $(this).find("div").css({
-        "background-blend-mode": "normal"
-    })
-}).on('mouseleave', '.featured-div', function (event) {
-    // do something different
-    $(this).find("div").css({
-        "background-blend-mode": "multiply"
-    })
-});
-
-////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////Populate HTML Strings for Museum Info Pages///////////////////////////
 
 
 function populateFeatThumbnails(featuredMuseums) {
@@ -816,7 +794,7 @@ function populateFeatMuseum(index) {
         console.log('Field Museum was chosen');
         getDataFromYouTube(featuredMuseums[index].youtubeId2, 'The Brain Scoop', 6, ".results-section-2");
     } else if (index === '4') { // for British Museum Format
-        console.log('The British Museum was Chosen')
+        console.log('The British Museum was Chosen');
         buildTheHtmlOutput2 += `<a href="${featuredMuseums[index].artwork}" target="_blank">`;
         buildTheHtmlOutput2 += `<h2 id="results-str">The British Museum with Google</h2>`;
         buildTheHtmlOutput2 += `< /a>`;
@@ -884,22 +862,6 @@ function populateMapMuseum(place, website) {
 //STEP 2 - get the input from the user
 //STEP 3 - Results of park information from the external API will be returned(fullName, description, weatherInfo, states, directionsInfo, url)
 
-
-//Click on museum from Map
-
-//        var currentPlace = '';
-//        var currentPhoto;
-//
-//        //?? Throws an error when there is no photo, how to prevent that?`
-//        if (!place.photos) {
-//            currentPhoto = '';
-//        } else {
-//            //console.log(place.photos[0]);
-//            currentPhoto = place.photos[0].getUrl({
-//                maxHeight: 640
-//            })
-//        }
-//
 //        currentPlace += '{';
 //        currentPlace += '"photo":' + currentPhoto + ','; //address
 //        currentPlace += '"address":' + place.vincinity + ','; //address
@@ -915,19 +877,8 @@ function populateMapMuseum(place, website) {
 //        //console.log(JSON.parse(currentPlace));
 
 
-
-function renderMuseumPage(place, website) {
-
-    console.log(website);
-
-    //    checkIfFeatured(place.id); //function to check if place is featured museum
-
-    changeMapStyle();
-    findYoutubeChannel(place.name);
-    populateMapMuseum(place, website);
-
-    displayMuseumPage();
-}
+//////////////////////////////////////////////////////////////////////////////
+//CSS Related Listeners
 
 function displayMuseumPage() {
     //console.log(`display museum page ran`);
@@ -946,7 +897,6 @@ function changeMapStyle() {
         "max-width": "725px"
     })
 }
-
 
 function displayFeatMuseum() {
     //console.log("displayFeatMuseum's ran");
@@ -979,6 +929,19 @@ function changeFeaturedStyle() {
     })
 }
 
+function renderMuseumPage(place, website) {
+
+    console.log(website);
+
+    //    checkIfFeatured(place.id); //function to check if place is featured museum
+
+    changeMapStyle();
+    findYoutubeChannel(place.name);
+    populateMapMuseum(place, website);
+
+    displayMuseumPage();
+}
+
 //Click on featured museum
 $('.featured-wrapper').on('click', '.featured-div', function (event) {
     //string of the current Featured div classes
@@ -986,11 +949,22 @@ $('.featured-wrapper').on('click', '.featured-div', function (event) {
     //Generate Museum Info
     populateFeatMuseum(currentTarget[currentTarget.length - 1]);
     //Hide Map Main
-
     //Display Museum Info Main
     changeFeaturedStyle();
     displayFeatMuseum();
+});
 
+//Lightens div whenever user hovers over entire box, using on-mouseenter/mouseleave for Event Delegation
+$('.featured-wrapper').on('mouseenter', '.featured-div', function (event) {
+    // do something
+    $(this).find("div").css({
+        "background-blend-mode": "normal"
+    })
+}).on('mouseleave', '.featured-div', function (event) {
+    // do something different
+    $(this).find("div").css({
+        "background-blend-mode": "multiply"
+    })
 });
 
 /////////////////////////////////////////////////////////
