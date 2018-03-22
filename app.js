@@ -824,14 +824,21 @@ function populateFeatMuseum(index) {
         getDataFromYouTube(featuredMuseums[index].youtubeId2, 'The Brain Scoop', 6, ".results-section-2");
     } else if (index === '4') { // for British Museum Format
         console.log('The British Museum was Chosen');
+
+        buildTheHtmlOutput2 += `<div class="british-thumbnails">`;
         buildTheHtmlOutput2 += `<a href="${featuredMuseums[index].artwork}" target="_blank">`;
         buildTheHtmlOutput2 += `<h2 id="results-str">The British Museum with Google</h2>`;
-        buildTheHtmlOutput2 += `< /a>`;
         buildTheHtmlOutput2 += `<img src="${featuredMuseums[index].screenshot}" alt="Artwork Gallery Screenshot" class="art-preview">`
+        buildTheHtmlOutput2 += `</a>`;
+        buildTheHtmlOutput2 += `</div>`;
+
+        buildTheHtmlOutput2 += `<div class="british-thumbnails">`;
         buildTheHtmlOutput2 += `<a href="${featuredMuseums[index].artwork2}" target="_blank">`;
         buildTheHtmlOutput2 += `<h2 id="results-str">British Museum: Online Artwork</h2>`;
         buildTheHtmlOutput2 += `<img src="${featuredMuseums[index].screenshot2}" alt="Artwork Gallery Screenshot" class="art-preview">`
-        buildTheHtmlOutput2 += `< /a>`;
+        buildTheHtmlOutput2 += `</a>`;
+        buildTheHtmlOutput2 += `</div>`;
+
 
         $(".results-section-2").html(buildTheHtmlOutput2);
         //Online Artwork link, screenshot artwork artwork2
@@ -839,8 +846,10 @@ function populateFeatMuseum(index) {
     } else {
         buildTheHtmlOutput2 += `<a href="${featuredMuseums[index].artwork}" target="_blank">`;
         buildTheHtmlOutput2 += `<h2 id="results-str">Online Artwork</h2>`;
-        buildTheHtmlOutput2 += `< /a>`;
+        buildTheHtmlOutput2 += `<div class="container">`;
         buildTheHtmlOutput2 += `<img src="${featuredMuseums[index].screenshot}" alt="Artwork Gallery Screenshot" class="art-preview">`
+        buildTheHtmlOutput2 += `</div>`;
+        buildTheHtmlOutput2 += `</a>`;
 
         $(".results-section-2").html(buildTheHtmlOutput2);
     }
