@@ -932,22 +932,23 @@ function displayFeatMuseum() {
 
 function changeFeaturedStyle() {
     $('#featured-museums').css({
-        "width": "25%",
-        "float": "left",
-        "overflow-y": "hidden",
-        "border-right": "5px solid #073E57"
+        //        "width": "25%",
+        //        "float": "left",
+        //        "overflow-y": "hidden",
+        //        "border-right": "5px solid #073E57"
+        "border-top": "none"
     })
-    $('#museum-info-page').css({
-        "float": "right",
-        "margin": "none",
-        "width": "75%"
-    })
-    $('.featured-div').css({
-        "width": "80%"
-    })
-    $('.thumbnail-div').css({
-        "width": "44%"
-    })
+    //    $('#museum-info-page').css({
+    //        "float": "right",
+    //        "margin": "none",
+    //        "width": "75%"
+    //    })
+    //    $('.featured-div').css({
+    //        "width": "80%"
+    //    })
+    //    $('.thumbnail-div').css({
+    //        "width": "44%"
+    //    })
 }
 
 function renderMuseumPage(place, details) {
@@ -1017,5 +1018,5 @@ $('header').on('click', '#feat-button', function (event) {
 });
 
 $(function () {
-    populateFeatThumbnails(featuredMuseums);
+    populateFeatThumbnails(featuredMuseums)
 });
