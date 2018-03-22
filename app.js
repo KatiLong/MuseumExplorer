@@ -65,7 +65,7 @@ var featuredMuseums = [{
         "address": "Great Russell St, Bloomsbury",
         "city": "London, England",
         "website": "http://www.britishmuseum.org/",
-        "image": "/images/british-museum.jpg",
+        "image": "images/british-museum.jpg",
         "screenshot": "../images/british-screenshot.jpg",
         "screenshot2": "../images/british-screenshot-2.jpg",
         "artwork": "https://britishmuseum.withgoogle.com",
