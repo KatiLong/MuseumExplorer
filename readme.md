@@ -25,7 +25,6 @@ The app's functionality includes:
 * The app displays details about each Museum, such as location, website, and hours.
 * The app
 
-
 ## Technology
 * HTML
 * CSS

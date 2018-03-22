@@ -852,7 +852,6 @@ function populateFeatMuseum(index) {
 
         $(".results-section-2").html(buildTheHtmlOutput2);
     }
-
     //console.log(buildTheHtmlOutput);
     //use the HTML output to show it in the index.html
     $("#info-container").html(buildTheHtmlOutput1);
