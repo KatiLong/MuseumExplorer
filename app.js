@@ -839,7 +839,6 @@ function populateFeatMuseum(index) {
         buildTheHtmlOutput2 += `</a>`;
         buildTheHtmlOutput2 += `</div>`;
 
-
         $(".results-section-2").html(buildTheHtmlOutput2);
         //Online Artwork link, screenshot artwork artwork2
         //Feature interactive Google with title "The Museum of the World"
