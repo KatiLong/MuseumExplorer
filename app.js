@@ -879,7 +879,8 @@ function populateMapMuseum(place, details) {
     buildTheHtmlOutput += '<div class="museum-img" style="background-image: url(' + placePhoto + ')"></div>';
     buildTheHtmlOutput += '<span class="text-container">';
     buildTheHtmlOutput += '<h2>' + place.name + '</h2>';
-    buildTheHtmlOutput += '<p>' + details.address + '</p>';
+    buildTheHtmlOutput += '<p id="url"><a href="' + details.url + '">Get Directions</a></p>';
+    buildTheHtmlOutput += '<p id="address">' + details.address + '</p>';
     buildTheHtmlOutput += '<p>P:   ' + details.phone + '</p>';
     buildTheHtmlOutput += '<p>Google Rating:   ' + details.rating + '</p>';
     buildTheHtmlOutput += '<p><a href="' + details.website + '" target="_blank">Website</a></p>';
