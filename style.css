@@ -82,8 +82,17 @@ a:hover {
     cursor: pointer;
 }
 
+button {
+    background-color: #073E57;
+    color: whitesmoke;
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px;
+    padding: 5px;
+}
+
 button:hover {
     cursor: pointer;
+    background-color: #16516B;
 }
 
 /*Featured Museums Color #255763 #023e58 */
@@ -269,7 +278,7 @@ h4 {
     float: left;
     height: 14rem;
     width: 50%;
-    margin: 0 1.5% 0 3%;
+    margin: 0;
     background-image: url(../images/stock.jpg);
     background-size: contain;
     background-position: center center;

@@ -557,32 +557,37 @@ function createMarker(place) {
         };
 
         service.getDetails(request, function (details, status) {
-            currentWebsite = details.website;
-            console.log(currentWebsite);
+            //            currentWebsite = details.website;
+            //            console.log(currentWebsite);
             console.log(details);
             // infowindow.open(map, marker);
-            renderMuseumPage(place, currentWebsite, currentPlace);
+
+            currentPlace += '{';
+            currentPlace += '"address":"' + details.formatted_address + '",'; //address
+            currentPlace += '"phone":"' + details.formatted_phone_number + '",'; //address
+            currentPlace += '"rating":"' + details.rating + '",'; //address
+            currentPlace += '"directions":"' + details.url + '",'; //address
+            currentPlace += '"website":"' + details.website + '",'; //address
+            currentPlace += '"types":"' + details.types + '"';
+            currentPlace += '}';
+
+            renderMuseumPage(place, JSON.parse(currentPlace));
 
             console.log(place.vicinity, place.types);
 
             //            currentPlace["address"] = place.vicinity;
             //            currentPlace["types"] = place.types;
 
-//            details.formatted_phone_number
-//            details.rating
-//            details.url   //Link to Place on Google Maps
+            //            details.formatted_phone_number
+            //            details.rating
+            //            details.url   //Link to Place on Google Maps
 
-            currentPlace += '{';
-            currentPlace += '"address":"' + details.formatted_address + '",'; //address
-            currentPlace += '"types":"' + details.types + '"';
-            currentPlace += '}';
-
-            console.log(currentPlace);
+            //            console.log(currentPlace);
             //            console.log(JSON.parse(currentPlace));
-            //console.log(place);
-                    console.log(details.photos[0].getUrl({
-                        maxHeight: 640
-                    }));
+            //            //console.log(place);
+            //            console.log(details.photos[0].getUrl({
+            //                maxHeight: 640
+            //            }));
 
         });
         console.log(currentPlace);
@@ -849,7 +854,7 @@ function populateFeatMuseum(index) {
 
 };
 
-function populateMapMuseum(place, website) {
+function populateMapMuseum(place, details) {
     //console.log("populateMapMuseum ran");
     var buildTheHtmlOutput = "";
     var placePhoto;
@@ -868,11 +873,16 @@ function populateMapMuseum(place, website) {
     //        maxHeight: 640
     //    }));
 
+    //    currentPlace += '"directions":"' + details.url + '",'; //Place on Google Maps
+    //    currentPlace += '"types":"' + details.types + '"'; //Place categories
+
     buildTheHtmlOutput += '<div class="museum-img" style="background-image: url(' + placePhoto + ')"></div>';
     buildTheHtmlOutput += '<span class="text-container">';
     buildTheHtmlOutput += '<h2>' + place.name + '</h2>';
-    buildTheHtmlOutput += '<p>' + place.vicinity + '</p>';
-    buildTheHtmlOutput += '<p><a href="' + website + '" target="_blank">Website</a></p>';
+    buildTheHtmlOutput += '<p>' + details.address + '</p>';
+    buildTheHtmlOutput += '<p>P:   ' + details.phone + '</p>';
+    buildTheHtmlOutput += '<p>Google Rating:   ' + details.rating + '</p>';
+    buildTheHtmlOutput += '<p><a href="' + details.website + '" target="_blank">Website</a></p>';
     buildTheHtmlOutput += '</span>';
     buildTheHtmlOutput += '</div>';
 
@@ -939,16 +949,16 @@ function changeFeaturedStyle() {
     })
 }
 
-function renderMuseumPage(place, website, details) {
+function renderMuseumPage(place, details) {
 
-    console.log(website);
     console.log(details);
+    //    console.log(details.address);
 
     //    checkIfFeatured(place.id); //function to check if place is featured museum
 
     changeMapStyle();
     findYoutubeChannel(place.name);
-    populateMapMuseum(place, website);
+    populateMapMuseum(place, details);
 
     displayMuseumPage();
 }
