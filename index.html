@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <header role="heading">
+    <header role="banner">
 
         <h1>Museum Explorer</h1>
         <h3><button id="map-button" role="button" style="display: none;">Search Map</button><span id="hMap">Use the map to search for museums by name or location,</span> or <span id="hFeat">browse Featured Museums below</span><button id="feat-button" style="display: none;">Browse Featured Museums</button></h3>
@@ -17,14 +17,14 @@
 
     <main role="main">
 
-        <section role="section" class="google-map">
+        <section role="region" class="google-map">
 
             <input for="google-search-box" id="pac-input" class="controls" type="text" placeholder="Enter a location or museum name">
             <section id="map"></section>
 
         </section>
 
-        <section id="featured-museums">
+        <section role="region" id="featured-museums">
 
             <h2>Featured Museums</h2>
             <!--        Featured Thumbnails generated here.-->
@@ -33,7 +33,7 @@
         </section>
 
         <!--   Museum Details generated here-->
-        <section id="museum-info-page" style="display: none;">
+        <section role="region" id="museum-info-page" style="display: none;">
 
             <div id="info-container">
                 <div class="museum-img"></div>
@@ -51,7 +51,7 @@
 
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <p>Copyright 2018 Kati Long | Powered by Google</p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
