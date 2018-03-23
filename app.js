@@ -1,3 +1,5 @@
+//////////Featured Museums Data////////////////
+
 var featuredMuseums = [{
         "name": "The MET",
         "googleId": "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
@@ -421,40 +423,13 @@ var mapStyle = [
 ]
 
 
-//Google Map Tester Locations
-//    var NYC = {
-//        lat: 40.749460,
-//        lng: -73.988631
-//    };
-//    var Wellington = {
-//        lat: -41.2865,
-//        lng: 174.7762
-//    };
-//    var Paris = {
-//        lat: 48.8566,
-//        lng: 2.3522
-//    }
-//    var Motor = {
-//        lat: 50.8230,
-//        lng: -1.4536
-//    }
-//    var Wight = {
-//        lat: 50.7005,
-//        lng: -1.2930
-//    }
-
-// Client ID zWsHIInzwkCXLA9ZS5q4HAaLOwadiHOi
-// Client Secret kyGL18H4d80Ag6CD
-
-// AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM
-
 const APIkey = 'AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM';
 
 var map;
 var infowindow;
 var service;
 var bounds;
-var index = 0;
+//var index = 0;
 
 var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
@@ -496,11 +471,10 @@ function initMap() {
 
         var places = searchBox.getPlaces();
         var place = places[0];
-        index = 0;
+        //        index = 0;
 
         // places long form
         // var places = new google.maps.places.SearchBox(document.getElementById('pac-input')).getPlaces();
-
 
         if (places.length == 0) {
             return;
@@ -520,18 +494,14 @@ function initMap() {
         //      type: 'museum'               }, callback);
 
 
-                if (place.geometry.viewport) {
-                    // Only geocodes have viewport.
-                    bounds.union(place.geometry.viewport);
-                    console.log('Place had viewport');
-//                    console.log(markers);
-                    //            for (var i = 0; i < markers.length; i++) {
-                    //                bounds.extend(markers[i].getPosition());
-                    //            }
-                } else {
-                    bounds.extend(place.geometry.location);
-                    console.log('Place did not have viewport ELSE');
-                }
+        if (place.geometry.viewport) {
+            // Only geocodes have viewport.
+            bounds.union(place.geometry.viewport);
+            //            console.log('Place had viewport');
+        } else {
+            bounds.extend(place.geometry.location);
+            //            console.log('Place did not have viewport ELSE');
+        }
 
         map.fitBounds(bounds);
 
@@ -557,10 +527,6 @@ function createMarker(place) {
         position: place.geometry.location,
         icon: iconBase + 'museum_maps.png'
     });
-
-    //    bounds.extend(markers[index].getPosition());
-//    console.log(markers);
-//    console.log(index);
 
     // Displays Museum's info when user clicks on Marker
     google.maps.event.addListener(markers, 'click', function () {
@@ -590,19 +556,6 @@ function createMarker(place) {
 
             console.log(place.vicinity, place.types);
 
-            //            currentPlace["address"] = place.vicinity;
-            //            currentPlace["types"] = place.types;
-
-            //            details.formatted_phone_number
-            //            details.rating
-            //            details.url   //Link to Place on Google Maps
-
-            //            console.log(currentPlace);
-            //            console.log(JSON.parse(currentPlace));
-            //            //console.log(place);
-            //            console.log(details.photos[0].getUrl({
-            //                maxHeight: 640
-            //            }));
 
         });
         console.log(currentPlace);
@@ -618,22 +571,11 @@ function createMarker(place) {
     // Change Museum results as User moves around the map
 }
 
-// Clear out the old markers.
-// markers.forEach(function(marker) {
-//   marker.setMap(null);
-// });
-// markers = [];
-
-
 ////////////////End of Google Maps////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////Youtube API Functions//////////////
-
-
-// getApiData ('The MET', (data) => //console.log(data))
-
 
 var YTchannelId;
 //API Call using Google Name as Search Term to find museum channel
@@ -670,7 +612,7 @@ function findYoutubeChannel(searchTerm) {
             console.log(errorThrown);
         });
 }
-//Filtering found Channels
+//Filtering the found Channels
 function identifyChannelResult(data, searchTerm) {
     var foundElem = [];
     //searches results for Youtube Channels
@@ -680,17 +622,12 @@ function identifyChannelResult(data, searchTerm) {
         }
     })
 
-    //console.log(foundElem);
-    //console.log(foundElem[0].snippet.channelTitle);
-
     //if results are found
     if (foundElem.length > 0) {
         var museumName = searchTerm.split(" ");
         var foundChannel = foundElem[0].snippet.channelTitle;
         var counter = 0;
 
-        console.log(museumName);
-        console.log(foundChannel);
         for (var i = 0; i < museumName.length; i++) {
             if (foundChannel.indexOf(museumName[i]) != -1) {
                 console.log(museumName[i], 'yes');
@@ -701,8 +638,8 @@ function identifyChannelResult(data, searchTerm) {
         }
         if (counter >= parseInt(museumName.length / 2)) {
             console.log('counter is greater than half');
+
             //returns first channel result
-            //console.log(foundElem[0].id.channelId);
             getDataFromYouTube(foundElem[0].id.channelId, foundElem[0].snippet.channelTitle);
         } else {
             console.log('No relevant channels found');
@@ -715,7 +652,7 @@ function identifyChannelResult(data, searchTerm) {
     }
 
 }
-//API Call searching by channel for videos
+//API Call searching for videos by channel
 function getDataFromYouTube(channelId, channelTitle, resultCount, HTMLclass) {
     var result = $.ajax({
             /* update API end point */
@@ -733,9 +670,6 @@ function getDataFromYouTube(channelId, channelTitle, resultCount, HTMLclass) {
         })
         /* if the call is successful (status 200 OK) show results */
         .done(function (result) {
-            /* if the results are meeningful, we can just //console.log them */
-            //console.log(channelTitle);
-            //console.log(result);
             displayResults(result, channelTitle, channelId, HTMLclass);
         })
         /* if the call is NOT successful show errors */
@@ -747,8 +681,7 @@ function getDataFromYouTube(channelId, channelTitle, resultCount, HTMLclass) {
 }
 //Displays videos to page if found
 function displayResults(data, channel, id, HTMLclass) {
-    //console.log(`Display Results ran`);
-    //console.log(data);
+
     var section = '.yt-results-section';
     if (HTMLclass) {
         section = HTMLclass
@@ -785,7 +718,6 @@ function generateResults(elem) {
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////Populate HTML Strings for Museum Info Pages///////////////////////////
 
-
 function populateFeatThumbnails(featuredMuseums) {
     var buildTheHtmlOutput = "";
 
@@ -800,12 +732,12 @@ function populateFeatThumbnails(featuredMuseums) {
             buildTheHtmlOutput += '<li>';
             buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youtubeId2 + '" target="_blank">The Brain Scoop</a>';
             buildTheHtmlOutput += '</li>';
-        } else {
+        } else { //Displays link for each Museums online art gallery
             buildTheHtmlOutput += '<li>';
             buildTheHtmlOutput += '<a href="' + featuredMuseumsValue.artwork + '" target="_blank">Online Art Gallery</a>';
             buildTheHtmlOutput += '</li>';
         }
-        //        (!featuredMuseumsValue.artwork) ?
+        //second LI and closing tags
         buildTheHtmlOutput += '<li>';
         buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youtubeId + '" target="_blank">Youtube Channel</a>';
         buildTheHtmlOutput += '</li>';
@@ -837,42 +769,43 @@ function populateFeatMuseum(index) {
     //HTML string for featured Online Content
     if (index === '3') { //exception for Field Museum format
         console.log('Field Museum was chosen');
+        //API call for The Field Museums Featured Youtube Channel, The Brain Scoop
         getDataFromYouTube(featuredMuseums[index].youtubeId2, 'The Brain Scoop', 6, ".results-section-2");
     } else if (index === '4') { // for British Museum Format
         console.log('The British Museum was Chosen');
-
+        //Special Feature: The British Museum with Google
         buildTheHtmlOutput2 += `<div class="british-thumbnails">`;
         buildTheHtmlOutput2 += `<a href="${featuredMuseums[index].artwork}" target="_blank">`;
         buildTheHtmlOutput2 += `<h2 id="results-str">The British Museum with Google</h2>`;
         buildTheHtmlOutput2 += `<img src="${featuredMuseums[index].screenshot}" alt="Artwork Gallery Screenshot" class="art-preview">`
         buildTheHtmlOutput2 += `</a>`;
         buildTheHtmlOutput2 += `</div>`;
-
+        //British Museum Online Artwork
         buildTheHtmlOutput2 += `<div class="british-thumbnails">`;
         buildTheHtmlOutput2 += `<a href="${featuredMuseums[index].artwork2}" target="_blank">`;
         buildTheHtmlOutput2 += `<h2 id="results-str">British Museum: Online Artwork</h2>`;
         buildTheHtmlOutput2 += `<img src="${featuredMuseums[index].screenshot2}" alt="Artwork Gallery Screenshot" class="art-preview">`
         buildTheHtmlOutput2 += `</a>`;
         buildTheHtmlOutput2 += `</div>`;
-
+        //Appends to result section
         $(".results-section-2").html(buildTheHtmlOutput2);
         //Online Artwork link, screenshot artwork artwork2
         //Feature interactive Google with title "The Museum of the World"
-    } else {
+    } else { //All Other Museums displays thumbnail of Online Artwork
         buildTheHtmlOutput2 += `<a href="${featuredMuseums[index].artwork}" target="_blank">`;
         buildTheHtmlOutput2 += `<h2 id="results-str">Online Artwork</h2>`;
         buildTheHtmlOutput2 += `<div class="container">`;
         buildTheHtmlOutput2 += `<img src="${featuredMuseums[index].screenshot}" alt="Artwork Gallery Screenshot" class="art-preview">`
         buildTheHtmlOutput2 += `</div>`;
         buildTheHtmlOutput2 += `</a>`;
-
+        //Appends to result section
         $(".results-section-2").html(buildTheHtmlOutput2);
     }
-    //console.log(buildTheHtmlOutput);
+
     //use the HTML output to show it in the index.html
     $("#info-container").html(buildTheHtmlOutput1);
 
-
+    //Youtube API Call for Featured Museums Youtube Channel videos
     getDataFromYouTube(featuredMuseums[index].youtubeId, featuredMuseums[index].name, 6);
 
 };
@@ -891,21 +824,15 @@ function populateMapMuseum(place, details) {
         })
     }
 
-    console.log(details);
-    //    console.log(place.photos[0].getUrl({
-    //        maxHeight: 640
-    //    }));
-
     //    currentPlace += '"directions":"' + details.url + '",'; //Place on Google Maps
     //    currentPlace += '"types":"' + details.types + '"'; //Place categories
 
+    // Builds HTML with Museum's information
     buildTheHtmlOutput += '<div class="museum-img" style="background-image: url(' + placePhoto + ')"></div>';
     buildTheHtmlOutput += '<span class="text-container">';
     buildTheHtmlOutput += '<h2>' + place.name + '</h2>';
-    //    buildTheHtmlOutput += '<p id="url"><a href="' + details.url + '">Get Directions</a></p>';
-    //    console.log(details.address, details.phone, details.rating);
-
-    if (details.address == "undefined") {
+    //conditionals in case a detail is undefined for a given Museum
+    if (details.address == "undefined") { //undefined is in quotations because of JSON.parse usage
         console.log(details.address);
     } else {
         buildTheHtmlOutput += '<p id="address">' + details.address + '</p>';
@@ -928,16 +855,10 @@ function populateMapMuseum(place, details) {
     buildTheHtmlOutput += '</span>';
     buildTheHtmlOutput += '</div>';
 
-
+    //Appends to Museum Info Section
     $("#info-container").html(buildTheHtmlOutput);
 
 }
-
-
-//STEP 1 Populate the Parks options
-//STEP 2 - get the input from the user
-//STEP 3 - Results of park information from the external API will be returned(fullName, description, weatherInfo, states, directionsInfo, url)
-
 
 //////////////////////////////////////////////////////////////////////////////
 //CSS Related Listeners
@@ -979,6 +900,7 @@ function changeFeaturedStyle() {
         //        "border-right": "5px solid #073E57"
         "border-top": "none"
     })
+    // May use this to reformate Featured Museums section when museum selected
     //    $('#museum-info-page').css({
     //        "float": "right",
     //        "margin": "none",
@@ -995,8 +917,6 @@ function changeFeaturedStyle() {
 function renderMuseumPage(place, details) {
 
     console.log(details);
-    //    console.log(details.address);
-
     //    checkIfFeatured(place.id); //function to check if place is featured museum
 
     changeMapStyle();
@@ -1058,6 +978,7 @@ $('header').on('click', '#feat-button', function (event) {
 
 });
 
+//Document ready function
 $(function () {
     populateFeatThumbnails(featuredMuseums)
 });
