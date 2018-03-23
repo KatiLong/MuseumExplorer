@@ -808,6 +808,7 @@ function populateFeatMuseum(index) {
     var buildTheHtmlOutput1 = "";
     var buildTheHtmlOutput2 = "";
 
+
     //HTML string for Upper Info Section
     buildTheHtmlOutput1 += '<div class="museum-img" style="background-image: url(' + featuredMuseums[index].image + ')"></div>';
     buildTheHtmlOutput1 += '<span class="text-container">';

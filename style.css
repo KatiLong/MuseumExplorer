@@ -359,9 +359,9 @@ h4 {
 
 .british-thumbnails {
     display: inline-block;
-    width: 48%;
+    width: 50%;
     vertical-align: top;
-    padding: 2%;
+    padding: .5%;
 }
 
 /*
