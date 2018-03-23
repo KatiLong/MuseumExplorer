@@ -220,42 +220,42 @@ h4 {
 }
 
 .one .img-div {
-    background: url("../images/met.jpg") no-repeat center center;
+    background: url("images/met.jpg") no-repeat center center;
     background-size: cover;
     background-blend-mode: multiply;
     background-color: grey;
 }
 
 .two .img-div {
-    background: rgba(0, 0, 0, 0) url("../images/louvre.jpg") no-repeat center center;
+    background: rgba(0, 0, 0, 0) url("images/louvre.jpg") no-repeat center center;
     background-size: cover;
     background-blend-mode: multiply;
     background-color: grey;
 }
 
 .three .img-div {
-    background: rgba(0, 0, 0, 0) url("../images/te-papa.jpg") no-repeat center center;
+    background: rgba(0, 0, 0, 0) url("images/te-papa.jpg") no-repeat center center;
     background-size: cover;
     background-blend-mode: multiply;
     background-color: grey;
 }
 
 .four .img-div {
-    background: rgba(0, 0, 0, 0) url("../images/field-museum.jpg") no-repeat center center;
+    background: rgba(0, 0, 0, 0) url("images/field-museum.jpg") no-repeat center center;
     background-size: cover;
     background-blend-mode: multiply;
     background-color: grey;
 }
 
 .five .img-div {
-    background: rgba(0, 0, 0, 0) url("../images/british-museum.jpg") no-repeat center center;
+    background: rgba(0, 0, 0, 0) url("images/british-museum.jpg") no-repeat center center;
     background-size: cover;
     background-blend-mode: multiply;
     background-color: grey;
 }
 
 .six .img-div {
-    background: rgba(0, 0, 0, 0) url("../images/rijksmuseum.jpg") no-repeat center center;
+    background: rgba(0, 0, 0, 0) url("images/rijksmuseum.jpg") no-repeat center center;
     background-size: cover;
     background-blend-mode: multiply;
     background-color: grey;
@@ -280,7 +280,7 @@ h4 {
     height: 14rem;
     width: 49%;
     margin-right: 1%;
-    background-image: url(../images/stock.jpg);
+    background-image: url(images/stock.jpg);
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
