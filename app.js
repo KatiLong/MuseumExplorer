@@ -5,8 +5,8 @@ var featuredMuseums = [{
         "address": "1000 5th Ave",
         "city": "New York, USA",
         "website": "https://www.metmuseum.org/",
-        "image": "../images/met.jpg",
-        "screenshot": "../images/met-screenshot.jpg",
+        "image": "images/met.jpg",
+        "screenshot": "images/met-screenshot.jpg",
         "screenshot2": null,
         "artwork": "https://www.metmuseum.org/art/collection",
         "artwork2": "https://artsandculture.google.com/partner/the-metropolitan-museum-of-art",
@@ -20,8 +20,8 @@ var featuredMuseums = [{
         "address": "Rue de Rivoli",
         "city": "Paris, France",
         "website": "https://www.louvre.fr/en",
-        "image": "../images/louvre.jpg",
-        "screenshot": "../images/louvre-screenshot.jpg",
+        "image": "images/louvre.jpg",
+        "screenshot": "images/louvre-screenshot.jpg",
         "screenshot2": null,
         "artwork": "https://www.louvre.fr/en/selections",
         "artwork2": "",
@@ -35,8 +35,8 @@ var featuredMuseums = [{
         "address": "55 Cable St",
         "city": "Wellington, NZ",
         "website": "http://www.tepapa.govt.nz/",
-        "image": "../images/te-papa.jpg",
-        "screenshot": "../images/tepapa-screenshot.jpg",
+        "image": "images/te-papa.jpg",
+        "screenshot": "images/tepapa-screenshot.jpg",
         "screenshot2": null,
         "artwork": "https://collections.tepapa.govt.nz/",
         "artwork2": "",
@@ -50,7 +50,7 @@ var featuredMuseums = [{
         "address": "1400 S Lake Shore Dr",
         "city": "Chicago, USA",
         "website": "https://www.fieldmuseum.org/",
-        "image": "../images/field-museum.jpg",
+        "image": "images/field-museum.jpg",
         "screenshot": "",
         "screenshot2": null,
         "artwork": "",
@@ -66,8 +66,8 @@ var featuredMuseums = [{
         "city": "London, England",
         "website": "http://www.britishmuseum.org/",
         "image": "images/british-museum.jpg",
-        "screenshot": "../images/british-screenshot.jpg",
-        "screenshot2": "../images/british-screenshot-2.jpg",
+        "screenshot": "images/british-screenshot.jpg",
+        "screenshot2": "images/british-screenshot-2.jpg",
         "artwork": "https://britishmuseum.withgoogle.com",
         "artwork2": "https://artsandculture.google.com/partner/the-british-museum",
         "youtubeId2": "",
@@ -80,8 +80,8 @@ var featuredMuseums = [{
         "address": "Museumstraat 1, 1071 XX",
         "city": "Amsterdam, Netherlands",
         "website": "https://www.rijksmuseum.nl/en",
-        "image": "../images/rijksmuseum.jpg",
-        "screenshot": "../images/rijks-screenshot.jpg",
+        "image": "images/rijksmuseum.jpg",
+        "screenshot": "images/rijks-screenshot.jpg",
         "screenshot2": null,
         "artwork": "https://www.rijksmuseum.nl/en/rijksstudio",
         "artwork2": "https://github.com/Rijksmuseum",
@@ -792,7 +792,7 @@ function populateFeatThumbnails(featuredMuseums) {
         }
         //        (!featuredMuseumsValue.artwork) ?
         buildTheHtmlOutput += '<li>';
-        buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youtubeIdubeId + '" target="_blank">Youtube Channel</a>';
+        buildTheHtmlOutput += '<a href="https://www.youtube.com/channel/' + featuredMuseumsValue.youtubeId + '" target="_blank">Youtube Channel</a>';
         buildTheHtmlOutput += '</li>';
         buildTheHtmlOutput += '</ul>';
         buildTheHtmlOutput += '</div>';
@@ -868,7 +868,7 @@ function populateMapMuseum(place, details) {
     var placePhoto;
 
     if (!place.photos) {
-        placePhoto = '../images/no-image.jpg'; //no image image
+        placePhoto = 'images/no-image.jpg'; //no image image
     } else {
         //console.log(place.photos[0]);
         placePhoto = place.photos[0].getUrl({
@@ -887,7 +887,7 @@ function populateMapMuseum(place, details) {
     buildTheHtmlOutput += '<div class="museum-img" style="background-image: url(' + placePhoto + ')"></div>';
     buildTheHtmlOutput += '<span class="text-container">';
     buildTheHtmlOutput += '<h2>' + place.name + '</h2>';
-    buildTheHtmlOutput += '<p id="url"><a href="' + details.url + '">Get Directions</a></p>';
+    //    buildTheHtmlOutput += '<p id="url"><a href="' + details.url + '">Get Directions</a></p>';
     buildTheHtmlOutput += '<p id="address">' + details.address + '</p>';
     buildTheHtmlOutput += '<p>P:   ' + details.phone + '</p>';
     buildTheHtmlOutput += '<p>Google Rating:   ' + details.rating + '</p>';
