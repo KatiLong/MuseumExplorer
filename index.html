@@ -8,236 +8,48 @@
 </head>
 
 <body>
-    <header role="header">
+    <header role="heading">
+
         <h1>Museum Explorer</h1>
-        <!--        style="display: none;"-->
-        <h3><button id="map-button" style="display: none;">Search Map</button><span id="hMap">Use the map to search for museums by name or location,</span> or <span id="hFeat">browse Featured Museums below</span><button id="feat-button" style="display: none;">Browse Featured Museums</button></h3>
+        <h3><button id="map-button" role="button" style="display: none;">Search Map</button><span id="hMap">Use the map to search for museums by name or location,</span> or <span id="hFeat">browse Featured Museums below</span><button id="feat-button" style="display: none;">Browse Featured Museums</button></h3>
+
     </header>
 
-    <main role="main" class="google-map">
-        <input id="pac-input" class="controls" type="text" placeholder="Enter a location or museum name">
-        <!-- <button type='button' class="controls">Search</button> -->
-        <section id="map"></section>
-    </main>
+    <main role="main">
 
-    <main id="featured-museums">
-        <h2>Featured Museums</h2>
-        <div class="featured-wrapper">
-            <!--
-<div class="row">
+        <section role="section" class="google-map">
 
-    <div class="featured-div one js-1">
-        <h4>The MET</h4>
-        <div class="img-div">
-            <p>New York, USA</p>
-            <ul>
+            <input for="google-search-box" id="pac-input" class="controls" type="text" placeholder="Enter a location or museum name">
+            <section id="map"></section>
 
-                <li>Online Art Gallery</li>
-                <li>Youtube Channel</li>
-            </ul>
-        </div>
-    </div>
-    <div class="featured-div two js-2">
-        <h4>The Louvre</h4>
-        <div class="img-div">
-            <p>Paris, France</p>
-            <ul>
+        </section>
 
-                <li>Online Art Gallery</li>
-                <li>Youtube Channel</li>
-            </ul>
-        </div>
-    </div>
-    <div class="featured-div three js-3">
-        <h4>Te Papa Tongarewa</h4>
-        <div class="img-div">
-            <p>Wellington, New Zealand</p>
-            <ul>
-                <li>Online Art Gallery</li>
-                <li>Youtube Channel</li>
-            </ul>
+        <section id="featured-museums">
 
-        </div>
-    </div>
+            <h2>Featured Museums</h2>
+            <!--        Featured Thumbnails generated here.-->
+            <div class="featured-wrapper"></div>
 
-</div>
-<div class="row">
-    <div class="featured-div four js-4">
-        <h4>The Field Museum</h4>
-        <div class="img-div">
-            <p>Chicago, USA</p>
-            <ul>
-                <li>Featured Youtube:</li>
-                <li>The Brain Scoop</li>
-            </ul>
-        </div>
-    </div>
-    <div class="featured-div five js-5">
-        <h4>The British Museum</h4>
-        <div class="img-div">
-            <p>London, England</p>
-            <ul>
+        </section>
 
-                <li>Online Art Gallery</li>
-                <li>Youtube Channel</li>
-            </ul>
-        </div>
-    </div>
-    <div class="featured-div six js-6">
-        <h4>Rijksmuseum</h4>
-        <div class="img-div">
-            <p>Amsterdam, Netherlands</p>
-            <ul>
+        <!--   Museum Details generated here-->
+        <section id="museum-info-page" style="display: none;">
 
-                <li>Online Art Gallery</li>
-                <li>Youtube Channel</li>
-            </ul>
-        </div>
-    </div>
-</div>
--->
-        </div>
-    </main>
-
-    <main id="museum-info-page" style="display: none;">
-        <div id="info-container">
-            <div class="museum-img">
-            </div>
-            <span class="text-container">
-                <h2>The Field Museum</h2>
-                <p>1400 S Lake Shore Dr, Chicago, IL 60605, USA</p>
-                <p>Website: <a href="https://www.fieldmuseum.org/">https://www.fieldmuseum.org/</a></p>
-                <p>Rating: 4.5</p>
-            </span>
-        </div>
-        <div id="results-wrapper">
-            <div class="results-section-2">
-                <!--
-<h2 id="results-str">The Brain Scoop Channel Videos</h2>
-<div class="thumbnail-div">
-<a href="https://www.youtube.com/watch?v=OM7WJpVDi8E" target="_blank">
-<img src="https://i.ytimg.com/vi/OM7WJpVDi8E/mqdefault.jpg" class="thumbnail-img">
-<h3 class="video-title">Horns vs. Antlers</h3>
-</a>
-</div>
-<div class="thumbnail-div">
-<a href="https://www.youtube.com/watch?v=vn6heiOkloE" target="_blank">
-<img src="https://i.ytimg.com/vi/vn6heiOkloE/mqdefault.jpg" class="thumbnail-img">
-<h3 class="video-title">I waited 4+ years for this: the World Taxidermy Championships!</h3>
-</a>
-</div>
-<div class="thumbnail-div">
-<a href="https://www.youtube.com/watch?v=3ViOua7rz6E" target="_blank">
-<img src="https://i.ytimg.com/vi/3ViOua7rz6E/mqdefault.jpg" class="thumbnail-img">
-<h3 class="video-title">Ask Emily #1</h3>
-</a>
-</div>
-<div class="thumbnail-div">
-<a href="https://www.youtube.com/watch?v=JZTTckEIaDI" target="_blank">
-<img src="https://i.ytimg.com/vi/JZTTckEIaDI/mqdefault.jpg" class="thumbnail-img">
-<h3 class="video-title">Chicago Adventure, Part One: Beetles 'n Bats</h3>
-</a>
-</div>
-<div class="thumbnail-div">
-<a href="https://www.youtube.com/watch?v=bUlogQh_pCI" target="_blank">
-<img src="https://i.ytimg.com/vi/bUlogQh_pCI/mqdefault.jpg" class="thumbnail-img">
-<h3 class="video-title">The Brain Scoop</h3>
-</a>
-</div>
-<div class="thumbnail-div">
-<a href="https://www.youtube.com/watch?v=BCIviuuWumg" target="_blank">
-<img src="https://i.ytimg.com/vi/BCIviuuWumg/mqdefault.jpg" class="thumbnail-img">
-<h3 class="video-title">Bloopers, Deleted Scenes, and Other Oddities, Part Seven</h3>
-</a>
-</div>
-<div class="thumbnail-div">
-<a href="https://www.youtube.com/watch?v=2NygtUEvY9k" target="_blank">
-<img src="https://i.ytimg.com/vi/2NygtUEvY9k/mqdefault.jpg" class="thumbnail-img">
-<h3 class="video-title">Mammoths vs. Mastodons: Can we 'de-extinct' them both?</h3>
-</a>
-</div>
-<div class="thumbnail-div">
-<a href="https://www.youtube.com/watch?v=2_y7n7OGslg" target="_blank">
-<img src="https://i.ytimg.com/vi/2_y7n7OGslg/mqdefault.jpg" class="thumbnail-img">
-<h3 class="video-title">What is a Museum?</h3>
-</a>
-</div>
-<div class="thumbnail-div">
-<a href="https://www.youtube.com/watch?v=8bf4LvptPyY" target="_blank">
-<img src="https://i.ytimg.com/vi/8bf4LvptPyY/mqdefault.jpg" class="thumbnail-img">
-<h3 class="video-title">Ask Emily #6</h3>
-</a>
-</div>
--->
-            </div>
-            <div class="yt-results-section">
-                <h2 id="results-str">
-                    The Field Museum Channel Videos</h2>
-                <div class="thumbnail-div">
-                    <a href="https://www.youtube.com/watch?v=OM7WJpVDi8E" target="_blank">
-                        <img src="https://i.ytimg.com/vi/OM7WJpVDi8E/mqdefault.jpg" class="thumbnail-img">
-                        <h3 class="video-title">Horns vs. Antlers</h3>
-                    </a>
-                </div>
-                <div class="thumbnail-div">
-                    <a href="https://www.youtube.com/watch?v=vn6heiOkloE" target="_blank">
-                        <img src="https://i.ytimg.com/vi/vn6heiOkloE/mqdefault.jpg" class="thumbnail-img">
-                        <h3 class="video-title">I waited 4+ years for this: the World Taxidermy Championships!</h3>
-                    </a>
-                </div>
-                <div class="thumbnail-div">
-                    <a href="https://www.youtube.com/watch?v=3ViOua7rz6E" target="_blank">
-                        <img src="https://i.ytimg.com/vi/3ViOua7rz6E/mqdefault.jpg" class="thumbnail-img">
-                        <h3 class="video-title">Ask Emily #1</h3>
-                    </a>
-                </div>
-                <div class="thumbnail-div">
-                    <a href="https://www.youtube.com/watch?v=JZTTckEIaDI" target="_blank">
-                        <img src="https://i.ytimg.com/vi/JZTTckEIaDI/mqdefault.jpg" class="thumbnail-img">
-                        <h3 class="video-title">Chicago Adventure, Part One: Beetles 'n Bats</h3>
-                    </a>
-                </div>
-                <div class="thumbnail-div">
-                    <a href="https://www.youtube.com/watch?v=bUlogQh_pCI" target="_blank">
-                        <img src="https://i.ytimg.com/vi/bUlogQh_pCI/mqdefault.jpg" class="thumbnail-img">
-                        <h3 class="video-title">The Brain Scoop</h3>
-                    </a>
-                </div>
-                <div class="thumbnail-div">
-                    <a href="https://www.youtube.com/watch?v=BCIviuuWumg" target="_blank">
-                        <img src="https://i.ytimg.com/vi/BCIviuuWumg/mqdefault.jpg" class="thumbnail-img">
-                        <h3 class="video-title">Bloopers, Deleted Scenes, and Other Oddities, Part Seven</h3>
-                    </a>
-                </div>
-                <div class="thumbnail-div">
-                    <a href="https://www.youtube.com/watch?v=2NygtUEvY9k" target="_blank">
-                        <img src="https://i.ytimg.com/vi/2NygtUEvY9k/mqdefault.jpg" class="thumbnail-img">
-                        <h3 class="video-title">Mammoths vs. Mastodons: Can we 'de-extinct' them both?</h3>
-                    </a>
-                </div>
-                <div class="thumbnail-div">
-                    <a href="https://www.youtube.com/watch?v=2_y7n7OGslg" target="_blank">
-                        <img src="https://i.ytimg.com/vi/2_y7n7OGslg/mqdefault.jpg" class="thumbnail-img">
-                        <h3 class="video-title">What is a Museum?</h3>
-                    </a>
-                </div>
-                <div class="thumbnail-div">
-                    <a href="https://www.youtube.com/watch?v=8bf4LvptPyY" target="_blank">
-                        <img src="https://i.ytimg.com/vi/8bf4LvptPyY/mqdefault.jpg" class="thumbnail-img">
-                        <h3 class="video-title">Ask Emily #6</h3>
-                    </a>
-                </div>
-
+            <div id="info-container">
+                <div class="museum-img"></div>
+                <span class="text-container"></span>
             </div>
 
+            <div id="results-wrapper">
+                <!--           Featured Museums Special Content Generated Here-->
+                <div class="results-section-2"></div>
+                <!--            Youtube Videos generated here-->
+                <div class="yt-results-section"></div>
+            </div>
 
-        </div>
+        </section>
 
     </main>
-    <!-- style="display: none;"
-        visibility: hidden hides the element, but it still takes up space in the layout.
-        display: none removes the element completely from the document, it doesn't take up any space.-->
-    <!---->
 
     <footer>
         <p>Copyright 2018 Kati Long | Powered by Google</p>
@@ -245,8 +57,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM&libraries=places&callback=initMap" async defer></script>
     <script src="app.js"></script>
-    <!--    <script src="https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJb8Jg9pZYwokR-qHGtvSkLzs&key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM" async defer></script> -->
-    <!--  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM&libraries=places"></script> -->
+
 </body>
 
 </html>

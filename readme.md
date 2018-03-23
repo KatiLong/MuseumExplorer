@@ -22,8 +22,6 @@ This app is for three types of users:
 ![UI Flow handwritten draft](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/FullSizeRender%2011.jpg)
 ### Wireframe _main
 ![Wireframe _Main](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/Wireframev1.jpg)
-### Wireframe _User Cases
-![Wireframe _User Case 1]
 
 ## Working Prototype
 You can access a working prototype of the app here: [https://katilong.github.io/museum-explorer-capstone/](https://katilong.github.io/museum-explorer-capstone/)
