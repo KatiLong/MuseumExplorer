@@ -454,6 +454,7 @@ var map;
 var infowindow;
 var service;
 var bounds;
+var index = 0;
 
 var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
@@ -491,9 +492,11 @@ function initMap() {
     searchBox.addListener('places_changed', function () {
 
         bounds = new google.maps.LatLngBounds();
+        console.log(index);
 
         var places = searchBox.getPlaces();
         var place = places[0];
+        index = 0;
 
         // places long form
         // var places = new google.maps.places.SearchBox(document.getElementById('pac-input')).getPlaces();
@@ -514,17 +517,25 @@ function initMap() {
         //Places Search Option: Text Search
         //                        service.textSearch({
         //                                    query: place.name,
-        //                                    type: 'museum'               }, callback);
+        //      type: 'museum'               }, callback);
 
-        if (place.geometry.viewport) {
-            // Only geocodes have viewport.
-            bounds.union(place.geometry.viewport);
-        } else {
-            bounds.extend(place.geometry.location);
-        }
+
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                    console.log('Place had viewport');
+//                    console.log(markers);
+                    //            for (var i = 0; i < markers.length; i++) {
+                    //                bounds.extend(markers[i].getPosition());
+                    //            }
+                } else {
+                    bounds.extend(place.geometry.location);
+                    console.log('Place did not have viewport ELSE');
+                }
 
         map.fitBounds(bounds);
 
+        //sets Google search box back to empty
         $('#pac-input').val('');
         //        map.setZoom(10);
 
@@ -546,6 +557,10 @@ function createMarker(place) {
         position: place.geometry.location,
         icon: iconBase + 'museum_maps.png'
     });
+
+    //    bounds.extend(markers[index].getPosition());
+//    console.log(markers);
+//    console.log(index);
 
     // Displays Museum's info when user clicks on Marker
     google.maps.event.addListener(markers, 'click', function () {
@@ -876,7 +891,7 @@ function populateMapMuseum(place, details) {
         })
     }
 
-    console.log(place);
+    console.log(details);
     //    console.log(place.photos[0].getUrl({
     //        maxHeight: 640
     //    }));
@@ -888,10 +903,28 @@ function populateMapMuseum(place, details) {
     buildTheHtmlOutput += '<span class="text-container">';
     buildTheHtmlOutput += '<h2>' + place.name + '</h2>';
     //    buildTheHtmlOutput += '<p id="url"><a href="' + details.url + '">Get Directions</a></p>';
-    buildTheHtmlOutput += '<p id="address">' + details.address + '</p>';
-    buildTheHtmlOutput += '<p>P:   ' + details.phone + '</p>';
-    buildTheHtmlOutput += '<p>Google Rating:   ' + details.rating + '</p>';
-    buildTheHtmlOutput += '<p><a href="' + details.website + '" target="_blank">Website</a></p>';
+    //    console.log(details.address, details.phone, details.rating);
+
+    if (details.address == "undefined") {
+        console.log(details.address);
+    } else {
+        buildTheHtmlOutput += '<p id="address">' + details.address + '</p>';
+    }
+    if (details.phone == "undefined") {
+        console.log(details.phone);
+    } else {
+        buildTheHtmlOutput += '<p>P:   ' + details.phone + '</p>';
+    }
+    if (details.rating == "undefined") {
+        console.log(details.rating);
+    } else {
+        buildTheHtmlOutput += '<p>Google Rating:   ' + details.rating + '</p>';
+    }
+    if (details.website == "undefined") {
+        console.log(details.website);
+    } else {
+        buildTheHtmlOutput += '<p><a href="' + details.website + '" target="_blank">Website</a></p>';
+    }
     buildTheHtmlOutput += '</span>';
     buildTheHtmlOutput += '</div>';
 

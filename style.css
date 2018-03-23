@@ -441,9 +441,11 @@ footer {
 /*ipad lanscape / small laptop*/
 
 @media only screen and (max-width: 1024px) {
+/*
     body {
         color: blue;
     }
+*/
     #map {
         width: 800px;
     }
@@ -452,9 +454,11 @@ footer {
 /*ipad potrait*/
 
 @media only screen and (max-width: 768px) {
+/*
     body {
         color: red;
     }
+*/
     #map {
         width: 95%;
     }
@@ -463,9 +467,11 @@ footer {
 /*iPhone landscape*/
 
 @media only screen and (max-width: 480px) {
+/*
     body {
         color: green;
     }
+*/
     .featured-div {
         width: 95%;
     }
@@ -484,9 +490,11 @@ footer {
 /*iPhone portrait*/
 
 @media only screen and (max-width: 320px) {
+/*
     body {
         color: purple;
     }
+*/
     #map {
         height: 300px;
     }
