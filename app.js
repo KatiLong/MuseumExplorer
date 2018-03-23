@@ -467,7 +467,6 @@ function initMap() {
     searchBox.addListener('places_changed', function () {
 
         bounds = new google.maps.LatLngBounds();
-        console.log(index);
 
         var places = searchBox.getPlaces();
         var place = places[0];
