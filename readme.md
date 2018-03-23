@@ -3,12 +3,16 @@ Museum Explorer is designed for everyone from art enthusiasts to families lookin
 
 ## Screenshots
 
-Images | Images
+Home Page View #1 | Home Page View #2
 :-------------------------:|:-------------------------:
-![[Home Page view-1](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/home-page-1.jpg)  |  ![Home Page view-2](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/home-page-2.jpg)
-![Featured Museums view-1](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/featured-museum-1.jpg) | ![Featured Museums view-2](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/featured-museum-2.jpg)
+![Home Page view-1](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/home-page-1.jpg)  |  ![Home Page view-2](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/home-page-2.jpg)
+Museum by Map View #1 | Museum by Map View #2
+:-------------------------:|:-------------------------:
 ![Map Museum view-1](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/map-museum-1.jpg) | ![Map Museum view-2](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/map-museum-2.jpg)
-![Featured Museums view-3](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/featured-museum-3.jpg)
+Featured Museums View  | Featured Museums View
+:-------------------------:|:-------------------------:
+![Featured Museums view-1](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/featured-museum-1.jpg) | ![Featured Museums view-2](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/featured-museum-2.jpg)
+![Featured Museums view-3](https://github.com/KatiLong/museum-explorer-capstone/blob/master/readme-images/featured-museum-3.jpg) |
 
 ## User Cases
 This app is for three types of users:
