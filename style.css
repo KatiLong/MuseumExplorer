@@ -56,12 +56,12 @@ body {
 }
 
 header {
-    margin: 30px auto;
+    margin: 25px auto;
 }
 
 h1 {
     font-size: 35px;
-    margin: 15px;
+    margin: 10px;
 }
 
 h2 {
@@ -441,7 +441,7 @@ footer {
 /*ipad lanscape / small laptop*/
 
 @media only screen and (max-width: 1024px) {
-/*
+    /*
     body {
         color: blue;
     }
@@ -454,7 +454,7 @@ footer {
 /*ipad potrait*/
 
 @media only screen and (max-width: 768px) {
-/*
+    /*
     body {
         color: red;
     }
@@ -467,7 +467,7 @@ footer {
 /*iPhone landscape*/
 
 @media only screen and (max-width: 480px) {
-/*
+    /*
     body {
         color: green;
     }
@@ -490,7 +490,7 @@ footer {
 /*iPhone portrait*/
 
 @media only screen and (max-width: 320px) {
-/*
+    /*
     body {
         color: purple;
     }
