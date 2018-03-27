@@ -1,3 +1,5 @@
+'use strict'; //--> Breaks Google Maps API code, throws reference error on 'markers' @526
+
 //////////Featured Museums Data////////////////
 
 var featuredMuseums = [{
@@ -429,6 +431,7 @@ var map;
 var infowindow;
 var service;
 var bounds;
+var markers = [];
 //var index = 0;
 
 var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
@@ -439,7 +442,6 @@ function initMap() {
         lat: 0,
         lng: 0
     }
-    var markers = [];
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: Center,
