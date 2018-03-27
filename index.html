@@ -12,52 +12,37 @@
     <header role="banner">
         <h1>Museum Explorer</h1>
         <h3><button id="map-button" role="button" style="display: none;">Search Map</button><span id="hMap">Use the map to search for museums by name or location,</span> or <span id="hFeat">browse Featured Museums below</span><button id="feat-button" style="display: none;">Browse Featured Museums</button></h3>
-
     </header>
-
     <main role="main">
-
         <section role="region" class="google-map">
-
             <input id="pac-input" class="controls" type="text" placeholder="Enter a location or museum name">
             <section id="map"></section>
-
         </section>
-
         <section role="region" id="featured-museums">
-
             <h2>Featured Museums</h2>
             <!--        Featured Thumbnails generated here.-->
             <div class="featured-wrapper"></div>
-
         </section>
-
         <!--   Museum Details generated here-->
         <section role="region" id="museum-info-page" style="display: none;">
-
             <div id="info-container">
                 <div class="museum-img"></div>
                 <span class="text-container"></span>
             </div>
-
             <div id="results-wrapper">
                 <!--           Featured Museums Special Content Generated Here-->
                 <div class="results-section-2"></div>
                 <!--            Youtube Videos generated here-->
                 <div class="yt-results-section"></div>
             </div>
-
         </section>
-
     </main>
-
     <footer role="contentinfo">
         <p>Copyright 2018 Kati Long | Powered by Google</p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM&libraries=places&callback=initMap" async defer></script>
     <script src="app.js"></script>
-
 </body>
 
 </html>
