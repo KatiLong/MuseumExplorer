@@ -1,4 +1,4 @@
-var mapStyle = [
+let mapStyle = [
     {
         "elementType": "geometry",
         "stylers": [
