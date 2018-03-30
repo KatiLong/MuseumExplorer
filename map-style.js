@@ -328,18 +328,18 @@ let mapStyle = [
 
 const APIkey = 'AIzaSyDttWY6FVRVPYVS04eTBI7OX0xMHgeEFNM';
 
-var map;
-var infowindow;
-var service;
-var bounds;
-var markers = [];
-//var index = 0;
+let map;
+let infowindow;
+let service;
+let bounds;
+let markers = [];
+//let index = 0;
 
-var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+let iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
 
 // The Map
 function initMap() {
-    var Center = {
+    let Center = {
         lat: 0,
         lng: 0
     }
@@ -361,8 +361,8 @@ function initMap() {
     service = new google.maps.places.PlacesService(map);
 
     // Create the search box and link it to the UI element.
-    var input = document.getElementById('pac-input');
-    var searchBox = new google.maps.places.SearchBox(input);
+    let input = document.getElementById('pac-input');
+    let searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(input)
 
     // Listen for the event fired when the user selects a prediction and retrieve
@@ -371,12 +371,12 @@ function initMap() {
 
         bounds = new google.maps.LatLngBounds();
 
-        var places = searchBox.getPlaces();
-        var place = places[0];
+        let places = searchBox.getPlaces();
+        let place = places[0];
         //        index = 0;
 
         // places long form
-        // var places = new google.maps.places.SearchBox(document.getElementById('pac-input')).getPlaces();
+        // let places = new google.maps.places.SearchBox(document.getElementById('pac-input')).getPlaces();
 
         if (places.length == 0) {
             return;
@@ -432,29 +432,24 @@ function createMarker(place) {
 
     // Displays Museum's info when user clicks on Marker
     google.maps.event.addListener(markers, 'click', function () {
-        var currentWebsite;
-        var currentPlace = '';
+        let currentWebsite;
+        let currentPlace = {};
 
-        var request = {
+        let request = {
             reference: place.reference
         };
 
         service.getDetails(request, function (details, status) {
-            //            currentWebsite = details.website;
-            //            console.log(currentWebsite);
-            console.log(details);
             // infowindow.open(map, marker);
 
-            currentPlace += '{';
-            currentPlace += '"address":"' + details.formatted_address + '",'; //address
-            currentPlace += '"phone":"' + details.formatted_phone_number + '",'; //address
-            currentPlace += '"rating":"' + details.rating + '",'; //address
-            currentPlace += '"directions":"' + details.url + '",'; //address
-            currentPlace += '"website":"' + details.website + '",'; //address
-            currentPlace += '"types":"' + details.types + '"';
-            currentPlace += '}';
+            currentPlace.address = details.formatted_address; //address
+            currentPlace.phone = details.formatted_phone_number; //phone number
+            currentPlace.rating = details.rating; //Google rating
+            currentPlace.directions = details.url; //address
+            currentPlace.website = details.website; //address
+            currentPlace.types = details.types;
 
-            renderMuseumPage(place, JSON.parse(currentPlace));
+            renderMuseumPage(place, currentPlace);
 
             console.log(place.vicinity, place.types);
 
