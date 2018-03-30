@@ -442,12 +442,12 @@ function createMarker(place) {
         service.getDetails(request, function (details, status) {
             // infowindow.open(map, marker);
 
-            currentPlace.address = details.formatted_address; //address
-            currentPlace.phone = details.formatted_phone_number; //phone number
-            currentPlace.rating = details.rating; //Google rating
-            currentPlace.directions = details.url; //address
-            currentPlace.website = details.website; //address
-            currentPlace.types = details.types;
+            (!details.formatted_address) ? currentPlace.address = "": currentPlace.address = details.formatted_address;
+            (!details.formatted_phone_number) ? currentPlace.phone = "": currentPlace.phone = details.formatted_phone_number;
+            (!details.rating) ? currentPlace.rating = "": currentPlace.rating = details.rating;
+            (!details.url) ? currentPlace.directions = "": currentPlace.directions = details.url;
+            (!details.website) ? currentPlace.website = "": currentPlace.website = details.website;
+            (!details.types) ? currentPlace.types = "": currentPlace.types = details.types;
 
             renderMuseumPage(place, currentPlace);
 

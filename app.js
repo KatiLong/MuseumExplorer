@@ -197,7 +197,7 @@ function populateFeatMuseum(index) {
 };
 
 function populateMapMuseum(place, details) {
-    //console.log("populateMapMuseum ran");
+
     var buildTheHtmlOutput = "";
     var placePhoto;
 
@@ -218,22 +218,22 @@ function populateMapMuseum(place, details) {
     buildTheHtmlOutput += '<span class="text-container">';
     buildTheHtmlOutput += '<h2>' + place.name + '</h2>';
     //conditionals in case a detail is undefined for a given Museum
-    if (details.address == "undefined") { //undefined is in quotations because of JSON.parse usage
+    if (details.address == "") { //field will be empty if detail is undefined
         console.log(details.address);
     } else {
         buildTheHtmlOutput += '<p id="address">' + details.address + '</p>';
     }
-    if (details.phone == "undefined") {
+    if (details.phone == "") {
         console.log(details.phone);
     } else {
         buildTheHtmlOutput += '<p>P:   ' + details.phone + '</p>';
     }
-    if (details.rating == "undefined") {
+    if (details.rating == "") {
         console.log(details.rating);
     } else {
         buildTheHtmlOutput += '<p>Google Rating:   ' + details.rating + '</p>';
     }
-    if (details.website == "undefined") {
+    if (details.website == "") {
         console.log(details.website);
     } else {
         buildTheHtmlOutput += '<p><a href="' + details.website + '" target="_blank">Website</a></p>';
@@ -301,8 +301,6 @@ function changeFeaturedStyle() {
 }
 
 function renderMuseumPage(place, details) {
-
-    console.log(details);
     //    checkIfFeatured(place.id); //function to check if place is featured museum
 
     changeMapStyle();
