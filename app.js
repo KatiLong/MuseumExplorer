@@ -2,7 +2,7 @@
 
 //////////Featured Museums Data////////////////
 
-var featuredMuseums = [{
+let featuredMuseums = [{
         "name": "The MET",
         "googleId": "ChIJb8Jg9pZYwokR-qHGtvSkLzs",
         "youtubeId": "UCDlz9C2bhSW6dcVn_PO5mYw",
