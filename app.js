@@ -198,7 +198,7 @@ function populateMapMuseum(place, details) {
     if (details.address == "") { //field will be empty if detail is undefined
         console.log(details.address);
     } else {
-        htmlMuseumPage += '<p id="address">' + details.address + '</p>';
+        htmlMuseumPage += `<p id="address">${details.address}</p>`;
     }
     if (details.phone == "") {
         console.log(details.phone);
