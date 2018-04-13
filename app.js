@@ -104,7 +104,7 @@ function populateFeatThumbnails(featuredMuseums) {
         htmlFeatThumb += `<div class="featured-div ${featuredMuseumsValue.cssClass} js-${featuredMuseumsIndex}">`;
         htmlFeatThumb += `<h4>${featuredMuseumsValue.name}</h4>`;
         htmlFeatThumb += `<div class="img-div">`;
-        htmlFeatThumb += `<p>featuredMuseumsValue.city</p>`;
+        htmlFeatThumb += `<p>${featuredMuseumsValue.city}</p>`;
         htmlFeatThumb += `<ul>`;
         if (!featuredMuseumsValue.artwork) { //Displays The Field Museums Second YouTube Channel instead of Online Gallery Link
             htmlFeatThumb += `<li>`;
@@ -134,18 +134,17 @@ function populateFeatMuseum(index) {
     let htmlResults2 = ``;
 
     //HTML string for Upper Info Section
-    htmlResults1 += '<div class="museum-img" style="background-image: url(' + featuredMuseums[index].image + ')"></div>';
-    htmlResults1 += '<span class="text-container">';
-    htmlResults1 += '<h2>' + featuredMuseums[index].name + '</h2>';
-    htmlResults1 += '<p>' + featuredMuseums[index].address + '</p>';
-    htmlResults1 += '<p>' + featuredMuseums[index].city + '</p>';
-    htmlResults1 += '<p>Website: <a href="' + featuredMuseums[index].website + '">' + featuredMuseums[index].website + '</a></p>';
-    htmlResults1 += '</span>';
-    htmlResults1 += '</div>';
+    htmlResults1 += `<div class="museum-img" style="background-image: url(${featuredMuseums[index].image});"></div>`;
+    htmlResults1 += `<span class="text-container">`;
+    htmlResults1 += `<h2>${featuredMuseums[index].name}</h2>`;
+    htmlResults1 += `<p>${featuredMuseums[index].address}</p>`;
+    htmlResults1 += `<p>${featuredMuseums[index].city}</p>`;
+    htmlResults1 += `<p>Website: <a href="${featuredMuseums[index].website}">${featuredMuseums[index].website}</a></p>`;
+    htmlResults1 += `</span>`;
+    htmlResults1 += `</div>`;
 
     //HTML string for featured Online Content
-    if (index === '3') { //exception for Field Museum format
-        console.log('Field Museum was chosen');
+    if (index === '3') { //exception for Field Museum
         //API call for The Field Museums Featured Youtube Channel, The Brain Scoop
         getDataFromYouTube(featuredMuseums[index].youtubeId2, 'The Brain Scoop', 6, ".results-section-2");
     } else if (index === '4') { // for British Museum Format
@@ -189,53 +188,43 @@ function populateFeatMuseum(index) {
 
 function populateMapMuseum(place, details) {
 
-    let htmlFeatThumb = "";
-    let placePhoto;
-
-    if (!place.photos) {
-        placePhoto = 'images/no-image.jpg'; //no image image
-    } else {
-        //console.log(place.photos[0]);
-        placePhoto = place.photos[0].getUrl({
-            maxHeight: 640
-        })
-    }
-
-    //    currentPlace += '"directions":"' + details.url + '",'; //Place on Google Maps
-    //    currentPlace += '"types":"' + details.types + '"'; //Place categories
+    let htmlMuseumPage = ``;
 
     // Builds HTML with Museum's information
-    htmlFeatThumb += '<div class="museum-img" style="background-image: url(' + placePhoto + ')"></div>';
-    htmlFeatThumb += '<span class="text-container">';
-    htmlFeatThumb += '<h2>' + place.name + '</h2>';
+    htmlMuseumPage += `<div class="museum-img" style="background-image: url(${details.photo})"></div>`;
+    htmlMuseumPage += `<span class="text-container">`;
+    htmlMuseumPage += `<h2>${place.name}</h2>`;
     //conditionals in case a detail is undefined for a given Museum
     if (details.address == "") { //field will be empty if detail is undefined
         console.log(details.address);
     } else {
-        htmlFeatThumb += '<p id="address">' + details.address + '</p>';
+        htmlMuseumPage += '<p id="address">' + details.address + '</p>';
     }
     if (details.phone == "") {
         console.log(details.phone);
     } else {
-        htmlFeatThumb += '<p>P:   ' + details.phone + '</p>';
+        htmlMuseumPage += `<p>P:   ${details.phone}</p>`;
     }
     if (details.rating == "") {
         console.log(details.rating);
     } else {
-        htmlFeatThumb += '<p>Google Rating:   ' + details.rating + '</p>';
+        htmlMuseumPage += `<p>Google Rating: ${details.rating}</p>`;
     }
     if (details.website == "") {
         console.log(details.website);
     } else {
-        htmlFeatThumb += '<p><a href="' + details.website + '" target="_blank">Website</a></p>';
+        htmlMuseumPage += `<p><a href="${details.website}" target="_blank">Website</a></p>`;
     }
-    htmlFeatThumb += '</span>';
-    htmlFeatThumb += '</div>';
+    htmlMuseumPage += `</span>`;
+    htmlMuseumPage += `</div>`;
 
     //Appends to Museum Info Section
-    $("#info-container").html(htmlFeatThumb);
+    $("#info-container").html(htmlMuseumPage);
 
 }
+
+//    currentPlace += '"directions":"' + details.url + '",'; //Place on Google Maps
+//    currentPlace += '"types":"' + details.types + '"'; //Place categories
 
 //////////////////////////////////////////////////////////////////////////////
 //CSS Related Listeners

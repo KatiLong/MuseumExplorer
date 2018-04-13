@@ -432,16 +432,23 @@ function createMarker(place) {
 
     // Displays Museum's info when user clicks on Marker
     google.maps.event.addListener(markers, 'click', function () {
-        let currentWebsite;
-        let currentPlace = {};
 
         let request = {
             reference: place.reference
         };
 
         service.getDetails(request, function (details, status) {
-            // infowindow.open(map, marker);
+            let currentPlace = {};
 
+            // Utilizes Google Places photo function if photo exists for location
+            if (!place.photos) {
+                currentPlace.photo = 'images/no-image.jpg';
+            } else {
+                currentPlace.photo = place.photos[0].getUrl({
+                    maxHeight: 640
+                });
+            }
+            // Sets Google details if defined, otherwise sets to empty string
             (!details.formatted_address) ? currentPlace.address = "": currentPlace.address = details.formatted_address;
             (!details.formatted_phone_number) ? currentPlace.phone = "": currentPlace.phone = details.formatted_phone_number;
             (!details.rating) ? currentPlace.rating = "": currentPlace.rating = details.rating;
@@ -451,11 +458,8 @@ function createMarker(place) {
 
             renderMuseumPage(place, currentPlace);
 
-            console.log(place.vicinity, place.types);
-
 
         });
-        console.log(currentPlace);
     });
 
     // Shows name when user hovers over markers
