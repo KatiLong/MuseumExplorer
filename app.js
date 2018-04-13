@@ -129,7 +129,7 @@ function populateFeatThumbnails(featuredMuseums) {
 }
 
 function populateFeatMuseum(index) {
-    //console.log(`Populate Featured Museum ran, index is ${index}`);
+
     let htmlResults1 = ``;
     let htmlResults2 = ``;
 
@@ -230,7 +230,7 @@ function populateMapMuseum(place, details) {
 //CSS Related Listeners
 
 function displayMuseumPage() {
-    //console.log(`display museum page ran`);
+
     $('#featured-museums').hide();
     $('#museum-info-page').show();
 
@@ -240,7 +240,6 @@ function displayMuseumPage() {
 }
 
 function changeMapStyle() {
-    //console.log('changeMapStyle ran');
     $('#map').css({
         "height": "275px",
         "max-width": "725px"
@@ -248,7 +247,6 @@ function changeMapStyle() {
 }
 
 function displayFeatMuseum() {
-    //console.log("displayFeatMuseum's ran");
     $('#map').hide();
     $('#museum-info-page').show();
     $('.results-section-2').show();
