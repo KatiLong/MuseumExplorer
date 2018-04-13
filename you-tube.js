@@ -1,8 +1,8 @@
-var YTchannelId;
+let YTchannelId;
 //API Call using Google Name as Search Term to find museum channel
 function findYoutubeChannel(searchTerm) {
 
-    var result = $.ajax({
+    let result = $.ajax({
             /* update API end point */
             url: "https://www.googleapis.com/youtube/v3/search",
             data: {
@@ -35,7 +35,7 @@ function findYoutubeChannel(searchTerm) {
 }
 //Filtering the found Channels
 function identifyChannelResult(data, searchTerm) {
-    var foundElem = [];
+    let foundElem = [];
     //searches results for Youtube Channels
     data.items.forEach(function (elem) {
         if (elem.id.kind === 'youtube#channel') {
@@ -45,11 +45,11 @@ function identifyChannelResult(data, searchTerm) {
 
     //if results are found
     if (foundElem.length > 0) {
-        var museumName = searchTerm.split(" ");
-        var foundChannel = foundElem[0].snippet.channelTitle;
-        var counter = 0;
+        let museumName = searchTerm.split(" ");
+        let foundChannel = foundElem[0].snippet.channelTitle;
+        let counter = 0;
 
-        for (var i = 0; i < museumName.length; i++) {
+        for (let i = 0; i < museumName.length; i++) {
             if (foundChannel.indexOf(museumName[i]) != -1) {
                 console.log(museumName[i], 'yes');
                 counter++;
@@ -75,7 +75,7 @@ function identifyChannelResult(data, searchTerm) {
 }
 //API Call searching for videos by channel
 function getDataFromYouTube(channelId, channelTitle, resultCount, HTMLclass) {
-    var result = $.ajax({
+    let result = $.ajax({
             /* update API end point */
             url: "https://www.googleapis.com/youtube/v3/search",
             data: {
@@ -103,7 +103,7 @@ function getDataFromYouTube(channelId, channelTitle, resultCount, HTMLclass) {
 //Displays videos to page if found
 function displayResults(data, channel, id, HTMLclass) {
 
-    var section = '.yt-results-section';
+    let section = '.yt-results-section';
     if (HTMLclass) {
         section = HTMLclass
     }
