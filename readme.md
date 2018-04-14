@@ -40,7 +40,7 @@ The app's functionality includes:
 * jQuery
 
 * The app uses AJAX JSON calls to the <a href="https://maps.googleapis.com/maps/api">Google Maps</a> Open Platform API, including the Places Library, to return an interactive map to search for Museums in a given area with clickable icons, which return Place Details for each museum result.
-* The app uses AJAX JSON calls to the <a href=""https://www.googleapis.com/youtube/v3/search"">YouTube</a> V3 Data API to find Museum's channels and display a list of videos from that channel.
+* The app uses AJAX JSON calls to the <a href="https://www.googleapis.com/youtube/v3/search">YouTube</a> V3 Data API to find Museum's channels and display a list of videos from that channel.
 
 ## Responsive
 App is built to be responsive across mobile, tablet, laptop, and desktop screen resolutions.
