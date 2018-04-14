@@ -10,10 +10,6 @@ function findYoutubeChannel(searchTerm) {
                 part: 'snippet',
                 maxResults: 20,
                 key: APIkey,
-                // order: 'relevance'
-                // location: '(-41.3064,174.8243)',
-                // locationRadius: '1000km',
-                // type: 'channel'
             },
             dataType: "jsonp",
             /*set the call type GET / POST*/
@@ -22,8 +18,6 @@ function findYoutubeChannel(searchTerm) {
         })
         /* if the call is successful (status 200 OK) show results */
         .done(function (result) {
-            /* if the results are meeningful, we can just //console.log them */
-            //console.log(result);
             identifyChannelResult(result, searchTerm);
         })
         /* if the call is NOT successful show errors */
@@ -42,36 +36,29 @@ function identifyChannelResult(data, searchTerm) {
             foundElem.push(elem);
         }
     })
-
-    //if results are found
+    //if youtube channel results are found
     if (foundElem.length > 0) {
         let museumName = searchTerm.split(" ");
         let foundChannel = foundElem[0].snippet.channelTitle;
         let counter = 0;
-
-        for (let i = 0; i < museumName.length; i++) {
-            if (foundChannel.indexOf(museumName[i]) != -1) {
-                console.log(museumName[i], 'yes');
+        //if current keyword matches word from channel title, add to counter
+        museumName.forEach((elem) => {
+            if (foundChannel.indexOf(elem) != -1) {
                 counter++;
-            } else {
-                console.log(museumName[i], "no");
             }
-        }
+        })
+        // if 50% of keywords match
         if (counter >= parseInt(museumName.length / 2)) {
-            console.log('counter is greater than half');
-
             //returns first channel result
             getDataFromYouTube(foundElem[0].id.channelId, foundElem[0].snippet.channelTitle);
         } else {
             console.log('No relevant channels found');
             $('.yt-results-section').html('');
         }
-        console.log(counter);
-    } else {
+    } else { // No channel found by Youtube API Call
         console.log("No channel found");
         $('.yt-results-section').html('');
     }
-
 }
 //API Call searching for videos by channel
 function getDataFromYouTube(channelId, channelTitle, resultCount, HTMLclass) {
@@ -102,15 +89,12 @@ function getDataFromYouTube(channelId, channelTitle, resultCount, HTMLclass) {
 }
 //Displays videos to page if found
 function displayResults(data, channel, id, HTMLclass) {
-
     let section = '.yt-results-section';
     if (HTMLclass) {
         section = HTMLclass
     }
-
     //Adds Header describing Channel
     $(section).html(`<h2 id="results-str"><a href="https://www.youtube.com/channel/${id}" target="_blank">${channel} Channel Videos</a></h2>`);
-
     //if no videos are found from Channel, tell the user
     if (data.items.length === 0) {
         $(section).append('<h6>No Videos Found</h6>');
@@ -123,7 +107,6 @@ function displayResults(data, channel, id, HTMLclass) {
 //generates HTML string for each video result
 function generateResults(elem) {
     let HTMLOutput = ``;
-    //console.log(`generate results ran`);
     HTMLOutput += `<div class ="thumbnail-div">`;
     HTMLOutput += `<a href="https://www.youtube.com/watch?v=${elem.id.videoId}" target=_blank>`;
     HTMLOutput += `<img src="${elem.snippet.thumbnails.medium.url}" class="thumbnail-img">`;

@@ -1,4 +1,4 @@
-'use strict'; //--> Breaks Google Maps API code, throws reference error on 'markers' @526
+'use strict';
 
 //////////Featured Museums Data////////////////
 
@@ -147,8 +147,7 @@ function populateFeatMuseum(index) {
     if (index === '3') { //exception for Field Museum
         //API call for The Field Museums Featured Youtube Channel, The Brain Scoop
         getDataFromYouTube(featuredMuseums[index].youtubeId2, 'The Brain Scoop', 6, ".results-section-2");
-    } else if (index === '4') { // for British Museum Format
-        console.log('The British Museum was Chosen');
+    } else if (index === '4') {
         //Special Feature: The British Museum with Google
         htmlResults2 += `<div class="british-thumbnails">`;
         htmlResults2 += `<a href="${featuredMuseums[index].artwork}" target="_blank">`;
