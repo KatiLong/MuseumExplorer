@@ -388,7 +388,7 @@ function initMap() {
             type: 'museum',
             maxResults: 20
             // rankby: distance
-        }, callback);
+        }, c);
 
         //Places Search Option: Text Search
         //                        service.textSearch({
@@ -415,7 +415,7 @@ function initMap() {
 }
 
 //callback function as dictated by Google Maps API
-function callback(results, status) {
+function c(results, status) {
     //console.log(`status parameter is ${status}`);
 
     if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -467,7 +467,6 @@ function createMarker(place) {
         infowindow.setContent(place.name);
         infowindow.open(map, this);
     });
-
-
-    // Change Museum results as User moves around the map
 }
+
+// Change Museum results as User moves around the map
